@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Index() {
   const { toast } = useToast();
@@ -351,6 +352,8 @@ export default function Index() {
           <p>&copy; 2024 Закупка снеков. Все права защищены.</p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   );
 }
