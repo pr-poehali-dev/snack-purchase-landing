@@ -104,13 +104,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden fish-scale">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
         
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
         </div>
+        
+        <div className="absolute top-10 right-10 text-primary/10 text-9xl">🍺</div>
+        <div className="absolute bottom-20 left-20 text-primary/10 text-8xl">🐟</div>
+        <div className="absolute top-1/3 left-10 text-primary/10 text-7xl">🥜</div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
@@ -145,7 +149,7 @@ export default function Index() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="glass rounded-xl p-6 hover:bg-white/10 transition-all duration-300"
+                className="glass rounded-xl p-6 hover:bg-white/10 transition-all duration-300 beer-foam"
               >
                 <div className="bg-primary/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <Icon name={benefit.icon} className="text-primary" size={24} />
@@ -162,7 +166,9 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="categories" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30">
+      <section id="categories" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30 wood-texture relative">
+        <div className="absolute top-10 left-10 text-primary/5 text-9xl">🦑</div>
+        <div className="absolute bottom-10 right-10 text-primary/5 text-9xl">🥨</div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -177,8 +183,11 @@ export default function Index() {
             {categories.map((category, index) => (
               <Card
                 key={index}
-                className="p-8 glass border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group cursor-pointer"
+                className="p-8 glass border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group cursor-pointer relative overflow-hidden"
               >
+                <div className="absolute top-2 right-2 text-4xl opacity-20 group-hover:opacity-40 transition-opacity">
+                  {index === 0 ? '🐟' : index === 1 ? '🦑' : index === 2 ? '🥩' : index === 3 ? '🥜' : index === 4 ? '🍟' : '🥨'}
+                </div>
                 <div className="bg-gradient-to-br from-primary/20 to-amber-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Icon name={category.icon} className="text-primary" size={32} />
                 </div>
@@ -190,7 +199,8 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
+        <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -220,7 +230,9 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30 fish-scale relative">
+        <div className="absolute top-10 left-1/4 text-primary/5 text-7xl">🍺</div>
+        <div className="absolute bottom-10 right-1/4 text-primary/5 text-7xl">🐠</div>
         <div className="max-w-4xl mx-auto">
           <div className="glass rounded-3xl p-8 sm:p-12 border border-primary/20">
             <div className="text-center mb-10">
@@ -273,7 +285,8 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-border">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-border wood-texture relative">
+        <div className="absolute bottom-10 left-10 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
