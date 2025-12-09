@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import ScrollToTop from '@/components/ScrollToTop';
+import Header from '@/components/Header';
 
 export default function Index() {
   const { toast } = useToast();
@@ -105,7 +106,8 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden fish-scale">
+      <Header />
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden fish-scale">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
         
         <div className="absolute inset-0 opacity-20">
@@ -200,7 +202,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
+      <section id="how-we-work" className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
         <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
