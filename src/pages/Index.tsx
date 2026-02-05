@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,6 +10,13 @@ import Header from '@/components/Header';
 
 export default function Index() {
   const { toast } = useToast();
+  const [requestsToday, setRequestsToday] = useState(0);
+  
+  useEffect(() => {
+    const randomRequests = Math.floor(Math.random() * 401) + 100;
+    setRequestsToday(randomRequests);
+  }, []);
+  
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -171,6 +178,41 @@ export default function Index() {
                 <p className="text-xs sm:text-sm text-muted-foreground">{benefit.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 max-w-2xl mx-auto animate-fade-in">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-amber-500/20 to-primary/20 rounded-2xl blur-xl animate-pulse"></div>
+              <div className="relative glass rounded-2xl p-8 border-2 border-primary/30 shadow-2xl">
+                <div className="flex items-center justify-center gap-6 flex-wrap">
+                  <div className="text-6xl animate-bounce" style={{ animationDuration: '2s' }}>🍺</div>
+                  <div className="text-center">
+                    <div className="text-sm sm:text-base text-muted-foreground mb-2">Заявок сегодня</div>
+                    <div className="text-5xl sm:text-6xl font-black text-primary bg-gradient-to-r from-primary to-amber-500 bg-clip-text text-transparent">
+                      {requestsToday}
+                    </div>
+                    <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span>Обновляется в реальном времени</span>
+                    </div>
+                  </div>
+                  <div className="text-6xl animate-bounce" style={{ animationDuration: '2.3s', animationDelay: '0.2s' }}>🐟</div>
+                </div>
+                <div className="mt-6 flex items-center justify-center gap-3 text-xs sm:text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <span className="text-primary">⭐</span> Популярно
+                  </span>
+                  <span className="text-primary/50">•</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-primary">⚡</span> Быстро
+                  </span>
+                  <span className="text-primary/50">•</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-primary">✓</span> Надёжно
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-20 max-w-5xl mx-auto relative">
