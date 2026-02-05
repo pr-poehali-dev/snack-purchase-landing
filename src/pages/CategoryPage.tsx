@@ -264,11 +264,83 @@ export default function CategoryPage() {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/6645f3ab-8687-46c3-bcc9-bbfb027048fb.jpg)' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/90 via-[#1e293b]/85 to-[#0f172a]/90 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'fish-smoked' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/8b8ea176-164b-40ac-a755-5884f7caa303.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'snacks' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/3cacd4ce-da5f-4a6d-a173-6757c956adc3.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'crackers-nuts' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/16cf24fe-fd4a-4034-a3cb-75b7961f8b26.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'potato-chips' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/39193d4a-bdad-412d-90bf-0292197c6432.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'seeds' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/3d88468a-98d4-4a76-8a7b-408f8e45b0a7.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'meat-dried' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/ec55999a-3aba-46ca-8d54-b5287fbb4710.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'cheese' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/a0835cc7-745f-40d3-869a-98039fd1f0c3.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
+          </>
+        )}
+        {category.id === 'packaging' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/202d173e-0d74-4bb8-8645-cd7082233e46.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
           </>
         )}
         
-        {category.id !== 'fish-dried' && (
+        {!['fish-dried', 'fish-smoked', 'snacks', 'crackers-nuts', 'potato-chips', 'seeds', 'meat-dried', 'cheese', 'packaging'].includes(category.id) && (
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
             <div className="absolute inset-0 opacity-20">
@@ -285,7 +357,7 @@ export default function CategoryPage() {
               {category.title}
             </h1>
             <p className="text-2xl text-primary mb-8 drop-shadow-lg">{category.subtitle}</p>
-            <p className="text-lg sm:text-xl text-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-lg bg-black/30 backdrop-blur-sm rounded-2xl p-6">
+            <p className="text-lg sm:text-xl text-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-2xl bg-black/50 backdrop-blur-md rounded-2xl p-8 border border-primary/20">
               {category.description}
             </p>
           </div>
