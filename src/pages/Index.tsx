@@ -127,7 +127,7 @@ export default function Index() {
         <div className="absolute bottom-20 left-20 text-primary/10 text-8xl hidden lg:block">🐟</div>
         <div className="absolute top-1/3 left-10 text-primary/10 text-7xl hidden lg:block">🥜</div>
 
-        <div className="absolute top-20 left-4 sm:top-24 sm:left-8 lg:left-12 z-20 animate-scale-in">
+        <div className="absolute top-32 left-4 sm:top-40 sm:left-8 lg:left-12 z-20 animate-scale-in">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary via-amber-500 to-amber-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
             <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-3 sm:p-4 lg:p-6 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
