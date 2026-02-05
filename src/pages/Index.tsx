@@ -119,6 +119,22 @@ export default function Index() {
         <div className="absolute bottom-20 left-20 text-primary/10 text-8xl">🐟</div>
         <div className="absolute top-1/3 left-10 text-primary/10 text-7xl">🥜</div>
 
+        <div className="absolute top-32 right-8 sm:right-16 z-20 animate-scale-in">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-amber-500 to-amber-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
+            <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-6 sm:p-8 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
+              <div className="text-center">
+                <div className="text-sm sm:text-base font-bold text-primary-foreground mb-1">Работаем с</div>
+                <div className="text-4xl sm:text-5xl font-black text-primary-foreground">2004</div>
+                <div className="text-sm sm:text-base font-bold text-primary-foreground mt-1">года</div>
+              </div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-amber-300 rounded-full shadow-lg flex items-center justify-center text-xl">
+                ⭐
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-shadow leading-tight">
