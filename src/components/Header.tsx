@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +19,20 @@ export default function Header() {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+    setIsCategoriesOpen(false);
   };
+
+  const categories = [
+    { label: 'Рыба вяленая', emoji: '🐟', id: 'fish-dried' },
+    { label: 'Рыба копченая и соленая', emoji: '🐠', id: 'fish-smoked' },
+    { label: 'Снеки', emoji: '🍿', id: 'snacks' },
+    { label: 'Гренки чипсы орехи сушки', emoji: '🥨', id: 'crackers-nuts' },
+    { label: 'Картофельные чипсы', emoji: '🥔', id: 'potato-chips' },
+    { label: 'Семечки', emoji: '🌻', id: 'seeds' },
+    { label: 'Мясо вяленое', emoji: '🥩', id: 'meat-dried' },
+    { label: 'Сыры', emoji: '🧀', id: 'cheese' },
+    { label: 'Фасовка', emoji: '📦', id: 'packaging' },
+  ];
 
   return (
     <>
@@ -63,23 +77,66 @@ export default function Header() {
             </div>
 
             <nav className="hidden lg:flex items-center gap-2">
-              {[
-                { label: 'Главная', icon: 'Home', id: 'hero' },
-                { label: 'Категории', icon: 'Grid3x3', id: 'categories' },
-                { label: 'Как работаем', icon: 'Workflow', id: 'how-we-work' },
-                { label: 'Контакты', icon: 'Phone', id: 'contact' },
-              ].map((item, index) => (
+              <Button
+                variant="ghost"
+                onClick={() => scrollToSection('hero')}
+                className="relative group/nav text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+              >
+                <Icon name="Home" size={18} className="mr-2" />
+                <span>Главная</span>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover/nav:w-full transition-all duration-300" />
+              </Button>
+              
+              <div className="relative">
                 <Button
-                  key={index}
                   variant="ghost"
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
                   className="relative group/nav text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
                 >
-                  <Icon name={item.icon} size={18} className="mr-2" />
-                  <span>{item.label}</span>
+                  <Icon name="Grid3x3" size={18} className="mr-2" />
+                  <span>Категории</span>
+                  <Icon name="ChevronDown" size={16} className={`ml-1 transition-transform ${isCategoriesOpen ? 'rotate-180' : ''}`} />
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover/nav:w-full transition-all duration-300" />
                 </Button>
-              ))}
+                
+                {isCategoriesOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-72 bg-background/98 backdrop-blur-xl border border-primary/20 rounded-xl shadow-2xl shadow-primary/10 animate-fade-in z-50">
+                    <div className="p-3 grid gap-1">
+                      {categories.map((cat, index) => (
+                        <Button
+                          key={index}
+                          variant="ghost"
+                          onClick={() => scrollToSection(cat.id)}
+                          className="w-full justify-start text-sm hover:bg-primary/10 hover:text-primary"
+                        >
+                          <span className="mr-2 text-lg">{cat.emoji}</span>
+                          {cat.label}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Button
+                variant="ghost"
+                onClick={() => scrollToSection('how-we-work')}
+                className="relative group/nav text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+              >
+                <Icon name="Workflow" size={18} className="mr-2" />
+                <span>Как работаем</span>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover/nav:w-full transition-all duration-300" />
+              </Button>
+              
+              <Button
+                variant="ghost"
+                onClick={() => scrollToSection('contact')}
+                className="relative group/nav text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+              >
+                <Icon name="Phone" size={18} className="mr-2" />
+                <span>Контакты</span>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover/nav:w-full transition-all duration-300" />
+              </Button>
             </nav>
 
             <div className="flex items-center gap-3">
@@ -107,22 +164,61 @@ export default function Header() {
           {isMenuOpen && (
             <div className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-primary/20 shadow-2xl animate-fade-in">
               <nav className="flex flex-col gap-1 p-4">
-                {[
-                  { label: 'Главная', icon: 'Home', id: 'hero' },
-                  { label: 'Категории', icon: 'Grid3x3', id: 'categories' },
-                  { label: 'Как работаем', icon: 'Workflow', id: 'how-we-work' },
-                  { label: 'Контакты', icon: 'Phone', id: 'contact' },
-                ].map((item, index) => (
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection('hero')}
+                  className="w-full justify-start text-lg hover:bg-primary/10 hover:text-primary"
+                >
+                  <Icon name="Home" size={20} className="mr-3" />
+                  Главная
+                </Button>
+                
+                <div>
                   <Button
-                    key={index}
                     variant="ghost"
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
                     className="w-full justify-start text-lg hover:bg-primary/10 hover:text-primary"
                   >
-                    <Icon name={item.icon} size={20} className="mr-3" />
-                    {item.label}
+                    <Icon name="Grid3x3" size={20} className="mr-3" />
+                    Категории
+                    <Icon name="ChevronDown" size={18} className={`ml-auto transition-transform ${isCategoriesOpen ? 'rotate-180' : ''}`} />
                   </Button>
-                ))}
+                  
+                  {isCategoriesOpen && (
+                    <div className="ml-6 mt-2 space-y-1">
+                      {categories.map((cat, index) => (
+                        <Button
+                          key={index}
+                          variant="ghost"
+                          onClick={() => scrollToSection(cat.id)}
+                          className="w-full justify-start text-sm hover:bg-primary/10 hover:text-primary"
+                        >
+                          <span className="mr-2 text-base">{cat.emoji}</span>
+                          {cat.label}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection('how-we-work')}
+                  className="w-full justify-start text-lg hover:bg-primary/10 hover:text-primary"
+                >
+                  <Icon name="Workflow" size={20} className="mr-3" />
+                  Как работаем
+                </Button>
+                
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full justify-start text-lg hover:bg-primary/10 hover:text-primary"
+                >
+                  <Icon name="Phone" size={20} className="mr-3" />
+                  Контакты
+                </Button>
+                
                 <Button
                   size="lg"
                   className="w-full mt-4 bg-gradient-to-r from-primary to-amber-500 hover:from-amber-500 hover:to-primary text-primary-foreground"
