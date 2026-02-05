@@ -193,22 +193,26 @@ export default function Index() {
                     </div>
                     <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Обновляется в реальном времени</span>
+                      <span>Заявок сегодня в категориях</span>
                     </div>
                   </div>
                   <div className="text-6xl animate-bounce" style={{ animationDuration: '2.3s', animationDelay: '0.2s' }}>🐟</div>
                 </div>
-                <div className="mt-6 flex items-center justify-center gap-3 text-xs sm:text-sm text-muted-foreground">
+                <div className="mt-6 flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground flex-wrap">
                   <span className="flex items-center gap-1">
-                    <span className="text-primary">⭐</span> Популярно
+                    <span className="text-primary">🐟</span> Рыба
                   </span>
                   <span className="text-primary/50">•</span>
                   <span className="flex items-center gap-1">
-                    <span className="text-primary">⚡</span> Быстро
+                    <span className="text-primary">🍿</span> Снеки
                   </span>
                   <span className="text-primary/50">•</span>
                   <span className="flex items-center gap-1">
-                    <span className="text-primary">✓</span> Надёжно
+                    <span className="text-primary">🥩</span> Мясо
+                  </span>
+                  <span className="text-primary/50">•</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-primary">🧀</span> Сыры
                   </span>
                 </div>
               </div>
