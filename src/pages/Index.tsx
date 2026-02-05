@@ -121,13 +121,20 @@ export default function Index() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-shadow">
-              Закупаем снеки к пиву
-              <span className="block text-primary mt-2">по лучшим ценам</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-shadow leading-tight">
+              Пивные закуски оптом для магазинов разливного пива
             </h1>
-            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Рыба, кальмар, орехи, сухарики, чипсы — покупаем быстро и выгодно для баров, ресторанов и кафе
-            </p>
+            <div className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-4xl mx-auto space-y-4 text-left">
+              <p>
+                Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
+              </p>
+              <p>
+                Работаем с магазинами разливного пива, барами, небольшими розничными точками. За годы работы научились понимать, что нужно вашим покупателям. Вобла? Есть. Кальмар? Конечно. Мясные чипсы для тех, кто рыбу не любит? Тоже в наличии.
+              </p>
+              <p>
+                Почему к нам возвращаются? Да всё просто: товар свежий, цены адекватные, а если что-то не продаётся — подскажем, чем заменить. Не первый год в этом бизнесе, так что знаем его изнутри.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
