@@ -257,22 +257,35 @@ export default function CategoryPage() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden fish-scale pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
+        {category.id === 'fish-dried' && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/6645f3ab-8687-46c3-bcc9-bbfb027048fb.jpg)' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/90 via-[#1e293b]/85 to-[#0f172a]/90 backdrop-blur-sm" />
+          </>
+        )}
         
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
-        </div>
+        {category.id !== 'fish-dried' && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
+              <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
+            </div>
+          </>
+        )}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
-            <div className="text-8xl mb-6 animate-bounce">{category.emoji}</div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-shadow">
+            <div className="text-8xl mb-6 animate-bounce drop-shadow-2xl">{category.emoji}</div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-shadow drop-shadow-2xl">
               {category.title}
             </h1>
-            <p className="text-2xl text-primary mb-8">{category.subtitle}</p>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-2xl text-primary mb-8 drop-shadow-lg">{category.subtitle}</p>
+            <p className="text-lg sm:text-xl text-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-lg bg-black/30 backdrop-blur-sm rounded-2xl p-6">
               {category.description}
             </p>
           </div>
