@@ -121,10 +121,10 @@ export default function Index() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-shadow leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-shadow leading-tight">
               Пивные закуски оптом для магазинов разливного пива
             </h1>
-            <div className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-4xl mx-auto space-y-4 text-left">
+            <div className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-4xl mx-auto space-y-6">
               <p>
                 Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
               </p>
@@ -180,11 +180,11 @@ export default function Index() {
         <div className="absolute top-10 left-10 text-primary/5 text-9xl">🦑</div>
         <div className="absolute bottom-10 right-10 text-primary/5 text-9xl">🥨</div>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+          <div className="mb-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Вяленая и копчёная рыба — то, за чем приходят в пивной
             </h2>
-            <div className="max-w-4xl mx-auto text-lg text-muted-foreground space-y-4">
+            <div className="max-w-4xl mx-auto text-lg text-muted-foreground space-y-6">
               <p>
                 Давайте честно: вяленая рыба — это процентов семьдесят продаж любой пивной точки. Без неё никуда. Поэтому у нас тут всё серьёзно.
               </p>
@@ -216,11 +216,11 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="mt-16 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <div className="mt-20 mb-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
               Мясные закуски — когда рыба не для всех
             </h2>
-            <div className="max-w-4xl text-lg text-muted-foreground space-y-4">
+            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
               <p>
                 Есть категория людей, которые рыбу на дух не переносят. И что, терять этих клиентов? Нет уж. Для них держим мясные снеки, и скажу вам — маржа там очень приятная.
               </p>
@@ -233,8 +233,8 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="mt-16 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <div className="mt-20 mb-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
               Сыры, орешки, сухарики — мелочь, а приятно
             </h2>
             <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
@@ -273,11 +273,11 @@ export default function Index() {
       <section id="how-we-work" className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
         <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <div className="mb-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
               Почему работать с нами удобно
             </h2>
-            <div className="max-w-4xl text-lg text-muted-foreground space-y-4">
+            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
               <p>
                 Слушайте, мы сами из этого бизнеса, понимаем все ваши головные боли. Поставщик подвёл, товар не свежий, фасовка неудобная — всё это проходили.
               </p>
