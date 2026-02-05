@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useCart } from '@/contexts/CartContext';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,6 +10,7 @@ export default function Header() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -139,6 +141,21 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center gap-3">
+              <Link to="/cart">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative text-primary hover:bg-primary/10"
+                >
+                  <Icon name="ShoppingCart" size={24} />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-amber-500 text-primary-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                      {totalItems}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+
               <Button
                 size="lg"
                 className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-amber-500 hover:from-amber-500 hover:to-primary text-primary-foreground shadow-lg shadow-primary/30 relative overflow-hidden group/cta"

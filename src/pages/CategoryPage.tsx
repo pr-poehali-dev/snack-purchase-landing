@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { useCart } from '@/contexts/CartContext';
 import ScrollToTop from '@/components/ScrollToTop';
 import Header from '@/components/Header';
 
@@ -220,6 +221,7 @@ const categoriesData: Record<string, CategoryData> = {
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const { toast } = useToast();
+  const { addItem } = useCart();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -227,6 +229,22 @@ export default function CategoryPage() {
   });
 
   const category = categoryId ? categoriesData[categoryId] : null;
+
+  const handleAddToCart = (product: Product) => {
+    if (!category) return;
+    addItem({
+      id: `${category.id}-${product.name}`,
+      categoryId: category.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      image: product.image,
+    });
+    toast({
+      title: "Добавлено в корзину",
+      description: `${product.name} добавлен в вашу корзину`,
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -395,7 +413,7 @@ export default function CategoryPage() {
             {category.products.map((product, index) => (
               <div
                 key={index}
-                className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group animate-fade-in"
+                className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
@@ -406,8 +424,15 @@ export default function CategoryPage() {
                 </h3>
                 <p className="text-muted-foreground text-sm mb-3">{product.description}</p>
                 {product.price && (
-                  <p className="text-lg font-bold text-amber-400">{product.price}</p>
+                  <p className="text-lg font-bold text-amber-400 mb-4">{product.price}</p>
                 )}
+                <Button
+                  className="mt-auto bg-primary hover:bg-primary/90 text-primary-foreground"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  <Icon name="ShoppingCart" className="mr-2" size={18} />
+                  В корзину
+                </Button>
               </div>
             ))}
           </div>
