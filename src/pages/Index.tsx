@@ -484,9 +484,7 @@ export default function Index() {
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Продавайте снеки выгодно
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Оставьте заявку и мы свяжемся с вами в течение 30 минут
-              </p>
+              <p className="text-lg text-muted-foreground">Оставьте заявку и мы свяжемся с вами кратчайшие сроки</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
