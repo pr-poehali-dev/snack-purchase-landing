@@ -536,9 +536,7 @@ export default function Index() {
               <h2 className="text-4xl font-bold mb-6">
                 Свяжитесь с нами
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Работаем ежедневно с 9:00 до 21:00. Выезжаем по всему городу.
-              </p>
+              <p className="text-lg text-muted-foreground mb-8">Работаем с пн по пт с 6:00 до 17:00. </p>
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
