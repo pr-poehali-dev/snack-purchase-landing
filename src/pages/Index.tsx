@@ -547,9 +547,7 @@ export default function Index() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Телефон</p>
-                    <a href="tel:+79991234567" className="text-2xl font-bold hover:text-primary transition-colors">
-                      +7 (999) 123-45-67
-                    </a>
+                    <a href="tel:+79991234567" className="text-2xl font-bold hover:text-primary transition-colors">8 (926) 109 - 26  - 09</a>
                   </div>
                 </div>
 
