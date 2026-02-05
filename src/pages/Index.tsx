@@ -204,36 +204,53 @@ export default function Index() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Вяленая и копчёная рыба — то, за чем приходят в пивной
             </h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
-              <p>
-                Давайте честно: вяленая рыба — это процентов семьдесят продаж любой пивной точки. Без неё никуда. Поэтому у нас тут всё серьёзно.
-              </p>
-              <p>
-                Астраханская вобла — это вообще отдельная история. Настоящая, с икрой, просоленная как надо. Не пересушенная и не сырая. Берут её коробками, особенно ближе к выходным. Икра воблы, кстати, тоже улетает — многие специально за ней приходят.
-              </p>
-              <p className="font-semibold text-foreground">Что ещё хорошо идёт:</p>
-              <ul className="space-y-2 pl-6">
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span><strong>Пелядь</strong> — жирненькая, в меру солёная, клиенты любят</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span><strong>Камбала с икрой</strong> — выглядит дорого, а по цене вполне доступна</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span><strong>Жёлтый полосатик</strong> — классика, которая никогда не подводит</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span><strong>Кальмар стружка</strong> — для тех, кому рыба надоела</span>
-                </li>
-              </ul>
-                <p>
-                  Копчёная рыба — это уже для гурманов. Красная рыба копчёная разлетается под крафтовое пиво, да и под обычное тоже неплохо. Если не знаете, что взять — звоните, подскажем, что сейчас лучше берут.
-                </p>
+            <div className="max-w-5xl mx-auto relative">
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🐟</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🦑</div>
+              <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+                
+                <div className="relative space-y-8 text-lg sm:text-xl leading-relaxed">
+                  <p className="text-foreground/90 first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
+                    Давайте честно: вяленая рыба — это процентов семьдесят продаж любой пивной точки. Без неё никуда. Поэтому у нас тут всё серьёзно.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🐟</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  <p className="text-foreground/90">
+                    Астраханская вобла — это вообще отдельная история. <span className="text-primary font-semibold">Настоящая, с икрой, просоленная как надо.</span> Не пересушенная и не сырая. Берут её коробками, особенно ближе к выходным. Икра воблы, кстати, тоже улетает — многие специально за ней приходят.
+                  </p>
+                  <p className="text-xl font-bold text-primary">Что ещё хорошо идёт:</p>
+                  <ul className="space-y-3 pl-2">
+                    <li className="flex items-start">
+                      <span className="text-primary mr-3 text-2xl">🔸</span>
+                      <span className="text-foreground/90"><strong className="text-primary">Пелядь</strong> — жирненькая, в меру солёная, клиенты любят</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary mr-3 text-2xl">🔸</span>
+                      <span className="text-foreground/90"><strong className="text-primary">Камбала с икрой</strong> — выглядит дорого, а по цене вполне доступна</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary mr-3 text-2xl">🔸</span>
+                      <span className="text-foreground/90"><strong className="text-primary">Жёлтый полосатик</strong> — классика, которая никогда не подводит</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary mr-3 text-2xl">🔸</span>
+                      <span className="text-foreground/90"><strong className="text-primary">Кальмар стружка</strong> — для тех, кому рыба надоела</span>
+                    </li>
+                  </ul>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🍺</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  <p className="text-foreground/90">
+                    Копчёная рыба — это уже для гурманов. <span className="text-primary font-semibold">Красная рыба копчёная разлетается под крафтовое пиво</span>, да и под обычное тоже неплохо. Если не знаете, что взять — звоните, подскажем, что сейчас лучше берут.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -242,17 +259,34 @@ export default function Index() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Мясные закуски — когда рыба не для всех
             </h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
-              <p>
-                Есть категория людей, которые рыбу на дух не переносят. И что, терять этих клиентов? Нет уж. Для них держим мясные снеки, и скажу вам — маржа там очень приятная.
-              </p>
-              <p>
-                Вяленое мясо сейчас вообще в тренде. Берут и к пиву, и просто так пожевать. Мясные чипсы — штука интересная, хрустят, вкус насыщенный, упаковка яркая. На витрине смотрятся отлично.
-              </p>
-                <p>
-                  Мясные колбаски — это для тех, кто хочет посерьёзнее перекусить. А свиные ушки — ну, тут без комментариев, кто пробовал — тот знает. Хрустящие, с перчинкой, под светлое пиво идеально.
-                </p>
+            <div className="max-w-5xl mx-auto relative">
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🥩</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🍖</div>
+              <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+                
+                <div className="relative space-y-8 text-lg sm:text-xl leading-relaxed">
+                  <p className="text-foreground/90 first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
+                    Есть категория людей, которые рыбу на дух не переносят. И что, терять этих клиентов? Нет уж. Для них держим мясные снеки, и скажу вам — <span className="text-primary font-semibold">маржа там очень приятная</span>.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🥓</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  <p className="text-foreground/90">
+                    <span className="text-primary font-semibold">Вяленое мясо сейчас вообще в тренде.</span> Берут и к пиву, и просто так пожевать. Мясные чипсы — штука интересная, хрустят, вкус насыщенный, упаковка яркая. На витрине смотрятся отлично.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🍻</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  <p className="text-foreground/90">
+                    Мясные колбаски — это для тех, кто хочет посерьёзнее перекусить. А <span className="text-primary font-semibold">свиные ушки</span> — ну, тут без комментариев, кто пробовал — тот знает. Хрустящие, с перчинкой, под светлое пиво идеально.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -261,34 +295,65 @@ export default function Index() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Сыры, орешки, сухарики — мелочь, а приятно
             </h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
-              <p>
-                Вот эти позиции многие недооценивают. А зря! Человек пришёл за пивом, взял рыбку, а тут ещё и сухарики по акции. Почему бы не добавить? Средний чек растёт, все довольны.
-              </p>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Сырные штуки</h3>
-                <p>
-                  Копчёный колбасный сыр — его обычно нарезают и кладут рядом с кассой. Импульсная покупка, работает на ура. Сырные косички — вообще хит, особенно молодёжь берёт. Жареный сыр — для любителей чего-то необычного.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Всё хрустящее</h3>
-                <p className="mb-3">
-                  Гренки с чесноком — это наша любовь. Ароматные, хрустящие, чеснок настоящий, не химический. Есть ещё со вкусом томата и икры — тоже разбирают.
-                </p>
-                <p>
-                  Сухарики чёрные — под тёмное пиво самое то. Из бородинского хлеба, с тмином, вкус детства, только для взрослых.
-                </p>
-              </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground">Орехи и семечки</h3>
-                  <p>
-                    Арахис у нас разный: с сыром, с беконом, васаби для экстремалов. Фисташки — ну куда без них, классика жанра. Семечки тоже есть, куда ж без них в нашем деле.
+            <div className="max-w-5xl mx-auto relative">
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🧀</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🥜</div>
+              <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+                
+                <div className="relative space-y-8 text-lg sm:text-xl leading-relaxed">
+                  <p className="text-foreground/90 first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
+                    Вот эти позиции многие недооценивают. А зря! Человек пришёл за пивом, взял рыбку, а тут ещё и сухарики по акции. Почему бы не добавить? <span className="text-primary font-semibold">Средний чек растёт, все довольны.</span>
                   </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🧀</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-primary flex items-center gap-2">
+                      <span>🧀</span> Сырные штуки
+                    </h3>
+                    <p className="text-foreground/90">
+                      <span className="text-primary font-semibold">Копчёный колбасный сыр</span> — его обычно нарезают и кладут рядом с кассой. Импульсная покупка, работает на ура. <span className="text-primary font-semibold">Сырные косички</span> — вообще хит, особенно молодёжь берёт. Жареный сыр — для любителей чего-то необычного.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🥨</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-primary flex items-center gap-2">
+                      <span>🥨</span> Всё хрустящее
+                    </h3>
+                    <p className="text-foreground/90 mb-4">
+                      <span className="text-primary font-semibold">Гренки с чесноком</span> — это наша любовь. Ароматные, хрустящие, чеснок настоящий, не химический. Есть ещё со вкусом томата и икры — тоже разбирают.
+                    </p>
+                    <p className="text-foreground/90">
+                      Сухарики чёрные — под тёмное пиво самое то. Из бородинского хлеба, с тмином, <span className="text-primary font-semibold">вкус детства, только для взрослых</span>.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🥜</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-primary flex items-center gap-2">
+                      <span>🥜</span> Орехи и семечки
+                    </h3>
+                    <p className="text-foreground/90">
+                      Арахис у нас разный: <span className="text-primary font-semibold">с сыром, с беконом, васаби для экстремалов</span>. Фисташки — ну куда без них, классика жанра. Семечки тоже есть, куда ж без них в нашем деле.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -303,27 +368,70 @@ export default function Index() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Почему работать с нами удобно
             </h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
-              <p>
-                Слушайте, мы сами из этого бизнеса, понимаем все ваши головные боли. Поставщик подвёл, товар не свежий, фасовка неудобная — всё это проходили.
-              </p>
-              <p className="font-semibold text-foreground">Поэтому у нас так:</p>
-              <p>
-                <strong className="text-foreground">Привозим свежее.</strong> Не «условно свежее», а реально свежее. Сроки нормальные, хранение правильное.
-              </p>
-              <p>
-                <strong className="text-foreground">Объёмы любые.</strong> Хотите коробку на пробу — пожалуйста. Хотите фуру — тоже договоримся.
-              </p>
-              <p>
-                <strong className="text-foreground">Отгружаем быстро.</strong> Понимаем, что пустая витрина — это потерянные деньги.
-              </p>
-              <p>
-                <strong className="text-foreground">Подсказываем, что брать.</strong> Если только открываетесь или хотите обновить ассортимент — поможем собрать заказ, который будет продаваться.
-              </p>
-                <p>
-                  В общем, если ищете, где закупать пивные закуски без головной боли — давайте попробуем поработать. Прайс скинем, по ассортименту проконсультируем, дальше сами решите.
-                </p>
+            <div className="max-w-5xl mx-auto relative">
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🤝</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">✅</div>
+              <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+                
+                <div className="relative space-y-8 text-lg sm:text-xl leading-relaxed">
+                  <p className="text-foreground/90 first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
+                    Слушайте, мы сами из этого бизнеса, понимаем все ваши головные боли. Поставщик подвёл, товар не свежий, фасовка неудобная — всё это проходили.
+                  </p>
+                  
+                  <p className="text-2xl font-bold text-primary text-center">Поэтому у нас так:</p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">📦</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  
+                  <p className="text-foreground/90">
+                    <strong className="text-primary text-2xl">Привозим свежее.</strong> Не «условно свежее», а реально свежее. Сроки нормальные, хранение правильное.
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">📊</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  
+                  <p className="text-foreground/90">
+                    <strong className="text-primary text-2xl">Объёмы любые.</strong> Хотите коробку на пробу — пожалуйста. Хотите фуру — тоже договоримся.
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">⚡</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  
+                  <p className="text-foreground/90">
+                    <strong className="text-primary text-2xl">Отгружаем быстро.</strong> Понимаем, что пустая витрина — это потерянные деньги.
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">💡</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  
+                  <p className="text-foreground/90">
+                    <strong className="text-primary text-2xl">Подсказываем, что брать.</strong> Если только открываетесь или хотите обновить ассортимент — поможем собрать заказ, который будет продаваться.
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                    <span className="text-2xl">🍻</span>
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                  </div>
+                  
+                  <p className="text-foreground/90 text-center">
+                    В общем, если ищете, где закупать пивные закуски без головной боли — <span className="text-primary font-semibold">давайте попробуем поработать</span>. Прайс скинем, по ассортименту проконсультируем, дальше сами решите.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
