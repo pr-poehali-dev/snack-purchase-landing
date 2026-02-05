@@ -127,16 +127,16 @@ export default function Index() {
         <div className="absolute bottom-20 left-20 text-primary/10 text-8xl hidden lg:block">🐟</div>
         <div className="absolute top-1/3 left-10 text-primary/10 text-7xl hidden lg:block">🥜</div>
 
-        <div className="absolute top-24 right-4 sm:top-32 sm:right-8 lg:right-16 z-20 animate-scale-in">
+        <div className="absolute top-20 left-4 sm:top-24 sm:left-8 lg:left-12 z-20 animate-scale-in">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary via-amber-500 to-amber-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
-            <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-4 sm:p-6 lg:p-8 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
+            <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-3 sm:p-4 lg:p-6 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
               <div className="text-center">
-                <div className="text-xs sm:text-sm lg:text-base font-bold text-primary-foreground mb-1">Работаем с</div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-primary-foreground">2004</div>
-                <div className="text-xs sm:text-sm lg:text-base font-bold text-primary-foreground mt-1">года</div>
+                <div className="text-[10px] sm:text-xs lg:text-sm font-bold text-primary-foreground mb-0.5">Работаем с</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-foreground">2004</div>
+                <div className="text-[10px] sm:text-xs lg:text-sm font-bold text-primary-foreground mt-0.5">года</div>
               </div>
-              <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-amber-300 rounded-full shadow-lg flex items-center justify-center text-base sm:text-xl">
+              <div className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 w-5 h-5 sm:w-6 sm:h-6 bg-amber-300 rounded-full shadow-lg flex items-center justify-center text-sm sm:text-base">
                 ⭐
               </div>
             </div>
