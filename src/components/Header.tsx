@@ -25,7 +25,7 @@ export default function Header() {
   const categories = [
     { label: 'Рыба вяленая', emoji: '🐟', id: 'fish-dried' },
     { label: 'Рыба копченая и соленая', emoji: '🐠', id: 'fish-smoked' },
-    { label: 'Снеки', emoji: '🍿', id: 'snacks' },
+    { label: 'Снеки', emoji: '🦑', id: 'snacks' },
     { label: 'Гренки чипсы орехи сушки', emoji: '🥨', id: 'crackers-nuts' },
     { label: 'Картофельные чипсы', emoji: '🥔', id: 'potato-chips' },
     { label: 'Семечки', emoji: '🌻', id: 'seeds' },

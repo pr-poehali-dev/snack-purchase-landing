@@ -204,7 +204,7 @@ export default function Index() {
                   </span>
                   <span className="text-primary/50">•</span>
                   <span className="flex items-center gap-1">
-                    <span className="text-primary">🍿</span> Снеки
+                    <span className="text-primary">🦑</span> Снеки
                   </span>
                   <span className="text-primary/50">•</span>
                   <span className="flex items-center gap-1">
@@ -273,7 +273,7 @@ export default function Index() {
             {[
               { id: 'fish-dried', emoji: '🐟', title: 'Рыба вяленая', desc: 'Вобла, пелядь, камбала с икрой' },
               { id: 'fish-smoked', emoji: '🐠', title: 'Рыба копченая и соленая', desc: 'Красная рыба, сельдь, скумбрия' },
-              { id: 'snacks', emoji: '🍿', title: 'Снеки', desc: 'Кальмары, креветки, морские деликатесы' },
+              { id: 'snacks', emoji: '🦑', title: 'Снеки', desc: 'Кальмары, креветки, морские деликатесы' },
               { id: 'crackers-nuts', emoji: '🥨', title: 'Гренки чипсы орехи сушки', desc: 'Гренки с чесноком, сухарики, орешки' },
               { id: 'potato-chips', emoji: '🥔', title: 'Картофельные чипсы', desc: 'Все вкусы и форматы' },
               { id: 'seeds', emoji: '🌻', title: 'Семечки', desc: 'Жареные, соленые, разные виды' },
