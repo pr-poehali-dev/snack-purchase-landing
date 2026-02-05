@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -281,10 +282,11 @@ export default function Index() {
               { id: 'cheese', emoji: '🧀', title: 'Сыры', desc: 'Колбасный, косички, жареный' },
               { id: 'packaging', emoji: '📦', title: 'Фасовка', desc: 'Удобная упаковка любых размеров' },
             ].map((cat, index) => (
-              <div
+              <Link
                 key={index}
+                to={`/category/${cat.id}`}
                 id={cat.id}
-                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group relative animate-fade-in"
+                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group relative animate-fade-in block"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
@@ -293,10 +295,14 @@ export default function Index() {
                 <h3 className="text-2xl font-bold mb-3 text-primary group-hover:text-amber-300 transition-colors">
                   {cat.title}
                 </h3>
-                <p className="text-muted-foreground text-base">
+                <p className="text-muted-foreground text-base mb-4">
                   {cat.desc}
                 </p>
-              </div>
+                <div className="flex items-center text-primary group-hover:text-amber-300 transition-colors">
+                  <span className="text-sm font-semibold">Подробнее</span>
+                  <Icon name="ArrowRight" size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </Link>
             ))}
           </div>
 

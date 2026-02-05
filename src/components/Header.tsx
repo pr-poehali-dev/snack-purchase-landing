@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
@@ -6,6 +7,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +20,10 @@ export default function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    if (!isHomePage) {
+      window.location.href = `/#${id}`;
+      return;
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
     setIsCategoriesOpen(false);
@@ -45,7 +52,7 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="relative w-20 h-20 flex items-center justify-center">
                 <img 
                   src="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/4268ab04-26a4-4fd3-9c11-a5017afb70ac.png" 
@@ -63,7 +70,7 @@ export default function Header() {
                   Пивные закуски оптом 🍺
                 </p>
               </div>
-            </div>
+            </Link>
 
             <nav className="hidden lg:flex items-center gap-2">
               <Button
@@ -92,15 +99,18 @@ export default function Header() {
                   <div className="absolute top-full left-0 mt-2 w-72 bg-background/98 backdrop-blur-xl border border-primary/20 rounded-xl shadow-2xl shadow-primary/10 animate-fade-in z-50">
                     <div className="p-3 grid gap-1">
                       {categories.map((cat, index) => (
-                        <Button
+                        <Link
                           key={index}
-                          variant="ghost"
-                          onClick={() => scrollToSection(cat.id)}
-                          className="w-full justify-start text-sm hover:bg-primary/10 hover:text-primary"
+                          to={`/category/${cat.id}`}
+                          onClick={() => {
+                            setIsCategoriesOpen(false);
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full px-4 py-2 rounded-md text-sm hover:bg-primary/10 hover:text-primary transition-colors flex items-center"
                         >
                           <span className="mr-2 text-lg">{cat.emoji}</span>
                           {cat.label}
-                        </Button>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -176,15 +186,18 @@ export default function Header() {
                   {isCategoriesOpen && (
                     <div className="ml-6 mt-2 space-y-1">
                       {categories.map((cat, index) => (
-                        <Button
+                        <Link
                           key={index}
-                          variant="ghost"
-                          onClick={() => scrollToSection(cat.id)}
-                          className="w-full justify-start text-sm hover:bg-primary/10 hover:text-primary"
+                          to={`/category/${cat.id}`}
+                          onClick={() => {
+                            setIsCategoriesOpen(false);
+                            setIsMenuOpen(false);
+                          }}
+                          className="w-full px-4 py-2 rounded-md text-sm hover:bg-primary/10 hover:text-primary transition-colors flex items-center"
                         >
                           <span className="mr-2 text-base">{cat.emoji}</span>
                           {cat.label}
-                        </Button>
+                        </Link>
                       ))}
                     </div>
                   )}
