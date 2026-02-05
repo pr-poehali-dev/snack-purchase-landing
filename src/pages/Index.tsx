@@ -216,22 +216,56 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, index) => (
-              <Card
-                key={index}
-                className="p-8 glass border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group cursor-pointer relative overflow-hidden"
-              >
-                <div className="absolute top-2 right-2 text-4xl opacity-20 group-hover:opacity-40 transition-opacity">
-                  {index === 0 ? '🐟' : index === 1 ? '🦑' : index === 2 ? '🥩' : index === 3 ? '🥜' : index === 4 ? '🍟' : '🥨'}
-                </div>
-                <div className="bg-gradient-to-br from-primary/20 to-amber-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Icon name={category.icon} className="text-primary" size={32} />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
-                <p className="text-muted-foreground">{category.description}</p>
-              </Card>
-            ))}
+          <div className="mt-16 mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Мясные закуски — когда рыба не для всех
+            </h2>
+            <div className="max-w-4xl text-lg text-muted-foreground space-y-4">
+              <p>
+                Есть категория людей, которые рыбу на дух не переносят. И что, терять этих клиентов? Нет уж. Для них держим мясные снеки, и скажу вам — маржа там очень приятная.
+              </p>
+              <p>
+                Вяленое мясо сейчас вообще в тренде. Берут и к пиву, и просто так пожевать. Мясные чипсы — штука интересная, хрустят, вкус насыщенный, упаковка яркая. На витрине смотрятся отлично.
+              </p>
+              <p>
+                Мясные колбаски — это для тех, кто хочет посерьёзнее перекусить. А свиные ушки — ну, тут без комментариев, кто пробовал — тот знает. Хрустящие, с перчинкой, под светлое пиво идеально.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Сыры, орешки, сухарики — мелочь, а приятно
+            </h2>
+            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
+              <p>
+                Вот эти позиции многие недооценивают. А зря! Человек пришёл за пивом, взял рыбку, а тут ещё и сухарики по акции. Почему бы не добавить? Средний чек растёт, все довольны.
+              </p>
+
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-foreground">Сырные штуки</h3>
+                <p>
+                  Копчёный колбасный сыр — его обычно нарезают и кладут рядом с кассой. Импульсная покупка, работает на ура. Сырные косички — вообще хит, особенно молодёжь берёт. Жареный сыр — для любителей чего-то необычного.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-foreground">Всё хрустящее</h3>
+                <p className="mb-3">
+                  Гренки с чесноком — это наша любовь. Ароматные, хрустящие, чеснок настоящий, не химический. Есть ещё со вкусом томата и икры — тоже разбирают.
+                </p>
+                <p>
+                  Сухарики чёрные — под тёмное пиво самое то. Из бородинского хлеба, с тмином, вкус детства, только для взрослых.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-foreground">Орехи и семечки</h3>
+                <p>
+                  Арахис у нас разный: с сыром, с беконом, васаби для экстремалов. Фисташки — ну куда без них, классика жанра. Семечки тоже есть, куда ж без них в нашем деле.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -239,30 +273,31 @@ export default function Index() {
       <section id="how-we-work" className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
         <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Как мы работаем
+          <div className="mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Почему работать с нами удобно
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Простой и прозрачный процесс сотрудничества
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-amber-500 text-primary-foreground text-3xl font-bold mb-6 shadow-lg shadow-primary/50">
-                    {step.number}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent" />
-                )}
-              </div>
-            ))}
+            <div className="max-w-4xl text-lg text-muted-foreground space-y-4">
+              <p>
+                Слушайте, мы сами из этого бизнеса, понимаем все ваши головные боли. Поставщик подвёл, товар не свежий, фасовка неудобная — всё это проходили.
+              </p>
+              <p className="font-semibold text-foreground">Поэтому у нас так:</p>
+              <p>
+                <strong className="text-foreground">Привозим свежее.</strong> Не «условно свежее», а реально свежее. Сроки нормальные, хранение правильное.
+              </p>
+              <p>
+                <strong className="text-foreground">Объёмы любые.</strong> Хотите коробку на пробу — пожалуйста. Хотите фуру — тоже договоримся.
+              </p>
+              <p>
+                <strong className="text-foreground">Отгружаем быстро.</strong> Понимаем, что пустая витрина — это потерянные деньги.
+              </p>
+              <p>
+                <strong className="text-foreground">Подсказываем, что брать.</strong> Если только открываетесь или хотите обновить ассортимент — поможем собрать заказ, который будет продаваться.
+              </p>
+              <p>
+                В общем, если ищете, где закупать пивные закуски без головной боли — давайте попробуем поработать. Прайс скинем, по ассортименту проконсультируем, дальше сами решите.
+              </p>
+            </div>
           </div>
         </div>
       </section>
