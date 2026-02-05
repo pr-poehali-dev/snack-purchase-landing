@@ -286,21 +286,36 @@ export default function Index() {
                 key={index}
                 to={`/category/${cat.id}`}
                 id={cat.id}
-                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group relative animate-fade-in block"
+                className="rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group relative animate-fade-in block overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                  {cat.emoji}
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-primary group-hover:text-amber-300 transition-colors">
-                  {cat.title}
-                </h3>
-                <p className="text-muted-foreground text-base mb-4">
-                  {cat.desc}
-                </p>
-                <div className="flex items-center text-primary group-hover:text-amber-300 transition-colors">
-                  <span className="text-sm font-semibold">Подробнее</span>
-                  <Icon name="ArrowRight" size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                {cat.id === 'fish-dried' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/6645f3ab-8687-46c3-bcc9-bbfb027048fb.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id !== 'fish-dried' && (
+                  <div className="absolute inset-0 glass" />
+                )}
+                
+                <div className="relative z-10">
+                  <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 drop-shadow-2xl">
+                    {cat.emoji}
+                  </div>
+                  <h3 className={`text-2xl font-bold mb-3 transition-colors drop-shadow-lg ${cat.id === 'fish-dried' ? 'text-primary' : 'text-primary'} group-hover:text-amber-300`}>
+                    {cat.title}
+                  </h3>
+                  <p className={`text-base mb-4 drop-shadow-md ${cat.id === 'fish-dried' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                    {cat.desc}
+                  </p>
+                  <div className="flex items-center text-primary group-hover:text-amber-300 transition-colors drop-shadow-lg">
+                    <span className="text-sm font-semibold">Подробнее</span>
+                    <Icon name="ArrowRight" size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </div>
                 </div>
               </Link>
             ))}
