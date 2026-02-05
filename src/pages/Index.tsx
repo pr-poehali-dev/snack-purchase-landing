@@ -631,10 +631,10 @@ export default function Index() {
             <div className="flex justify-center">
               <Button 
                 size="lg" 
-                className="h-20 text-lg bg-[#0088cc] hover:bg-[#0077b5] text-white px-12"
+                className="h-24 text-xl bg-[#0088cc] hover:bg-[#0077b5] text-white px-16"
                 onClick={() => window.open('https://t.me/merka_fish', '_blank')}
               >
-                <Icon name="Send" className="mr-2" size={24} />
+                <Icon name="Send" className="mr-3" size={28} />
                 Telegram
               </Button>
             </div>
