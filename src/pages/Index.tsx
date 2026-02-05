@@ -665,7 +665,7 @@ export default function Index() {
               </div>
               <div>
                 <Textarea
-                  placeholder="Что хотите продать? (необязательно)"
+                  placeholder="Что вас интересует? (необязательно)"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="min-h-32 text-lg bg-background/50 border-border focus:border-primary resize-none"
