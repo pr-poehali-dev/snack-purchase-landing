@@ -46,32 +46,20 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <div className="relative">
-                <div className="w-14 h-16 rounded-2xl bg-gradient-to-b from-amber-200/30 via-amber-400 to-amber-600 border-2 border-amber-400/60 shadow-lg shadow-amber-500/50 relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
-                  <div className="absolute inset-0 beer-glass-effect" />
-                  
-                  <div className="absolute top-0 left-0 right-0 h-5 bg-white/95 rounded-t-xl foam-bubbles">
-                    <div className="absolute top-0.5 left-2 w-1.5 h-1.5 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '2s' }} />
-                    <div className="absolute top-1 right-2 w-1 h-1 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '0.4s', animationDuration: '2.3s' }} />
-                    <div className="absolute top-1.5 left-1/2 w-1 h-1 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '0.7s', animationDuration: '2.5s' }} />
-                  </div>
-
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-2xl">
-                    🐟
-                  </div>
-                </div>
-                
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-xs font-bold shadow-lg animate-pulse">
-                  🥜
-                </div>
+              <div className="relative w-16 h-16 flex items-center justify-center">
+                <img 
+                  src="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/eacd01f7-e4fb-475e-a353-23fc5d8fc8e7.png" 
+                  alt="Мерка Logo" 
+                  className="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
 
               <div className="hidden sm:block">
                 <h1 className="text-2xl font-bold text-primary group-hover:text-amber-300 transition-colors">
-                  СНЭКИ BAR
+                  МЕРКА
                 </h1>
                 <p className="text-xs text-muted-foreground -mt-1">
-                  Закупаем всё к пиву 🍺
+                  Пивные закуски оптом 🍺
                 </p>
               </div>
             </div>
