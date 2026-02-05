@@ -722,14 +722,24 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex flex-col gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="h-24 text-xl bg-[#0088cc] hover:bg-[#0077b5] text-white px-16"
+                className="h-24 text-xl bg-[#0088cc] hover:bg-[#0077b5] text-white px-16 w-full sm:w-auto"
                 onClick={() => window.open('https://t.me/merka_fish', '_blank')}
               >
                 <Icon name="Send" className="mr-3" size={28} />
                 Telegram
+              </Button>
+              
+              <Button 
+                size="lg" 
+                className="h-24 text-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-16 w-full sm:w-auto shadow-2xl shadow-red-500/30 relative overflow-hidden group"
+                onClick={() => window.open('https://yandex.ru/maps/-/CHASuZKa', '_blank')}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                <Icon name="MapPin" className="mr-3 animate-bounce" size={28} />
+                <span className="font-semibold">Мы на карте</span>
               </Button>
             </div>
           </div>
