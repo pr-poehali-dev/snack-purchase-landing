@@ -284,7 +284,7 @@ export default function Index() {
               <div
                 key={index}
                 id={cat.id}
-                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 cursor-pointer group relative"
               >
                 <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                   {cat.emoji}
