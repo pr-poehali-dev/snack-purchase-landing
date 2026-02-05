@@ -59,7 +59,7 @@ export default function Header() {
                 <h1 className="text-2xl font-bold text-primary group-hover:text-amber-300 transition-colors">
                   МЕРКА
                 </h1>
-                <p className="text-xs text-muted-foreground -mt-1">
+                <p className="text-sm text-muted-foreground -mt-0.5">
                   Пивные закуски оптом 🍺
                 </p>
               </div>
