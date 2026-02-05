@@ -472,6 +472,32 @@ export default function CategoryPage() {
         </div>
       </section>
 
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-border">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Свяжитесь с нами</h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
+            <Button 
+              size="lg" 
+              className="h-20 text-lg bg-[#0088cc] hover:bg-[#0077b5] text-white px-12"
+              onClick={() => window.open('https://t.me/merka_fish', '_blank')}
+            >
+              <Icon name="Send" className="mr-3" size={24} />
+              Telegram
+            </Button>
+            
+            <Button 
+              size="lg" 
+              className="h-20 text-lg bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 shadow-2xl shadow-red-500/30 relative overflow-hidden group"
+              onClick={() => window.open('https://yandex.ru/maps/-/CHASuZKa', '_blank')}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <Icon name="MapPin" className="mr-3 animate-bounce" size={24} />
+              <span className="font-semibold">Мы на карте</span>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <ScrollToTop />
     </div>
   );
