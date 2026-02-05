@@ -307,7 +307,52 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
                   </>
                 )}
-                {cat.id !== 'fish-dried' && cat.id !== 'fish-smoked' && (
+                {cat.id === 'snacks' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/3cacd4ce-da5f-4a6d-a173-6757c956adc3.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id === 'crackers-nuts' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/16cf24fe-fd4a-4034-a3cb-75b7961f8b26.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id === 'potato-chips' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/39193d4a-bdad-412d-90bf-0292197c6432.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id === 'seeds' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/3d88468a-98d4-4a76-8a7b-408f8e45b0a7.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id === 'meat-dried' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/ec55999a-3aba-46ca-8d54-b5287fbb4710.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id !== 'fish-dried' && cat.id !== 'fish-smoked' && cat.id !== 'snacks' && cat.id !== 'crackers-nuts' && cat.id !== 'potato-chips' && cat.id !== 'seeds' && cat.id !== 'meat-dried' && (
                   <div className="absolute inset-0 glass" />
                 )}
                 
@@ -315,10 +360,10 @@ export default function Index() {
                   <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 drop-shadow-2xl">
                     {cat.emoji}
                   </div>
-                  <h3 className={`text-2xl font-bold mb-3 transition-colors drop-shadow-lg ${cat.id === 'fish-dried' || cat.id === 'fish-smoked' ? 'text-primary' : 'text-primary'} group-hover:text-amber-300`}>
+                  <h3 className={`text-2xl font-bold mb-3 transition-colors drop-shadow-lg ${['fish-dried', 'fish-smoked', 'snacks', 'crackers-nuts', 'potato-chips', 'seeds', 'meat-dried'].includes(cat.id) ? 'text-primary' : 'text-primary'} group-hover:text-amber-300`}>
                     {cat.title}
                   </h3>
-                  <p className={`text-base mb-4 drop-shadow-md ${cat.id === 'fish-dried' || cat.id === 'fish-smoked' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                  <p className={`text-base mb-4 drop-shadow-md ${['fish-dried', 'fish-smoked', 'snacks', 'crackers-nuts', 'potato-chips', 'seeds', 'meat-dried'].includes(cat.id) ? 'text-foreground' : 'text-muted-foreground'}`}>
                     {cat.desc}
                   </p>
                   <div className="flex items-center text-primary group-hover:text-amber-300 transition-colors drop-shadow-lg">
