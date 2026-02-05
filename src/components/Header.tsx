@@ -46,12 +46,49 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <div className="relative w-16 h-16 flex items-center justify-center">
-                <img 
-                  src="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/eacd01f7-e4fb-475e-a353-23fc5d8fc8e7.png" 
-                  alt="Мерка Logo" 
-                  className="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
-                />
+              <div className="relative w-14 h-16 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <svg viewBox="0 0 100 120" className="w-full h-full drop-shadow-lg">
+                  <defs>
+                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#22d3ee" />
+                      <stop offset="50%" stopColor="#0891b2" />
+                      <stop offset="100%" stopColor="#0e7490" />
+                    </linearGradient>
+                    <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#fbbf24" />
+                      <stop offset="100%" stopColor="#f59e0b" />
+                    </linearGradient>
+                  </defs>
+                  
+                  <path d="M 30 30 Q 35 25, 40 30 Q 45 35, 50 30 Q 55 25, 60 30 Q 65 35, 70 30" 
+                    fill="none" stroke="url(#frameGradient)" strokeWidth="3" strokeLinecap="round"/>
+                  
+                  <text x="50" y="22" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" 
+                    fill="url(#frameGradient)" textAnchor="middle">мерка</text>
+                  
+                  <path d="M 30 40 L 35 95 L 50 100 L 65 95 L 70 40 Z" 
+                    fill="url(#waveGradient)" stroke="url(#frameGradient)" strokeWidth="2.5"/>
+                  
+                  <path d="M 35 45 Q 40 50, 45 45 Q 50 40, 55 45 Q 60 50, 65 45" 
+                    fill="none" stroke="#fbbf24" strokeWidth="1.5" opacity="0.7"/>
+                  <path d="M 35 55 Q 40 60, 45 55 Q 50 50, 55 55 Q 60 60, 65 55" 
+                    fill="none" stroke="#f59e0b" strokeWidth="1.5" opacity="0.6"/>
+                  <path d="M 35 65 Q 40 70, 45 65 Q 50 60, 55 65 Q 60 70, 65 65" 
+                    fill="none" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+                  <path d="M 35 75 Q 40 80, 45 75 Q 50 70, 55 75 Q 60 80, 65 75" 
+                    fill="none" stroke="#f59e0b" strokeWidth="1.5" opacity="0.4"/>
+                  <path d="M 35 85 Q 40 90, 45 85 Q 50 80, 55 85 Q 60 90, 65 85" 
+                    fill="none" stroke="#fbbf24" strokeWidth="1.5" opacity="0.3"/>
+                  
+                  <path d="M 48 40 L 52 40 L 52 100 L 48 100 Z" 
+                    fill="#e5e7eb" stroke="url(#frameGradient)" strokeWidth="1.5"/>
+                  
+                  <path d="M 30 105 L 70 105 L 65 110 L 35 110 Z" 
+                    fill="#0e7490" stroke="url(#frameGradient)" strokeWidth="2"/>
+                  
+                  <circle cx="52" cy="70" r="8" fill="#fbbf24" opacity="0.8"/>
+                  <circle cx="52" cy="70" r="5" fill="#f59e0b" opacity="0.9"/>
+                </svg>
               </div>
 
               <div className="hidden sm:block">
