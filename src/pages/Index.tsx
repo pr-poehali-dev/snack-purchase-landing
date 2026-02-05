@@ -286,7 +286,7 @@ export default function Index() {
                 id={cat.id}
                 className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
               >
-                <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
+                <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                   {cat.emoji}
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-primary group-hover:text-amber-300 transition-colors">
