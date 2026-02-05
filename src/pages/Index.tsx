@@ -298,7 +298,16 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
                   </>
                 )}
-                {cat.id !== 'fish-dried' && (
+                {cat.id === 'fish-smoked' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/742caa7a-8a14-44a8-861c-d4e9353dce31.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id !== 'fish-dried' && cat.id !== 'fish-smoked' && (
                   <div className="absolute inset-0 glass" />
                 )}
                 
@@ -306,10 +315,10 @@ export default function Index() {
                   <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 drop-shadow-2xl">
                     {cat.emoji}
                   </div>
-                  <h3 className={`text-2xl font-bold mb-3 transition-colors drop-shadow-lg ${cat.id === 'fish-dried' ? 'text-primary' : 'text-primary'} group-hover:text-amber-300`}>
+                  <h3 className={`text-2xl font-bold mb-3 transition-colors drop-shadow-lg ${cat.id === 'fish-dried' || cat.id === 'fish-smoked' ? 'text-primary' : 'text-primary'} group-hover:text-amber-300`}>
                     {cat.title}
                   </h3>
-                  <p className={`text-base mb-4 drop-shadow-md ${cat.id === 'fish-dried' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                  <p className={`text-base mb-4 drop-shadow-md ${cat.id === 'fish-dried' || cat.id === 'fish-smoked' ? 'text-foreground' : 'text-muted-foreground'}`}>
                     {cat.desc}
                   </p>
                   <div className="flex items-center text-primary group-hover:text-amber-300 transition-colors drop-shadow-lg">
