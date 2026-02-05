@@ -180,13 +180,40 @@ export default function Index() {
         <div className="absolute top-10 left-10 text-primary/5 text-9xl">🦑</div>
         <div className="absolute bottom-10 right-10 text-primary/5 text-9xl">🥨</div>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Категории закупаемых товаров
+          <div className="mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+              Вяленая и копчёная рыба — то, за чем приходят в пивной
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Работаем со всеми популярными видами снеков для вашего заведения
-            </p>
+            <div className="max-w-4xl mx-auto text-lg text-muted-foreground space-y-4">
+              <p>
+                Давайте честно: вяленая рыба — это процентов семьдесят продаж любой пивной точки. Без неё никуда. Поэтому у нас тут всё серьёзно.
+              </p>
+              <p>
+                Астраханская вобла — это вообще отдельная история. Настоящая, с икрой, просоленная как надо. Не пересушенная и не сырая. Берут её коробками, особенно ближе к выходным. Икра воблы, кстати, тоже улетает — многие специально за ней приходят.
+              </p>
+              <p className="font-semibold text-foreground">Что ещё хорошо идёт:</p>
+              <ul className="space-y-2 pl-6">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span><strong>Пелядь</strong> — жирненькая, в меру солёная, клиенты любят</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span><strong>Камбала с икрой</strong> — выглядит дорого, а по цене вполне доступна</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span><strong>Жёлтый полосатик</strong> — классика, которая никогда не подводит</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span><strong>Кальмар стружка</strong> — для тех, кому рыба надоела</span>
+                </li>
+              </ul>
+              <p>
+                Копчёная рыба — это уже для гурманов. Красная рыба копчёная разлетается под крафтовое пиво, да и под обычное тоже неплохо. Если не знаете, что взять — звоните, подскажем, что сейчас лучше берут.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
