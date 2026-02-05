@@ -46,7 +46,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <div className="relative w-16 h-16 flex items-center justify-center">
+              <div className="relative w-20 h-20 flex items-center justify-center">
                 <img 
                   src="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/4268ab04-26a4-4fd3-9c11-a5017afb70ac.png" 
                   alt="Мерка" 
