@@ -184,7 +184,8 @@ export default function Index() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Вяленая и копчёная рыба — то, за чем приходят в пивной
             </h2>
-            <div className="max-w-4xl mx-auto text-lg text-muted-foreground space-y-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
               <p>
                 Давайте честно: вяленая рыба — это процентов семьдесят продаж любой пивной точки. Без неё никуда. Поэтому у нас тут всё серьёзно.
               </p>
@@ -210,34 +211,38 @@ export default function Index() {
                   <span><strong>Кальмар стружка</strong> — для тех, кому рыба надоела</span>
                 </li>
               </ul>
-              <p>
-                Копчёная рыба — это уже для гурманов. Красная рыба копчёная разлетается под крафтовое пиво, да и под обычное тоже неплохо. Если не знаете, что взять — звоните, подскажем, что сейчас лучше берут.
-              </p>
+                <p>
+                  Копчёная рыба — это уже для гурманов. Красная рыба копчёная разлетается под крафтовое пиво, да и под обычное тоже неплохо. Если не знаете, что взять — звоните, подскажем, что сейчас лучше берут.
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="mt-20 mb-20">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Мясные закуски — когда рыба не для всех
             </h2>
-            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
               <p>
                 Есть категория людей, которые рыбу на дух не переносят. И что, терять этих клиентов? Нет уж. Для них держим мясные снеки, и скажу вам — маржа там очень приятная.
               </p>
               <p>
                 Вяленое мясо сейчас вообще в тренде. Берут и к пиву, и просто так пожевать. Мясные чипсы — штука интересная, хрустят, вкус насыщенный, упаковка яркая. На витрине смотрятся отлично.
               </p>
-              <p>
-                Мясные колбаски — это для тех, кто хочет посерьёзнее перекусить. А свиные ушки — ну, тут без комментариев, кто пробовал — тот знает. Хрустящие, с перчинкой, под светлое пиво идеально.
-              </p>
+                <p>
+                  Мясные колбаски — это для тех, кто хочет посерьёзнее перекусить. А свиные ушки — ну, тут без комментариев, кто пробовал — тот знает. Хрустящие, с перчинкой, под светлое пиво идеально.
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="mt-20 mb-20">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Сыры, орешки, сухарики — мелочь, а приятно
             </h2>
-            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
               <p>
                 Вот эти позиции многие недооценивают. А зря! Человек пришёл за пивом, взял рыбку, а тут ещё и сухарики по акции. Почему бы не добавить? Средний чек растёт, все довольны.
               </p>
@@ -259,11 +264,12 @@ export default function Index() {
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Орехи и семечки</h3>
-                <p>
-                  Арахис у нас разный: с сыром, с беконом, васаби для экстремалов. Фисташки — ну куда без них, классика жанра. Семечки тоже есть, куда ж без них в нашем деле.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Орехи и семечки</h3>
+                  <p>
+                    Арахис у нас разный: с сыром, с беконом, васаби для экстремалов. Фисташки — ну куда без них, классика жанра. Семечки тоже есть, куда ж без них в нашем деле.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -274,10 +280,11 @@ export default function Index() {
         <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Почему работать с нами удобно
             </h2>
-            <div className="max-w-4xl text-lg text-muted-foreground space-y-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="glass rounded-2xl p-8 sm:p-12 border border-primary/20 text-lg text-muted-foreground space-y-6">
               <p>
                 Слушайте, мы сами из этого бизнеса, понимаем все ваши головные боли. Поставщик подвёл, товар не свежий, фасовка неудобная — всё это проходили.
               </p>
@@ -294,9 +301,10 @@ export default function Index() {
               <p>
                 <strong className="text-foreground">Подсказываем, что брать.</strong> Если только открываетесь или хотите обновить ассортимент — поможем собрать заказ, который будет продаваться.
               </p>
-              <p>
-                В общем, если ищете, где закупать пивные закуски без головной боли — давайте попробуем поработать. Прайс скинем, по ассортименту проконсультируем, дальше сами решите.
-              </p>
+                <p>
+                  В общем, если ищете, где закупать пивные закуски без головной боли — давайте попробуем поработать. Прайс скинем, по ассортименту проконсультируем, дальше сами решите.
+                </p>
+              </div>
             </div>
           </div>
         </div>
