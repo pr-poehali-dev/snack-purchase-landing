@@ -628,19 +628,11 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex justify-center">
               <Button 
                 size="lg" 
-                className="h-20 text-lg bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                onClick={() => window.open('https://wa.me/79991234567', '_blank')}
-              >
-                <Icon name="MessageCircle" className="mr-2" size={24} />
-                WhatsApp
-              </Button>
-              <Button 
-                size="lg" 
-                className="h-20 text-lg bg-[#0088cc] hover:bg-[#0077b5] text-white"
-                onClick={() => window.open('https://t.me/snacks_buyer', '_blank')}
+                className="h-20 text-lg bg-[#0088cc] hover:bg-[#0077b5] text-white px-12"
+                onClick={() => window.open('https://t.me/merka_fish', '_blank')}
               >
                 <Icon name="Send" className="mr-2" size={24} />
                 Telegram
