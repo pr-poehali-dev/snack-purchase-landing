@@ -123,20 +123,20 @@ export default function Index() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
         </div>
         
-        <div className="absolute top-10 right-10 text-primary/10 text-9xl">🍺</div>
-        <div className="absolute bottom-20 left-20 text-primary/10 text-8xl">🐟</div>
-        <div className="absolute top-1/3 left-10 text-primary/10 text-7xl">🥜</div>
+        <div className="absolute top-10 right-10 text-primary/10 text-9xl hidden lg:block">🍺</div>
+        <div className="absolute bottom-20 left-20 text-primary/10 text-8xl hidden lg:block">🐟</div>
+        <div className="absolute top-1/3 left-10 text-primary/10 text-7xl hidden lg:block">🥜</div>
 
-        <div className="absolute top-32 right-8 sm:right-16 z-20 animate-scale-in">
+        <div className="absolute top-24 right-4 sm:top-32 sm:right-8 lg:right-16 z-20 animate-scale-in">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary via-amber-500 to-amber-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
-            <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-6 sm:p-8 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
+            <div className="relative bg-gradient-to-br from-primary to-amber-500 rounded-full p-4 sm:p-6 lg:p-8 shadow-2xl border-4 border-amber-400/30 transform rotate-12 hover:rotate-0 transition-transform duration-300">
               <div className="text-center">
-                <div className="text-sm sm:text-base font-bold text-primary-foreground mb-1">Работаем с</div>
-                <div className="text-4xl sm:text-5xl font-black text-primary-foreground">2004</div>
-                <div className="text-sm sm:text-base font-bold text-primary-foreground mt-1">года</div>
+                <div className="text-xs sm:text-sm lg:text-base font-bold text-primary-foreground mb-1">Работаем с</div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-primary-foreground">2004</div>
+                <div className="text-xs sm:text-sm lg:text-base font-bold text-primary-foreground mt-1">года</div>
               </div>
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-amber-300 rounded-full shadow-lg flex items-center justify-center text-xl">
+              <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-amber-300 rounded-full shadow-lg flex items-center justify-center text-base sm:text-xl">
                 ⭐
               </div>
             </div>
@@ -221,8 +221,8 @@ export default function Index() {
           </div>
 
           <div className="mt-20 max-w-5xl mx-auto relative">
-            <div className="absolute -top-6 -left-6 text-6xl opacity-20">🍺</div>
-            <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🐟</div>
+            <div className="absolute -top-6 -left-6 text-6xl opacity-20 hidden sm:block">🍺</div>
+            <div className="absolute -bottom-6 -right-6 text-6xl opacity-20 hidden sm:block">🐟</div>
             <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -258,8 +258,8 @@ export default function Index() {
       </section>
 
       <section id="categories" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30 wood-texture relative">
-        <div className="absolute top-10 left-10 text-primary/5 text-9xl">🦑</div>
-        <div className="absolute bottom-10 right-10 text-primary/5 text-9xl">🥨</div>
+        <div className="absolute top-10 left-10 text-primary/5 text-9xl hidden md:block">🦑</div>
+        <div className="absolute bottom-10 right-10 text-primary/5 text-9xl hidden md:block">🥨</div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -398,8 +398,8 @@ export default function Index() {
               Вяленая и копчёная рыба — то, за чем приходят в пивной
             </h2>
             <div className="max-w-5xl mx-auto relative">
-              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🐟</div>
-              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🦑</div>
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20 hidden sm:block">🐟</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20 hidden sm:block">🦑</div>
               <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -453,8 +453,8 @@ export default function Index() {
               Мясные закуски — когда рыба не для всех
             </h2>
             <div className="max-w-5xl mx-auto relative">
-              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🥩</div>
-              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🍖</div>
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20 hidden sm:block">🥩</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20 hidden sm:block">🍖</div>
               <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -489,8 +489,8 @@ export default function Index() {
               Сыры, орешки, сухарики — мелочь, а приятно
             </h2>
             <div className="max-w-5xl mx-auto relative">
-              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🧀</div>
-              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🥜</div>
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20 hidden sm:block">🧀</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20 hidden sm:block">🥜</div>
               <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -555,15 +555,15 @@ export default function Index() {
       </section>
 
       <section id="how-we-work" className="py-20 px-4 sm:px-6 lg:px-8 hop-pattern relative">
-        <div className="absolute top-20 right-20 text-primary/5 text-8xl">🍻</div>
+        <div className="absolute top-20 right-20 text-primary/5 text-8xl hidden md:block">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Почему работать с нами удобно
             </h2>
             <div className="max-w-5xl mx-auto relative">
-              <div className="absolute -top-6 -left-6 text-6xl opacity-20">🤝</div>
-              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">✅</div>
+              <div className="absolute -top-6 -left-6 text-6xl opacity-20 hidden sm:block">🤝</div>
+              <div className="absolute -bottom-6 -right-6 text-6xl opacity-20 hidden sm:block">✅</div>
               <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -632,8 +632,8 @@ export default function Index() {
       </section>
 
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/30 fish-scale relative">
-        <div className="absolute top-10 left-1/4 text-primary/5 text-7xl">🍺</div>
-        <div className="absolute bottom-10 right-1/4 text-primary/5 text-7xl">🐠</div>
+        <div className="absolute top-10 left-1/4 text-primary/5 text-7xl hidden md:block">🍺</div>
+        <div className="absolute bottom-10 right-1/4 text-primary/5 text-7xl hidden md:block">🐠</div>
         <div className="max-w-4xl mx-auto">
           <div className="glass rounded-3xl p-8 sm:p-12 border border-primary/20">
             <div className="text-center mb-10">
@@ -685,7 +685,7 @@ export default function Index() {
       </section>
 
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-border wood-texture relative">
-        <div className="absolute bottom-10 left-10 text-primary/5 text-8xl">🍻</div>
+        <div className="absolute bottom-10 left-10 text-primary/5 text-8xl hidden md:block">🍻</div>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
