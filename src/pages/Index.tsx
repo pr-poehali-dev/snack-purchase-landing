@@ -121,21 +121,10 @@ export default function Index() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-shadow leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-shadow leading-tight">
               Пивные закуски оптом для магазинов разливного пива
             </h1>
-            <div className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-4xl mx-auto space-y-6">
-              <p>
-                Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
-              </p>
-              <p>
-                Работаем с магазинами разливного пива, барами, небольшими розничными точками. За годы работы научились понимать, что нужно вашим покупателям. Вобла? Есть. Кальмар? Конечно. Мясные чипсы для тех, кто рыбу не любит? Тоже в наличии.
-              </p>
-              <p>
-                Почему к нам возвращаются? Да всё просто: товар свежий, цены адекватные, а если что-то не продаётся — подскажем, чем заменить. Не первый год в этом бизнесе, так что знаем его изнутри.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button 
                 size="lg" 
                 className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
@@ -155,7 +144,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto animate-scale-in">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto animate-scale-in">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
@@ -168,6 +157,18 @@ export default function Index() {
                 <p className="text-xs sm:text-sm text-muted-foreground">{benefit.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto space-y-6">
+            <p>
+              Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
+            </p>
+            <p>
+              Работаем с магазинами разливного пива, барами, небольшими розничными точками. За годы работы научились понимать, что нужно вашим покупателям. Вобла? Есть. Кальмар? Конечно. Мясные чипсы для тех, кто рыбу не любит? Тоже в наличии.
+            </p>
+            <p>
+              Почему к нам возвращаются? Да всё просто: товар свежий, цены адекватные, а если что-то не продаётся — подскажем, чем заменить. Не первый год в этом бизнесе, так что знаем его изнутри.
+            </p>
           </div>
         </div>
 
