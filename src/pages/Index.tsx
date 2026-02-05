@@ -546,8 +546,8 @@ export default function Index() {
                     <Icon name="Phone" className="text-primary" size={24} />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Телефон</p>
-                    <a href="tel:+79261092609" className="text-2xl font-bold hover:text-primary transition-colors block">
+                    <p className="text-sm text-muted-foreground mb-2">Телефон</p>
+                    <a href="tel:+79261092609" className="text-xl font-bold hover:text-primary transition-colors block">
                       8 (926) 109 - 26 - 09
                     </a>
                     <a href="tel:+79776135936" className="text-xl font-bold hover:text-primary transition-colors block mt-1">
