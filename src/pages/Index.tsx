@@ -138,7 +138,7 @@ export default function Index() {
                 variant="outline" 
                 className="text-lg px-8 py-6 border-primary/50 hover:bg-primary/10"
                 onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
-              >Что покупаем</Button>
+              >Перейти к выбору</Button>
             </div>
           </div>
 
