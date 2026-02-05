@@ -198,6 +198,45 @@ export default function Index() {
         <div className="absolute top-10 left-10 text-primary/5 text-9xl">🦑</div>
         <div className="absolute bottom-10 right-10 text-primary/5 text-9xl">🥨</div>
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+              Наши категории
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Полный ассортимент пивных закусок оптом
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            {[
+              { id: 'fish-dried', emoji: '🐟', title: 'Рыба вяленая', desc: 'Вобла, пелядь, камбала с икрой' },
+              { id: 'fish-smoked', emoji: '🐠', title: 'Рыба копченая и соленая', desc: 'Красная рыба, сельдь, скумбрия' },
+              { id: 'snacks', emoji: '🍿', title: 'Снеки', desc: 'Кальмары, креветки, морские деликатесы' },
+              { id: 'crackers-nuts', emoji: '🥨', title: 'Гренки чипсы орехи сушки', desc: 'Гренки с чесноком, сухарики, орешки' },
+              { id: 'potato-chips', emoji: '🥔', title: 'Картофельные чипсы', desc: 'Все вкусы и форматы' },
+              { id: 'seeds', emoji: '🌻', title: 'Семечки', desc: 'Жареные, соленые, разные виды' },
+              { id: 'meat-dried', emoji: '🥩', title: 'Мясо вяленое', desc: 'Говядина, свинина, курица' },
+              { id: 'cheese', emoji: '🧀', title: 'Сыры', desc: 'Колбасный, косички, жареный' },
+              { id: 'packaging', emoji: '📦', title: 'Фасовка', desc: 'Удобная упаковка любых размеров' },
+            ].map((cat, index) => (
+              <div
+                key={index}
+                id={cat.id}
+                className="glass rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+              >
+                <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
+                  {cat.emoji}
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-primary group-hover:text-amber-300 transition-colors">
+                  {cat.title}
+                </h3>
+                <p className="text-muted-foreground text-base">
+                  {cat.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
           <div className="mb-20">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
               Вяленая и копчёная рыба — то, за чем приходят в пивной
