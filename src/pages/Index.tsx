@@ -187,7 +187,7 @@ export default function Index() {
                 <div className="flex items-center justify-center gap-6 flex-wrap">
                   <div className="text-6xl animate-bounce" style={{ animationDuration: '2s' }}>🍺</div>
                   <div className="text-center">
-                    <div className="text-sm sm:text-base text-muted-foreground mb-2">Заявок сегодня</div>
+                    <div className="text-sm sm:text-base text-muted-foreground mb-2"></div>
                     <div className="text-5xl sm:text-6xl font-black text-primary bg-gradient-to-r from-primary to-amber-500 bg-clip-text text-transparent">
                       {requestsToday}
                     </div>
