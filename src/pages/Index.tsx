@@ -590,7 +590,7 @@ export default function Index() {
 
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border">
         <div className="max-w-7xl mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 Закупка снеков. Все права защищены.</p>
+          <p>© 2026 Закупка снеков. Все права защищены.</p>
         </div>
       </footer>
 
