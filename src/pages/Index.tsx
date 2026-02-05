@@ -159,16 +159,35 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="mt-16 text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto space-y-6">
-            <p>
-              Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
-            </p>
-            <p>
-              Работаем с магазинами разливного пива, барами, небольшими розничными точками. За годы работы научились понимать, что нужно вашим покупателям. Вобла? Есть. Кальмар? Конечно. Мясные чипсы для тех, кто рыбу не любит? Тоже в наличии.
-            </p>
-            <p>
-              Почему к нам возвращаются? Да всё просто: товар свежий, цены адекватные, а если что-то не продаётся — подскажем, чем заменить. Не первый год в этом бизнесе, так что знаем его изнутри.
-            </p>
+          <div className="mt-20 max-w-5xl mx-auto relative">
+            <div className="absolute -top-6 -left-6 text-6xl opacity-20">🍺</div>
+            <div className="absolute -bottom-6 -right-6 text-6xl opacity-20">🐟</div>
+            <div className="glass rounded-3xl p-10 sm:p-14 border-2 border-primary/30 shadow-2xl shadow-primary/20 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative space-y-8 text-lg sm:text-xl leading-relaxed">
+                <p className="text-foreground/90 first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
+                  Знаете, что отличает успешную пивную точку от той, где покупатель берёт только пиво и уходит? Правильно подобранные закуски. Мы занимаемся именно этим — собираем ассортимент, который реально покупают, а не тот, что пылится на витрине.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                  <span className="text-2xl">🍻</span>
+                  <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                </div>
+                <p className="text-foreground/90">
+                  Работаем с магазинами разливного пива, барами, небольшими розничными точками. За годы работы научились понимать, что нужно вашим покупателям. <span className="text-primary font-semibold">Вобла? Есть.</span> <span className="text-primary font-semibold">Кальмар? Конечно.</span> <span className="text-primary font-semibold">Мясные чипсы для тех, кто рыбу не любит? Тоже в наличии.</span>
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                  <span className="text-2xl">🥨</span>
+                  <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                </div>
+                <p className="text-foreground/90">
+                  Почему к нам возвращаются? Да всё просто: <span className="text-primary font-semibold">товар свежий</span>, <span className="text-primary font-semibold">цены адекватные</span>, а если что-то не продаётся — <span className="text-primary font-semibold">подскажем, чем заменить</span>. Не первый год в этом бизнесе, так что знаем его изнутри.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
