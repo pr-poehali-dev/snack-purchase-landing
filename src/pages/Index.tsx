@@ -62,7 +62,7 @@ export default function Index() {
     {
       icon: 'Zap',
       title: 'Быстрые расчёты',
-      description: 'Оплата на месте в день выезда',
+      description: 'Любая форма оплаты',
     },
     {
       icon: 'DollarSign',
@@ -77,7 +77,7 @@ export default function Index() {
     {
       icon: 'Package',
       title: 'Любые объёмы',
-      description: 'От 50 кг до нескольких тонн',
+      description: 'От 5 кг до нескольких тонн',
     },
   ];
 
