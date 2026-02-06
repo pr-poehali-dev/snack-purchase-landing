@@ -10,7 +10,20 @@ export default function Header() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const { totalItems } = useCart();
+  const { totalItems, items } = useCart();
+
+  const extractPrice = (priceStr?: string): number => {
+    if (!priceStr) return 0;
+    const match = priceStr.match(/\d+/);
+    return match ? parseInt(match[0]) : 0;
+  };
+
+  const calculateTotal = () => {
+    return items.reduce((total, item) => {
+      const price = extractPrice(item.price);
+      return total + (price * item.quantity);
+    }, 0);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
