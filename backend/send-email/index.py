@@ -66,7 +66,7 @@ def handler(event: dict, context) -> dict:
     
     # Настройки SMTP
     smtp_host = os.environ.get('SMTP_HOST')
-    smtp_port = int(os.environ.get('SMTP_PORT', '465'))
+    smtp_port = int(os.environ.get('SMTP_PORT_CORRECT', '465'))
     smtp_user = os.environ.get('SMTP_USER')
     smtp_password = os.environ.get('SMTP_PASSWORD')
     
