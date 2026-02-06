@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { CartProvider } from "@/contexts/CartContext";
+import LoadingBar from "@/components/ui/loading-bar";
 import Index from "./pages/Index";
 import CategoryPage from "./pages/CategoryPage";
 import Cart from "./pages/Cart";
@@ -21,6 +22,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <LoadingBar />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/category/:categoryId" element={<CategoryPage />} />
