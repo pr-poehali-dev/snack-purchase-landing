@@ -65,6 +65,7 @@ export default function Cart() {
             name: item.name,
             quantity: item.quantity,
             unit: item.unit || 'кг',
+            price: item.price || '0₽',
           })),
         }),
       });

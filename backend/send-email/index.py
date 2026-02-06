@@ -46,8 +46,19 @@ def handler(event: dict, context) -> dict:
     items_list = []
     total_sum = 0
     
+    def extract_price(price_str):
+        import re
+        if not price_str:
+            return 0
+        match = re.search(r'\d+', price_str)
+        return int(match.group()) if match else 0
+    
     for item in items:
-        items_list.append(f"- {item['name']} ({item['quantity']} {item.get('unit', 'кг')})")
+        price = extract_price(item.get('price', '0₽'))
+        quantity = item['quantity']
+        item_total = price * quantity
+        total_sum += item_total
+        items_list.append(f"- {item['name']} ({quantity} {item.get('unit', 'кг')}) — {price}₽/шт × {quantity} = {item_total}₽")
     
     items_text = '\n'.join(items_list)
     
@@ -63,6 +74,8 @@ def handler(event: dict, context) -> dict:
 
 ЗАКАЗАННЫЕ ТОВАРЫ:
 {items_text}
+
+ИТОГОВАЯ СУММА: {total_sum}₽
 
 ---
 Письмо отправлено автоматически с сайта
