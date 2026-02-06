@@ -40,12 +40,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Документы и сертификаты на всю продукцию'
     ],
     products: [
-      { name: 'Вобла астраханская', description: 'С икрой, средний размер', image: '🐟', price: 'От 450₽/кг' },
-      { name: 'Пелядь', description: 'Жирная, в меру соленая', image: '🐟', price: 'От 520₽/кг' },
-      { name: 'Камбала с икрой', description: 'Дальневосточная', image: '🐟', price: 'От 380₽/кг' },
-      { name: 'Жёлтый полосатик', description: 'Классика жанра', image: '🐟', price: 'От 290₽/кг' },
-      { name: 'Икра воблы', description: 'Отдельно, развес', image: '🥚', price: 'От 680₽/кг' },
-      { name: 'Чехонь вяленая', description: 'Мелкая и средняя', image: '🐟', price: 'От 420₽/кг' }
+      { name: 'Вобла астраханская', description: 'С икрой, средний размер', image: '🐟', price: '450₽/кг' },
+      { name: 'Пелядь', description: 'Жирная, в меру соленая', image: '🐟', price: '520₽/кг' },
+      { name: 'Камбала с икрой', description: 'Дальневосточная', image: '🐟', price: '380₽/кг' },
+      { name: 'Жёлтый полосатик', description: 'Классика жанра', image: '🐟', price: '290₽/кг' },
+      { name: 'Икра воблы', description: 'Отдельно, развес', image: '🥚', price: '680₽/кг' },
+      { name: 'Чехонь вяленая', description: 'Мелкая и средняя', image: '🐟', price: '420₽/кг' }
     ]
   },
   'fish-smoked': {
@@ -61,12 +61,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Удобная нарезка и фасовка'
     ],
     products: [
-      { name: 'Сёмга холодного копчения', description: 'Нарезка, вакуум', image: '🐠', price: 'От 890₽/кг' },
-      { name: 'Скумбрия копченая', description: 'Горячего копчения', image: '🐠', price: 'От 320₽/кг' },
-      { name: 'Сельдь атлантическая', description: 'Слабосолёная, филе', image: '🐠', price: 'От 280₽/кг' },
-      { name: 'Форель копченая', description: 'Холодного копчения', image: '🐠', price: 'От 950₽/кг' },
+      { name: 'Сёмга холодного копчения', description: 'Нарезка, вакуум', image: '🐠', price: '890₽/кг' },
+      { name: 'Скумбрия копченая', description: 'Горячего копчения', image: '🐠', price: '320₽/кг' },
+      { name: 'Сельдь атлантическая', description: 'Слабосолёная, филе', image: '🐠', price: '280₽/кг' },
+      { name: 'Форель копченая', description: 'Холодного копчения', image: '🐠', price: '950₽/кг' },
       { name: 'Балык из осетра', description: 'Деликатес', image: '🐠', price: 'По запросу' },
-      { name: 'Корюшка сушеная', description: 'Целиком, мелкая', image: '🐠', price: 'От 420₽/кг' }
+      { name: 'Корюшка сушеная', description: 'Целиком, мелкая', image: '🐠', price: '420₽/кг' }
     ]
   },
   'snacks': {
@@ -82,12 +82,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Отличная маржинальность'
     ],
     products: [
-      { name: 'Кальмар кольца', description: 'Сушеные, солёные', image: '🦑', price: 'От 680₽/кг' },
-      { name: 'Кальмар стружка', description: 'Тонкая нарезка', image: '🦑', price: 'От 720₽/кг' },
-      { name: 'Кальмар щупальца', description: 'Целые, крупные', image: '🦑', price: 'От 640₽/кг' },
-      { name: 'Креветки сушеные', description: 'Мелкие, целиком', image: '🦐', price: 'От 890₽/кг' },
-      { name: 'Осьминог сушеный', description: 'Порционный', image: '🐙', price: 'От 980₽/кг' },
-      { name: 'Гребешок сушеный', description: 'Деликатес', image: '🦪', price: 'От 1200₽/кг' }
+      { name: 'Кальмар кольца', description: 'Сушеные, солёные', image: '🦑', price: '680₽/кг' },
+      { name: 'Кальмар стружка', description: 'Тонкая нарезка', image: '🦑', price: '720₽/кг' },
+      { name: 'Кальмар щупальца', description: 'Целые, крупные', image: '🦑', price: '640₽/кг' },
+      { name: 'Креветки сушеные', description: 'Мелкие, целиком', image: '🦐', price: '890₽/кг' },
+      { name: 'Осьминог сушеный', description: 'Порционный', image: '🐙', price: '980₽/кг' },
+      { name: 'Гребешок сушеный', description: 'Деликатес', image: '🦪', price: '1200₽/кг' }
     ]
   },
   'crackers-nuts': {
@@ -103,12 +103,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Высокая оборачиваемость'
     ],
     products: [
-      { name: 'Гренки с чесноком', description: 'Хрустящие, ароматные', image: '🥨', price: 'От 180₽/кг' },
-      { name: 'Гренки со вкусом икры', description: 'Популярный вкус', image: '🥨', price: 'От 190₽/кг' },
-      { name: 'Сухарики чёрные', description: 'Из бородинского хлеба', image: '🥨', price: 'От 160₽/кг' },
-      { name: 'Арахис солёный', description: 'Жареный, разные вкусы', image: '🥜', price: 'От 220₽/кг' },
-      { name: 'Фисташки солёные', description: 'Иранские, крупные', image: '🥜', price: 'От 480₽/кг' },
-      { name: 'Сушки-баранки', description: 'Традиционные', image: '🥨', price: 'От 140₽/кг' }
+      { name: 'Гренки с чесноком', description: 'Хрустящие, ароматные', image: '🥨', price: '180₽/кг' },
+      { name: 'Гренки со вкусом икры', description: 'Популярный вкус', image: '🥨', price: '190₽/кг' },
+      { name: 'Сухарики чёрные', description: 'Из бородинского хлеба', image: '🥨', price: '160₽/кг' },
+      { name: 'Арахис солёный', description: 'Жареный, разные вкусы', image: '🥜', price: '220₽/кг' },
+      { name: 'Фисташки солёные', description: 'Иранские, крупные', image: '🥜', price: '480₽/кг' },
+      { name: 'Сушки-баранки', description: 'Традиционные', image: '🥨', price: '140₽/кг' }
     ]
   },
   'potato-chips': {
@@ -124,12 +124,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Быстрая оборачиваемость'
     ],
     products: [
-      { name: 'Чипсы классические', description: 'Солёные, рифлёные', image: '🥔', price: 'От 160₽/кг' },
-      { name: 'Чипсы со вкусом бекона', description: 'Популярный вкус', image: '🥔', price: 'От 170₽/кг' },
-      { name: 'Чипсы сырные', description: 'Насыщенный вкус', image: '🥔', price: 'От 165₽/кг' },
-      { name: 'Чипсы со специями', description: 'Острые вкусы', image: '🥔', price: 'От 180₽/кг' },
-      { name: 'Чипсы натуральные', description: 'Без добавок', image: '🥔', price: 'От 190₽/кг' },
-      { name: 'Чипсы кукурузные', description: 'Лёгкие, хрустящие', image: '🌽', price: 'От 155₽/кг' }
+      { name: 'Чипсы классические', description: 'Солёные, рифлёные', image: '🥔', price: '160₽/кг' },
+      { name: 'Чипсы со вкусом бекона', description: 'Популярный вкус', image: '🥔', price: '170₽/кг' },
+      { name: 'Чипсы сырные', description: 'Насыщенный вкус', image: '🥔', price: '165₽/кг' },
+      { name: 'Чипсы со специями', description: 'Острые вкусы', image: '🥔', price: '180₽/кг' },
+      { name: 'Чипсы натуральные', description: 'Без добавок', image: '🥔', price: '190₽/кг' },
+      { name: 'Чипсы кукурузные', description: 'Лёгкие, хрустящие', image: '🌽', price: '155₽/кг' }
     ]
   },
   'seeds': {
@@ -145,12 +145,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Отличный товар для импульсных покупок'
     ],
     products: [
-      { name: 'Семечки подсолнечные', description: 'Жареные, солёные', image: '🌻', price: 'От 95₽/кг' },
-      { name: 'Семечки тыквенные', description: 'Крупные, очищенные', image: '🎃', price: 'От 280₽/кг' },
-      { name: 'Семечки в кожуре', description: 'Классические', image: '🌻', price: 'От 85₽/кг' },
-      { name: 'Семечки белые', description: 'Сладкие', image: '🌻', price: 'От 110₽/кг' },
-      { name: 'Семечки со специями', description: 'Острые, разные вкусы', image: '🌻', price: 'От 120₽/кг' },
-      { name: 'Микс семечек', description: 'Подсолнечные + тыквенные', image: '🌻', price: 'От 140₽/кг' }
+      { name: 'Семечки подсолнечные', description: 'Жареные, солёные', image: '🌻', price: '95₽/кг' },
+      { name: 'Семечки тыквенные', description: 'Крупные, очищенные', image: '🎃', price: '280₽/кг' },
+      { name: 'Семечки в кожуре', description: 'Классические', image: '🌻', price: '85₽/кг' },
+      { name: 'Семечки белые', description: 'Сладкие', image: '🌻', price: '110₽/кг' },
+      { name: 'Семечки со специями', description: 'Острые, разные вкусы', image: '🌻', price: '120₽/кг' },
+      { name: 'Микс семечек', description: 'Подсолнечные + тыквенные', image: '🌻', price: '140₽/кг' }
     ]
   },
   'meat-dried': {
@@ -166,12 +166,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Для тех, кто не ест рыбу'
     ],
     products: [
-      { name: 'Говядина вяленая', description: 'Нарезка соломкой', image: '🥩', price: 'От 890₽/кг' },
-      { name: 'Свинина вяленая', description: 'Кусочки', image: '🥩', price: 'От 720₽/кг' },
-      { name: 'Курица вяленая', description: 'Филе полосками', image: '🍗', price: 'От 580₽/кг' },
-      { name: 'Мясные чипсы', description: 'Тонкая нарезка', image: '🥩', price: 'От 980₽/кг' },
-      { name: 'Свиные ушки', description: 'Хрустящие, острые', image: '🐷', price: 'От 420₽/кг' },
-      { name: 'Колбаски охотничьи', description: 'Сырокопчёные', image: '🌭', price: 'От 650₽/кг' }
+      { name: 'Говядина вяленая', description: 'Нарезка соломкой', image: '🥩', price: '890₽/кг' },
+      { name: 'Свинина вяленая', description: 'Кусочки', image: '🥩', price: '720₽/кг' },
+      { name: 'Курица вяленая', description: 'Филе полосками', image: '🍗', price: '580₽/кг' },
+      { name: 'Мясные чипсы', description: 'Тонкая нарезка', image: '🥩', price: '980₽/кг' },
+      { name: 'Свиные ушки', description: 'Хрустящие, острые', image: '🐷', price: '420₽/кг' },
+      { name: 'Колбаски охотничьи', description: 'Сырокопчёные', image: '🌭', price: '650₽/кг' }
     ]
   },
   'cheese': {
@@ -187,12 +187,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Отлично выглядит на витрине'
     ],
     products: [
-      { name: 'Сыр копчёный колбасный', description: 'Косичка', image: '🧀', price: 'От 380₽/кг' },
-      { name: 'Сыр копчёный "Косичка"', description: 'Классика', image: '🧀', price: 'От 420₽/кг' },
-      { name: 'Сыр жареный', description: 'В панировке', image: '🧀', price: 'От 680₽/кг' },
-      { name: 'Сыр сулугуни копчёный', description: 'Косичка', image: '🧀', price: 'От 520₽/кг' },
-      { name: 'Сырные палочки', description: 'Хрустящие', image: '🧀', price: 'От 340₽/кг' },
-      { name: 'Сыр чечил', description: 'Волокнистый', image: '🧀', price: 'От 480₽/кг' }
+      { name: 'Сыр копчёный колбасный', description: 'Косичка', image: '🧀', price: '380₽/кг' },
+      { name: 'Сыр копчёный "Косичка"', description: 'Классика', image: '🧀', price: '420₽/кг' },
+      { name: 'Сыр жареный', description: 'В панировке', image: '🧀', price: '680₽/кг' },
+      { name: 'Сыр сулугуни копчёный', description: 'Косичка', image: '🧀', price: '520₽/кг' },
+      { name: 'Сырные палочки', description: 'Хрустящие', image: '🧀', price: '340₽/кг' },
+      { name: 'Сыр чечил', description: 'Волокнистый', image: '🧀', price: '480₽/кг' }
     ]
   },
   'packaging': {
@@ -208,12 +208,12 @@ const categoriesData: Record<string, CategoryData> = {
       'Быстрые сроки выполнения'
     ],
     products: [
-      { name: 'Фасовка 50-100г', description: 'Для кассовой зоны', image: '📦', price: 'От 15₽/шт' },
-      { name: 'Фасовка 200-500г', description: 'Стандарт', image: '📦', price: 'От 25₽/шт' },
-      { name: 'Фасовка 1кг', description: 'Оптовая', image: '📦', price: 'От 35₽/шт' },
-      { name: 'Вакуумная упаковка', description: 'Для рыбы и мяса', image: '📦', price: 'От 40₽/шт' },
+      { name: 'Фасовка 50-100г', description: 'Для кассовой зоны', image: '📦', price: '15₽/шт' },
+      { name: 'Фасовка 200-500г', description: 'Стандарт', image: '📦', price: '25₽/шт' },
+      { name: 'Фасовка 1кг', description: 'Оптовая', image: '📦', price: '35₽/шт' },
+      { name: 'Вакуумная упаковка', description: 'Для рыбы и мяса', image: '📦', price: '40₽/шт' },
       { name: 'Брендированная упаковка', description: 'С вашим логотипом', image: '📦', price: 'По запросу' },
-      { name: 'Картонные коробки', description: 'Для оптовых заказов', image: '📦', price: 'От 50₽/шт' }
+      { name: 'Картонные коробки', description: 'Для оптовых заказов', image: '📦', price: '50₽/шт' }
     ]
   }
 };
