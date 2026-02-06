@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import CategoryHero from '@/components/category/CategoryHero';
 import CategoryBenefits from '@/components/category/CategoryBenefits';
 import ProductsSection from '@/components/category/ProductsSection';
+import CategoryContent from '@/components/category/CategoryContent';
 import CategoryOrderForm from '@/components/category/CategoryOrderForm';
 import { categoriesData } from '@/data/categoriesData';
 
@@ -40,6 +41,8 @@ export default function CategoryPage() {
           <CategoryBenefits category={category} />
 
           <ProductsSection category={category} />
+
+          <CategoryContent category={category} />
 
           <CategoryOrderForm category={category} />
         </div>

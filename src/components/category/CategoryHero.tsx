@@ -106,9 +106,24 @@ export default function CategoryHero({ category }: CategoryHeroProps) {
             {category.title}
           </h1>
           <p className="text-2xl text-primary mb-8 drop-shadow-lg">{category.subtitle}</p>
-          <p className="text-lg sm:text-xl text-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-2xl bg-black/50 backdrop-blur-md rounded-2xl p-8 border border-primary/20">
-            {category.description}
-          </p>
+          
+          {category.id === 'fish-dried' ? (
+            <div className="max-w-4xl mx-auto text-left space-y-4 drop-shadow-2xl bg-black/50 backdrop-blur-md rounded-2xl p-8 border border-primary/20">
+              <p className="text-lg sm:text-xl text-foreground leading-relaxed">
+                Тут всё просто. Человек наливает себе бокал, оглядывается — а что к пиву? Первое, за чем тянется рука — вяленая рыба. Так было двадцать лет назад, так будет ещё столько же. Тренды приходят и уходят, а вобла с пивом остаётся навсегда.
+              </p>
+              <p className="text-lg sm:text-xl text-foreground leading-relaxed">
+                Купить вяленую рыбу для магазина — это не проблема, предложений на рынке полно. Проблема — найти поставщика, у которого она нормально приготовлена. Не пересоленная до состояния камня, не сырая внутри, без постороннего запаха. Мы перебрали кучу производителей, пока остановились на тех, чья продукция реально вкусная и стабильная от партии к партии.
+              </p>
+              <p className="text-lg sm:text-xl text-foreground leading-relaxed">
+                Что есть в наличии постоянно: астраханская вобла настоящая, пелядь хорошего качества, камбала с икрой, жёлтый полосатик, кальмар стружка, икра воблы. Это проверенная база, которая продаётся в любой сезон.
+              </p>
+            </div>
+          ) : (
+            <p className="text-lg sm:text-xl text-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-2xl bg-black/50 backdrop-blur-md rounded-2xl p-8 border border-primary/20">
+              {category.description}
+            </p>
+          )}
         </div>
       </div>
     </section>
