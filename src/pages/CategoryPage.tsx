@@ -283,12 +283,13 @@ const categoriesData: Record<string, CategoryData> = {
       'Отличный товар для импульсных покупок'
     ],
     products: [
-      { name: 'Семечки подсолнечные', description: 'Жареные, солёные', image: '🌻', price: '95₽/кг', unit: 'кг' },
-      { name: 'Семечки тыквенные', description: 'Крупные, очищенные', image: '🎃', price: '280₽/кг', unit: 'кг' },
-      { name: 'Семечки в кожуре', description: 'Классические', image: '🌻', price: '85₽/кг', unit: 'кг' },
-      { name: 'Семечки белые', description: 'Сладкие', image: '🌻', price: '110₽/кг', unit: 'кг' },
-      { name: 'Семечки со специями', description: 'Острые, разные вкусы', image: '🌻', price: '120₽/кг', unit: 'кг' },
-      { name: 'Микс семечек', description: 'Подсолнечные + тыквенные', image: '🌻', price: '140₽/кг', unit: 'кг' }
+      { name: 'Семечки жар/соленые 130 гр', description: '130г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/оригинальные 130 гр', description: '130г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/ со вкусом специй(сладк) 130 гр', description: '130г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/со вкусом ореха пекан 108 гр', description: '108г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/со вкусом карамели 108 гр', description: '108г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/со вкусом ротангового перца 108 гр', description: '108г', image: '🌻', price: '140₽/шт', unit: 'шт' },
+      { name: 'Семечки жар/со вкусом трюфеля 140 гр', description: '140г', image: '🌻', price: '140₽/шт', unit: 'шт' }
     ]
   },
   'meat-dried': {
