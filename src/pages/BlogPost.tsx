@@ -40,6 +40,10 @@ export default function BlogPost() {
         <meta property="og:url" content={`https://merkaprofish.ru/blog/${post.id}`} />
         <meta property="og:site_name" content="МЕРКА — Оптовые поставки закусок" />
         <meta property="og:locale" content="ru_RU" />
+        {post.ogImage && <meta property="og:image" content={post.ogImage} />}
+        {post.ogImage && <meta property="og:image:width" content="1024" />}
+        {post.ogImage && <meta property="og:image:height" content="1024" />}
+        {post.ogImage && <meta property="og:image:alt" content={post.title} />}
         <meta property="article:published_time" content="2026-02-06T12:00:00+03:00" />
         <meta property="article:author" content="МЕРКА" />
         <meta property="article:section" content={post.category} />
@@ -48,6 +52,8 @@ export default function BlogPost() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
+        {post.ogImage && <meta name="twitter:image" content={post.ogImage} />}
+        {post.ogImage && <meta name="twitter:image:alt" content={post.title} />}
       </Helmet>
 
       <Header />

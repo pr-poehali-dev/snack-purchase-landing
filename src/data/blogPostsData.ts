@@ -10,6 +10,7 @@ interface BlogPost {
   excerpt: string;
   date: string;
   image: string;
+  ogImage?: string;
   category: string;
   readTime: string;
   content: BlogPostSection[];
@@ -22,6 +23,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Разбираемся, какая вяленая рыба лучше продаётся, как проверить качество при закупке и на что обращать внимание при выборе поставщика.',
     date: '15 января 2026',
     image: '🐟',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/b7b186f4-b7ea-4d4f-a7e1-989dce4c070d.jpg',
     category: 'Рыба',
     readTime: '5 мин',
     content: [
@@ -102,6 +104,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Горячее копчение портится быстро, холодное — хранится долго. Считаем экономику и объясняем, почему холодное копчение выгоднее для пивных точек.',
     date: '10 января 2026',
     image: '🐠',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/14ae1284-ce96-4a8a-a12b-0d82111a10ad.jpg',
     category: 'Рыба',
     readTime: '4 мин',
     content: [
@@ -188,6 +191,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Кальмары, креветки, орехи, чипсы — что из этого действительно берут покупатели, а что просто занимает место на полке.',
     date: '5 января 2026',
     image: '🦑',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/539ce4ac-1225-47f6-a459-7cf6ba759168.jpg',
     category: 'Снеки',
     readTime: '6 мин',
     content: [
@@ -303,6 +307,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Простые приёмы, которые работают: как расположить товар, какие связки предлагать и что выкладывать у кассы.',
     date: '28 декабря 2025',
     image: '💰',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/1797ed13-d6a1-4662-a147-0bc12393503f.jpg',
     category: 'Бизнес',
     readTime: '7 мин',
     content: [
@@ -456,6 +461,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Почему вяленое мясо становится популярнее классической рыбы и как на этом заработать.',
     date: '20 декабря 2025',
     image: '🥩',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/47bd6c6b-c4de-476a-9ac5-3ea52582dba5.jpg',
     category: 'Закуски',
     readTime: '5 мин',
     content: [
@@ -580,6 +586,7 @@ export const blogPostsData: Record<string, BlogPost> = {
     excerpt: 'Типичные промахи при открытии точки разливного пива: неправильный ассортимент, плохие поставщики, проблемы с хранением.',
     date: '15 декабря 2025',
     image: '⚠️',
+    ogImage: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/dc951a19-a2e4-44dd-b45c-997e464ac06c.jpg',
     category: 'Бизнес',
     readTime: '8 мин',
     content: [

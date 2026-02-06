@@ -24,11 +24,17 @@ export default function Blog() {
         <meta property="og:url" content="https://merkaprofish.ru/blog" />
         <meta property="og:site_name" content="МЕРКА — Оптовые поставки закусок" />
         <meta property="og:locale" content="ru_RU" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/47f9ae72-7eab-48a3-8086-81802cdce7ed.jpg" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Блог о пивных закусках МЕРКА" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Блог о пивных закусках — советы для магазинов разливного пива" />
         <meta name="twitter:description" content="Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/47f9ae72-7eab-48a3-8086-81802cdce7ed.jpg" />
+        <meta name="twitter:image:alt" content="Блог о пивных закусках МЕРКА" />
       </Helmet>
 
       <Header />
