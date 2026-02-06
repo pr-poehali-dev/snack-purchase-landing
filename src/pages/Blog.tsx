@@ -16,6 +16,19 @@ export default function Blog() {
         <title>Блог о пивных закусках — советы для магазинов разливного пива</title>
         <meta name="description" content="Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива." />
         <link rel="canonical" href="https://merkaprofish.ru/blog" />
+        
+        {/* Open Graph теги для соцсетей */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Блог о пивных закусках — советы для магазинов разливного пива" />
+        <meta property="og:description" content="Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива." />
+        <meta property="og:url" content="https://merkaprofish.ru/blog" />
+        <meta property="og:site_name" content="МЕРКА — Оптовые поставки закусок" />
+        <meta property="og:locale" content="ru_RU" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Блог о пивных закусках — советы для магазинов разливного пива" />
+        <meta name="twitter:description" content="Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива." />
       </Helmet>
 
       <Header />

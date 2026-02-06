@@ -32,6 +32,22 @@ export default function BlogPost() {
         <title>{post.title} — Блог МЕРКА</title>
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={`https://merkaprofish.ru/blog/${post.id}`} />
+        
+        {/* Open Graph теги для соцсетей */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={`https://merkaprofish.ru/blog/${post.id}`} />
+        <meta property="og:site_name" content="МЕРКА — Оптовые поставки закусок" />
+        <meta property="og:locale" content="ru_RU" />
+        <meta property="article:published_time" content="2026-02-06T12:00:00+03:00" />
+        <meta property="article:author" content="МЕРКА" />
+        <meta property="article:section" content={post.category} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
       </Helmet>
 
       <Header />
