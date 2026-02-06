@@ -43,7 +43,7 @@ def handler(event: dict, context) -> dict:
     
     # Формируем текст письма
     items_text = '\n'.join([
-        f"- {item['name']} (x{item['quantity']})"
+        f"- {item['name']} ({item['quantity']} {item.get('unit', 'кг')})"
         for item in items
     ])
     

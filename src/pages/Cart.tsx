@@ -47,6 +47,7 @@ export default function Cart() {
           items: items.map(item => ({
             name: item.name,
             quantity: item.quantity,
+            unit: item.unit || 'кг',
           })),
         }),
       });
