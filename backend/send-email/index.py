@@ -54,8 +54,14 @@ def handler(event: dict, context) -> dict:
         return int(match.group()) if match else 0
     
     for item in items:
-        price = extract_price(item.get('price', '0₽'))
+        price_str = item.get('price')
         quantity = item['quantity']
+        
+        if not price_str or price_str == '0₽':
+            items_list.append(f"- {item['name']} ({quantity} {item.get('unit', 'кг')}) — Цена не указана")
+            continue
+            
+        price = extract_price(price_str)
         item_total = price * quantity
         total_sum += item_total
         items_list.append(f"- {item['name']} ({quantity} {item.get('unit', 'кг')}) — {price}₽/шт × {quantity} = {item_total}₽")
