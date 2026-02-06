@@ -149,17 +149,7 @@ export default function Cart() {
                     className="glass rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all animate-fade-in"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        {item.image.startsWith('http') ? (
-                          <img 
-                            src={item.image} 
-                            alt={item.name}
-                            className="w-20 h-20 object-cover rounded-xl"
-                          />
-                        ) : (
-                          <div className="text-5xl">{item.image}</div>
-                        )}
-                      </div>
+                      <div className="text-5xl flex-shrink-0">{item.image}</div>
                       
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl font-bold text-primary mb-2">

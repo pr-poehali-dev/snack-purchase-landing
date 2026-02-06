@@ -41,15 +41,15 @@ const categoriesData: Record<string, CategoryData> = {
       'Документы и сертификаты на всю продукцию'
     ],
     products: [
-      { name: 'Вобла вяленая (крупная) ПРЕМИУМ', description: 'Крупная, отборная', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/ab5693a6-9cd4-4c5c-a7f9-33880ee3d3f5.jpg', price: '1100₽/кг', unit: 'кг' },
-      { name: 'Вобла вяленая (отборная)', description: 'Премиум качество', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/e003687c-6a66-4f3a-89e5-2ebaf68ddf58.jpg', price: '780₽/кг', unit: 'кг' },
-      { name: 'Густера', description: 'Вяленая', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/6344620d-ea7c-410a-9133-1e458b207838.jpg', price: '335₽/кг', unit: 'кг' },
-      { name: 'Камбала вяленая (без икры)', description: 'Дальневосточная', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/bf412a11-b214-4d5b-9ebd-8ff92684bd07.jpg', price: '750₽/кг', unit: 'кг' },
-      { name: 'Камбала вяленая (икр)', description: 'С икрой', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/9b548aa1-3a64-48ac-928c-ae661577b6b7.jpg', price: '1500₽/кг', unit: 'кг' },
-      { name: 'Камбала вяленая ЕРШ', description: 'Мелкая', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/a4761004-abe1-48a4-aaea-1dd17b61b9bc.jpg', price: '1250₽/кг', unit: 'кг' },
-      { name: 'Камбала чищенная тушка', description: 'Готова к употреблению', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/8e346486-0d39-4d3c-87a4-8705c0db80de.jpg', price: '1100₽/кг', unit: 'кг' },
-      { name: 'Корюшка Вяленая Дальний Восток (без икры)', description: 'Дальневосточная', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/8aaf2ff4-1788-4c35-a0f4-7e5321559d14.jpg', price: '2300₽/кг', unit: 'кг' },
-      { name: 'Корюшка вяленая Дальний Восток (икр.)', description: 'С икрой', image: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/b9ef95cb-64f8-4cb8-ad0e-d49bd658dc9d.jpg', price: '3500₽/кг', unit: 'кг' },
+      { name: 'Вобла вяленая (крупная) ПРЕМИУМ', description: 'Крупная, отборная', image: '🐟', price: '1100₽/кг', unit: 'кг' },
+      { name: 'Вобла вяленая (отборная)', description: 'Премиум качество', image: '🐟', price: '780₽/кг', unit: 'кг' },
+      { name: 'Густера', description: 'Вяленая', image: '🐟', price: '335₽/кг', unit: 'кг' },
+      { name: 'Камбала вяленая (без икры)', description: 'Дальневосточная', image: '🐟', price: '750₽/кг', unit: 'кг' },
+      { name: 'Камбала вяленая (икр)', description: 'С икрой', image: '🐟', price: '1500₽/кг', unit: 'кг' },
+      { name: 'Камбала вяленая ЕРШ', description: 'Мелкая', image: '🐟', price: '1250₽/кг', unit: 'кг' },
+      { name: 'Камбала чищенная тушка', description: 'Готова к употреблению', image: '🐟', price: '1100₽/кг', unit: 'кг' },
+      { name: 'Корюшка Вяленая Дальний Восток (без икры)', description: 'Дальневосточная', image: '🐟', price: '2300₽/кг', unit: 'кг' },
+      { name: 'Корюшка вяленая Дальний Восток (икр.)', description: 'С икрой', image: '🐟', price: '3500₽/кг', unit: 'кг' },
       { name: 'Корюшка вяленая Ладожская', description: 'Ладожское озеро', image: '🐟', price: '795₽/кг', unit: 'кг' },
       { name: 'Красноперка вяленая', description: 'Нежная', image: '🐟', price: '370₽/кг', unit: 'кг' },
       { name: 'Лещ вял. донской', description: 'Донской', image: '🐟', price: '430₽/кг', unit: 'кг' },
@@ -709,18 +709,8 @@ export default function CategoryPage() {
                 className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="mb-4 overflow-hidden rounded-xl">
-                  {product.image.startsWith('http') ? (
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-all duration-500"
-                    />
-                  ) : (
-                    <div className="text-5xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                      {product.image}
-                    </div>
-                  )}
+                <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                  {product.image}
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-amber-300 transition-colors">
                   {product.name}
