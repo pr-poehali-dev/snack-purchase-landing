@@ -55,8 +55,7 @@ def handler(event: dict, context) -> dict:
 Новый заказ с сайта!
 
 ДАННЫЕ ЗАКАЗЧИКА:
-Форма собственности: {company_type}
-Наименование юр. лица: {company_name}
+{company_type} {company_name}
 Точный адрес: {address}
 Контакт для связи: {contact}
 Время работы: {working_hours}
