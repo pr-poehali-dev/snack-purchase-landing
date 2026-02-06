@@ -20,7 +20,7 @@ export default function Cart() {
     comments: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (items.length === 0) {
@@ -32,19 +32,51 @@ export default function Cart() {
       return;
     }
 
-    toast({
-      title: "Заказ отправлен!",
-      description: "Мы свяжемся с вами в ближайшее время для уточнения деталей.",
-    });
-    
-    setFormData({
-      companyName: '',
-      address: '',
-      contact: '',
-      workingHours: '',
-      comments: '',
-    });
-    clearCart();
+    try {
+      const response = await fetch('https://functions.poehali.dev/94b7d436-dd86-4a52-a215-62014cfed48d', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          companyName: formData.companyName,
+          address: formData.address,
+          contact: formData.contact,
+          workingHours: formData.workingHours,
+          comments: formData.comments,
+          items: items.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+          })),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Заказ отправлен!",
+          description: "Мы свяжемся с вами в ближайшее время для уточнения деталей.",
+        });
+        
+        setFormData({
+          companyName: '',
+          address: '',
+          contact: '',
+          workingHours: '',
+          comments: '',
+        });
+        clearCart();
+      } else {
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      toast({
+        title: "Ошибка отправки",
+        description: "Не удалось отправить заказ. Попробуйте позже.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
