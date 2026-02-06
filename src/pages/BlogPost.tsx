@@ -34,6 +34,31 @@ export default function BlogPost() {
     "url": `https://merkaprofish.ru/blog/${post.id}`
   } : null;
 
+  const breadcrumbSchema = post ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://merkaprofish.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Блог",
+        "item": "https://merkaprofish.ru/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://merkaprofish.ru/blog/${post.id}`
+      }
+    ]
+  } : null;
+
   if (!post) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -60,6 +85,9 @@ export default function BlogPost() {
         {/* Schema.org разметка для Google */}
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
         
         {/* Open Graph теги для соцсетей */}
@@ -119,6 +147,18 @@ export default function BlogPost() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/5 to-background">
         <div className="max-w-4xl mx-auto">
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8 flex-wrap">
+            <Link to="/" className="hover:text-primary transition-colors">
+              Главная
+            </Link>
+            <Icon name="ChevronRight" size={14} />
+            <Link to="/blog" className="hover:text-primary transition-colors">
+              Блог
+            </Link>
+            <Icon name="ChevronRight" size={14} />
+            <span className="text-foreground font-medium">{post.title}</span>
+          </nav>
+
           <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:text-amber-500 transition-all mb-8 group bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-lg">
             <Icon name="ArrowLeft" size={18} className="group-hover:-translate-x-1 transition-transform" />
             <span className="font-medium">Вернуться к блогу</span>

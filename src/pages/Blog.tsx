@@ -10,6 +10,25 @@ import { blogPostsData } from '@/data/blogPostsData';
 const blogPosts = Object.values(blogPostsData);
 
 export default function Blog() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://merkaprofish.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Блог",
+        "item": "https://merkaprofish.ru/blog"
+      }
+    ]
+  };
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -45,6 +64,9 @@ export default function Blog() {
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
         
         {/* Open Graph теги для соцсетей */}
         <meta property="og:type" content="website" />
@@ -70,6 +92,14 @@ export default function Blog() {
 
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
+        
+        <nav className="absolute top-24 left-4 sm:left-8 z-20 flex items-center gap-2 text-sm text-muted-foreground">
+          <Link to="/" className="hover:text-primary transition-colors">
+            Главная
+          </Link>
+          <Icon name="ChevronRight" size={14} />
+          <span className="text-foreground font-medium">Блог</span>
+        </nav>
         
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
