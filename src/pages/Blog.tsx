@@ -5,73 +5,9 @@ import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import Header from '@/components/Header';
 import ScrollToTop from '@/components/ScrollToTop';
+import { blogPostsData } from '@/data/blogPostsData';
 
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  image: string;
-  category: string;
-  readTime: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 'kak-vybrat-vyalenuju-rybu',
-    title: 'Как выбрать вяленую рыбу для пивного магазина',
-    excerpt: 'Разбираемся, какая вяленая рыба лучше продаётся, как проверить качество при закупке и на что обращать внимание при выборе поставщика.',
-    date: '15 января 2026',
-    image: '🐟',
-    category: 'Рыба',
-    readTime: '5 мин'
-  },
-  {
-    id: 'kopchyonaja-ryba-holodnogo-kopchenija',
-    title: 'Копчёная рыба холодного копчения: почему это выгоднее',
-    excerpt: 'Горячее копчение портится быстро, холодное — хранится долго. Считаем экономику и объясняем, почему холодное копчение выгоднее для пивных точек.',
-    date: '10 января 2026',
-    image: '🐠',
-    category: 'Рыба',
-    readTime: '4 мин'
-  },
-  {
-    id: 'sneki-dlya-piva',
-    title: 'Снеки для пива: что реально покупают',
-    excerpt: 'Кальмары, креветки, орехи, чипсы — что из этого действительно берут покупатели, а что просто занимает место на полке.',
-    date: '5 января 2026',
-    image: '🦑',
-    category: 'Снеки',
-    readTime: '6 мин'
-  },
-  {
-    id: 'kak-uvelichit-srednyj-chek',
-    title: 'Как увеличить средний чек в разливном магазине',
-    excerpt: 'Простые приёмы, которые работают: как расположить товар, какие связки предлагать и что выкладывать у кассы.',
-    date: '28 декабря 2025',
-    image: '💰',
-    category: 'Бизнес',
-    readTime: '7 мин'
-  },
-  {
-    id: 'vyalenoe-myaso-trend',
-    title: 'Вяленое мясо — новый тренд пивных закусок',
-    excerpt: 'Почему вяленое мясо становится популярнее классической рыбы и как на этом заработать.',
-    date: '20 декабря 2025',
-    image: '🥩',
-    category: 'Закуски',
-    readTime: '5 мин'
-  },
-  {
-    id: 'oshibki-novichkov',
-    title: '5 ошибок начинающих владельцев пивных магазинов',
-    excerpt: 'Типичные промахи при открытии точки разливного пива: неправильный ассортимент, плохие поставщики, проблемы с хранением.',
-    date: '15 декабря 2025',
-    image: '⚠️',
-    category: 'Бизнес',
-    readTime: '8 мин'
-  }
-];
+const blogPosts = Object.values(blogPostsData);
 
 export default function Blog() {
   return (
