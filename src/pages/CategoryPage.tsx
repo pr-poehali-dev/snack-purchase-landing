@@ -711,12 +711,15 @@ export default function CategoryPage() {
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {product.photo ? (
-                  <div className="mb-4 overflow-hidden rounded-xl">
+                  <div className="mb-4 overflow-hidden rounded-xl relative">
                     <img 
                       src={product.photo} 
                       alt={product.name}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-all duration-500"
                     />
+                    <div className="absolute top-3 right-3 text-4xl bg-background/80 backdrop-blur-sm rounded-full w-14 h-14 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                      {product.image}
+                    </div>
                   </div>
                 ) : (
                   <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
