@@ -9,6 +9,13 @@ import { blogPostsData } from '@/data/blogPostsData';
 export default function BlogPost() {
   const { postId } = useParams<{ postId: string }>();
   const post = postId ? blogPostsData[postId] : null;
+  
+  const allPosts = Object.values(blogPostsData);
+  const relatedPosts = post 
+    ? allPosts
+        .filter(p => p.id !== post.id && (p.category === post.category || Math.random() > 0.5))
+        .slice(0, 3)
+    : [];
 
   const schemaData = post ? {
     "@context": "https://schema.org",
@@ -230,6 +237,67 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
+
+          {relatedPosts.length > 0 && (
+            <div className="mt-16">
+              <div className="flex items-center gap-3 mb-8">
+                <Icon name="BookOpen" size={28} className="text-primary" />
+                <h2 className="text-3xl font-bold">Похожие статьи</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {relatedPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost.id}
+                    to={`/blog/${relatedPost.id}`}
+                    className="group"
+                  >
+                    <div className="glass rounded-xl border-2 border-primary/20 hover:border-amber-500/50 transition-all duration-300 overflow-hidden h-full hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/10">
+                      {relatedPost.ogImage ? (
+                        <div className="relative aspect-video w-full overflow-hidden">
+                          <img 
+                            src={relatedPost.ogImage} 
+                            alt={relatedPost.title}
+                            className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          <div className="absolute top-3 right-3 bg-gradient-to-r from-primary to-amber-500 text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                            {relatedPost.category}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="relative bg-gradient-to-br from-primary/10 via-amber-500/10 to-primary/5 p-12 flex items-center justify-center">
+                          <div className="text-6xl transform group-hover:scale-125 transition-all duration-300">
+                            {relatedPost.image}
+                          </div>
+                          <div className="absolute top-3 right-3 bg-gradient-to-r from-primary to-amber-500 text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                            {relatedPost.category}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <div className="p-5">
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                          <div className="flex items-center gap-1">
+                            <Icon name="Clock" size={12} className="text-amber-500" />
+                            <span>{relatedPost.readTime}</span>
+                          </div>
+                        </div>
+                        
+                        <h3 className="font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-amber-500 transition-all line-clamp-2 leading-snug">
+                          {relatedPost.title}
+                        </h3>
+                        
+                        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                          {relatedPost.excerpt}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-12 glass rounded-2xl p-8 border-2 border-primary/20 shadow-xl hover:shadow-2xl hover:border-amber-500/30 transition-all relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
