@@ -83,12 +83,26 @@ const categoriesData: Record<string, CategoryData> = {
       'Удобная нарезка и фасовка'
     ],
     products: [
-      { name: 'Сёмга холодного копчения', description: 'Нарезка, вакуум', image: '🐠', price: '890₽/кг', unit: 'кг' },
-      { name: 'Скумбрия копченая', description: 'Горячего копчения', image: '🐠', price: '320₽/кг', unit: 'кг' },
-      { name: 'Сельдь атлантическая', description: 'Слабосолёная, филе', image: '🐠', price: '280₽/кг', unit: 'кг' },
-      { name: 'Форель копченая', description: 'Холодного копчения', image: '🐠', price: '950₽/кг', unit: 'кг' },
-      { name: 'Балык из осетра', description: 'Деликатес', image: '🐠', price: 'По запросу', unit: 'кг' },
-      { name: 'Корюшка сушеная', description: 'Целиком, мелкая', image: '🐠', price: '420₽/кг', unit: 'кг' }
+      { name: 'Ассорти кета-зубатка шашлык х/к', description: 'Ассорти холодного копчения', image: '🐠', price: '1550₽/кг', unit: 'кг' },
+      { name: 'Балык горбуши', description: 'Деликатес', image: '🐠', price: '900₽/кг', unit: 'кг' },
+      { name: 'Балык Кеты', description: 'Премиум', image: '🐠', price: '950₽/кг', unit: 'кг' },
+      { name: 'Вомер х/к', description: 'Холодного копчения', image: '🐠', price: '840₽/кг', unit: 'кг' },
+      { name: 'Горбуша филе пласт х/к', description: 'Филе холодного копчения', image: '🐠', price: '1400₽/кг', unit: 'кг' },
+      { name: 'Жерех бабочка х/к', description: 'Разделка бабочка', image: '🐠', price: '615₽/кг', unit: 'кг' },
+      { name: 'Кальмар щупальцы х/к', description: 'Холодного копчения', image: '🐠', price: '2400₽/кг', unit: 'кг' },
+      { name: 'Кальмар шашлык г/к', description: 'Горячего копчения', image: '🐠', price: '1190₽/кг', unit: 'кг' },
+      { name: 'Кальмар палочки г/к', description: 'Горячего копчения', image: '🐠', price: '1260₽/кг', unit: 'кг' },
+      { name: 'Камбала х/к', description: 'Холодного копчения', image: '🐠', price: '580₽/кг', unit: 'кг' },
+      { name: 'Кета филе пласт х/к', description: 'Филе холодного копчения', image: '🐠', price: '1200₽/кг', unit: 'кг' },
+      { name: 'Кета шашлык х/к', description: 'Шашлык холодного копчения', image: '🐠', price: '1450₽/кг', unit: 'кг' },
+      { name: 'Лещ х/к', description: 'Холодного копчения', image: '🐠', price: '320₽/кг', unit: 'кг' },
+      { name: 'Окунь бабочка МОРСКОЙ Х/К', description: 'Морской, разделка бабочка', image: '🐠', price: '890₽/кг', unit: 'кг' },
+      { name: 'Пелядь х/к', description: 'Холодного копчения', image: '🐠', price: '1020₽/кг', unit: 'кг' },
+      { name: 'Скумбрия х/к', description: 'Холодного копчения', image: '🐠', price: '645₽/кг', unit: 'кг' },
+      { name: 'Сом филе пласт х/к', description: 'Филе холодного копчения', image: '🐠', price: '950₽/кг', unit: 'кг' },
+      { name: 'Теша горбуши', description: 'Брюшки', image: '🐠', price: '430₽/кг', unit: 'кг' },
+      { name: 'Теша Кеты', description: 'Брюшки', image: '🐠', price: '260₽/кг', unit: 'кг' },
+      { name: 'Щука шашлык х/к', description: 'Шашлык холодного копчения', image: '🐠', price: '1100₽/кг', unit: 'кг' }
     ]
   },
   'snacks': {
