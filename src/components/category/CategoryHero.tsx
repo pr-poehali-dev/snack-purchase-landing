@@ -102,9 +102,15 @@ export default function CategoryHero({ category }: CategoryHeroProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div className="animate-fade-in">
           <div className="text-8xl mb-6 animate-bounce drop-shadow-2xl">{category.emoji}</div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-shadow drop-shadow-2xl">
-            {category.title}
-          </h1>
+          {category.id === 'fish-smoked' ? (
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-shadow drop-shadow-2xl">
+              Копчёная рыба оптом для магазинов разливного пива
+            </h1>
+          ) : (
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-shadow drop-shadow-2xl">
+              {category.title}
+            </h1>
+          )}
           <p className="text-2xl text-primary mb-8 drop-shadow-lg">{category.subtitle}</p>
           
           {category.id === 'fish-dried' ? (
