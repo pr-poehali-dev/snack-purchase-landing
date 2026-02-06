@@ -138,7 +138,7 @@ export default function BlogPost() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-shadow drop-shadow-2xl">
               {post.title}
             </h1>
-            <div className="flex items-center justify-center gap-6 text-muted-foreground">
+            <div className="flex items-center justify-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <Icon name="Calendar" size={18} />
                 {post.date}
@@ -147,6 +147,47 @@ export default function BlogPost() {
                 <Icon name="Clock" size={18} />
                 {post.readTime}
               </div>
+            </div>
+            
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <span className="text-sm text-muted-foreground mr-2">Поделиться:</span>
+              <a
+                href={`https://t.me/share/url?url=${encodeURIComponent(`https://merkaprofish.ru/blog/${post.id}`)}&text=${encodeURIComponent(post.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass p-2.5 rounded-lg border border-primary/20 hover:border-[#0088cc]/50 hover:bg-[#0088cc]/10 transition-all group"
+                title="Поделиться в Telegram"
+              >
+                <Icon name="Send" size={18} className="text-[#0088cc] group-hover:scale-110 transition-transform" />
+              </a>
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + `https://merkaprofish.ru/blog/${post.id}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass p-2.5 rounded-lg border border-primary/20 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all group"
+                title="Поделиться в WhatsApp"
+              >
+                <Icon name="MessageCircle" size={18} className="text-[#25D366] group-hover:scale-110 transition-transform" />
+              </a>
+              <a
+                href={`https://vk.com/share.php?url=${encodeURIComponent(`https://merkaprofish.ru/blog/${post.id}`)}&title=${encodeURIComponent(post.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass p-2.5 rounded-lg border border-primary/20 hover:border-[#0077FF]/50 hover:bg-[#0077FF]/10 transition-all group"
+                title="Поделиться ВКонтакте"
+              >
+                <Icon name="Share2" size={18} className="text-[#0077FF] group-hover:scale-110 transition-transform" />
+              </a>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(`https://merkaprofish.ru/blog/${post.id}`);
+                  alert('Ссылка скопирована в буфер обмена!');
+                }}
+                className="glass p-2.5 rounded-lg border border-primary/20 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all group"
+                title="Скопировать ссылку"
+              >
+                <Icon name="Link" size={18} className="text-amber-500 group-hover:scale-110 transition-transform" />
+              </button>
             </div>
           </div>
         </div>
@@ -234,6 +275,54 @@ export default function BlogPost() {
                     )}
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t-2 border-primary/20">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <div className="flex items-center gap-2">
+                    <Icon name="Share2" size={20} className="text-primary" />
+                    <span className="font-semibold text-lg">Поделиться статьёй:</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href={`https://t.me/share/url?url=${encodeURIComponent(`https://merkaprofish.ru/blog/${post.id}`)}&text=${encodeURIComponent(post.title)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 glass px-4 py-2.5 rounded-lg border border-primary/20 hover:border-[#0088cc]/50 hover:bg-[#0088cc]/10 transition-all group"
+                    >
+                      <Icon name="Send" size={18} className="text-[#0088cc] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">Telegram</span>
+                    </a>
+                    <a
+                      href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + `https://merkaprofish.ru/blog/${post.id}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 glass px-4 py-2.5 rounded-lg border border-primary/20 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all group"
+                    >
+                      <Icon name="MessageCircle" size={18} className="text-[#25D366] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">WhatsApp</span>
+                    </a>
+                    <a
+                      href={`https://vk.com/share.php?url=${encodeURIComponent(`https://merkaprofish.ru/blog/${post.id}`)}&title=${encodeURIComponent(post.title)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 glass px-4 py-2.5 rounded-lg border border-primary/20 hover:border-[#0077FF]/50 hover:bg-[#0077FF]/10 transition-all group"
+                    >
+                      <Icon name="Share2" size={18} className="text-[#0077FF] group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">VK</span>
+                    </a>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(`https://merkaprofish.ru/blog/${post.id}`);
+                        alert('Ссылка скопирована в буфер обмена!');
+                      }}
+                      className="flex items-center gap-2 glass px-4 py-2.5 rounded-lg border border-primary/20 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all group"
+                    >
+                      <Icon name="Link" size={18} className="text-amber-500 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm font-medium">Копировать</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
