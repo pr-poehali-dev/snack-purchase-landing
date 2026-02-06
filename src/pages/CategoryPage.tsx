@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -11,11 +12,36 @@ import CategoryContent from '@/components/category/CategoryContent';
 import CategoryOrderForm from '@/components/category/CategoryOrderForm';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
-import { categoriesData } from '@/data/categoriesData';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const category = categoryId ? categoriesData[categoryId] : null;
+  const [category, setCategory] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCategory = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
+        const data = await response.json();
+        if (categoryId && data[categoryId]) {
+          setCategory(data[categoryId]);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error('Ошибка загрузки:', error);
+        setLoading(false);
+      }
+    };
+    loadCategory();
+  }, [categoryId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Icon name="Loader2" className="animate-spin text-primary" size={48} />
+      </div>
+    );
+  }
 
   if (!category) {
     return (

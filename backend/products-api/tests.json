@@ -1,0 +1,17 @@
+{
+  "tests": [
+    {
+      "name": "Получение списка категорий и товаров",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "fish-dried": {
+          "id": "string",
+          "title": "string"
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
