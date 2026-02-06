@@ -129,7 +129,17 @@ export default function BlogPost() {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-amber-500/10 to-primary/10 rounded-full blur-3xl -z-0" />
             
             <div className="relative z-10">
-              <div className="text-9xl mb-10 text-center drop-shadow-2xl animate-fade-in">{post.image}</div>
+              {post.ogImage ? (
+                <div className="mb-10 rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={post.ogImage} 
+                    alt={post.title}
+                    className="w-full aspect-video object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="text-9xl mb-10 text-center drop-shadow-2xl animate-fade-in">{post.image}</div>
+              )}
               
               <div className="prose prose-lg max-w-none">
                 {post.content.map((section, index) => (

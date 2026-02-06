@@ -102,12 +102,25 @@ export default function Blog() {
                 <Card className="h-full glass border-2 border-primary/20 hover:border-amber-500/50 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-amber-500/20 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="relative bg-gradient-to-br from-primary/10 via-amber-500/10 to-primary/5 p-16 flex items-center justify-center overflow-hidden">
+                  <div className="relative bg-gradient-to-br from-primary/10 via-amber-500/10 to-primary/5 overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
-                    <div className="text-9xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 relative z-10 drop-shadow-2xl">
-                      {post.image}
-                    </div>
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-primary to-amber-500 text-primary-foreground text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+                    {post.ogImage ? (
+                      <div className="relative aspect-video w-full">
+                        <img 
+                          src={post.ogImage} 
+                          alt={post.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      </div>
+                    ) : (
+                      <div className="p-16 flex items-center justify-center">
+                        <div className="text-9xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 relative z-10 drop-shadow-2xl">
+                          {post.image}
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-primary to-amber-500 text-primary-foreground text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10">
                       {post.category}
                     </div>
                   </div>
