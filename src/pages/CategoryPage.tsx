@@ -9,6 +9,7 @@ import CategoryBenefits from '@/components/category/CategoryBenefits';
 import ProductsSection from '@/components/category/ProductsSection';
 import CategoryContent from '@/components/category/CategoryContent';
 import CategoryOrderForm from '@/components/category/CategoryOrderForm';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 import { categoriesData } from '@/data/categoriesData';
 
 export default function CategoryPage() {
@@ -38,8 +39,10 @@ export default function CategoryPage() {
         <meta name="description" content={category.seo?.description || category.description} />
         <meta property="og:title" content={category.seo?.title || category.title} />
         <meta property="og:description" content={category.seo?.description || category.description} />
+        <link rel="canonical" href={`https://merkaprofish.ru/category/${category.id}`} />
       </Helmet>
       
+      <SchemaOrg type="itemList" data={category} />
       <Header />
       
       <CategoryHero category={category} />

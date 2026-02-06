@@ -8,6 +8,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import ScrollToTop from '@/components/ScrollToTop';
 import Header from '@/components/Header';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 export default function Index() {
   const { toast } = useToast();
@@ -142,6 +143,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SchemaOrg type="organization" />
       <Header />
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden fish-scale">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
