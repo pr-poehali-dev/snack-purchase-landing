@@ -15,7 +15,6 @@ interface Product {
   price?: string;
   image: string;
   unit?: string;
-  photo?: string;
 }
 
 interface CategoryData {
@@ -50,7 +49,7 @@ const categoriesData: Record<string, CategoryData> = {
       { name: 'Камбала вяленая ЕРШ', description: 'Мелкая', image: '🐟', price: '1250₽/кг', unit: 'кг' },
       { name: 'Камбала чищенная тушка', description: 'Готова к употреблению', image: '🐟', price: '1100₽/кг', unit: 'кг' },
       { name: 'Корюшка Вяленая Дальний Восток (без икры)', description: 'Дальневосточная', image: '🐟', price: '2300₽/кг', unit: 'кг' },
-      { name: 'Корюшка вяленая Дальний Восток (икр.)', description: 'С икрой', image: '🐟', price: '3500₽/кг', unit: 'кг', photo: 'https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/bucket/e980f386-249b-41e5-9d0f-1592d40485d8.jpg' },
+      { name: 'Корюшка вяленая Дальний Восток (икр.)', description: 'С икрой', image: '🐟', price: '3500₽/кг', unit: 'кг' },
       { name: 'Корюшка вяленая Ладожская', description: 'Ладожское озеро', image: '🐟', price: '795₽/кг', unit: 'кг' },
       { name: 'Красноперка вяленая', description: 'Нежная', image: '🐟', price: '370₽/кг', unit: 'кг' },
       { name: 'Лещ вял. донской', description: 'Донской', image: '🐟', price: '430₽/кг', unit: 'кг' },
@@ -710,22 +709,9 @@ export default function CategoryPage() {
                 className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {product.photo ? (
-                  <div className="mb-4 overflow-hidden rounded-xl relative">
-                    <img 
-                      src={product.photo} 
-                      alt={product.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-all duration-500"
-                    />
-                    <div className="absolute top-3 right-3 text-4xl bg-background/80 backdrop-blur-sm rounded-full w-14 h-14 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg">
-                      {product.image}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                    {product.image}
-                  </div>
-                )}
+                <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                  {product.image}
+                </div>
                 <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-amber-300 transition-colors">
                   {product.name}
                 </h3>
