@@ -1,0 +1,20 @@
+{
+  "tests": [
+    {
+      "name": "Test inquiry sending",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Тестовый",
+        "phone": "+7 (999) 123-45-67",
+        "message": "Интересует рыба вяленая",
+        "category": "Рыба вяленая"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
