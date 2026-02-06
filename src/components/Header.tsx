@@ -141,7 +141,7 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center gap-3">
-              <Link to="/cart">
+              <Link to="/cart" className="relative group">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -154,6 +154,12 @@ export default function Header() {
                     </span>
                   )}
                 </Button>
+                {totalItems > 0 && (
+                  <div className="absolute top-full right-0 mt-2 bg-background/98 backdrop-blur-xl border border-primary/20 rounded-lg shadow-xl px-4 py-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+                    <div className="text-sm font-semibold text-muted-foreground">Итого:</div>
+                    <div className="text-xl font-bold text-primary">{calculateTotal()}₽</div>
+                  </div>
+                )}
               </Link>
 
               <Button
