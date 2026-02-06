@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -32,6 +33,13 @@ export default function CategoryPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{category.seo?.title || `${category.title} — МЕРКА`}</title>
+        <meta name="description" content={category.seo?.description || category.description} />
+        <meta property="og:title" content={category.seo?.title || category.title} />
+        <meta property="og:description" content={category.seo?.description || category.description} />
+      </Helmet>
+      
       <Header />
       
       <CategoryHero category={category} />

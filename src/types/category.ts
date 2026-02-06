@@ -14,4 +14,8 @@ export interface CategoryData {
   description: string;
   benefits: string[];
   products: Product[];
+  seo?: {
+    title: string;
+    description: string;
+  };
 }
