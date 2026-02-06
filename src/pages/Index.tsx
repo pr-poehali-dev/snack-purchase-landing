@@ -108,8 +108,8 @@ export default function Index() {
     },
     {
       icon: 'Truck',
-      title: 'Самовывоз',
-      description: 'Приезжаем сами, вывозим всё',
+      title: 'Доставка',
+      description: 'Москва, московская область, регионы',
     },
     {
       icon: 'Package',
