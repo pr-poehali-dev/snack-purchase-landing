@@ -34,6 +34,7 @@ def handler(event: dict, context) -> dict:
     # Получаем данные заказа
     data = json.loads(event.get('body', '{}'))
     
+    company_type = data.get('companyType', 'ООО')
     company_name = data.get('companyName', '')
     address = data.get('address', '')
     contact = data.get('contact', '')
@@ -41,16 +42,20 @@ def handler(event: dict, context) -> dict:
     comments = data.get('comments', '')
     items = data.get('items', [])
     
-    # Формируем текст письма
-    items_text = '\n'.join([
-        f"- {item['name']} ({item['quantity']} {item.get('unit', 'кг')})"
-        for item in items
-    ])
+    # Формируем текст письма с товарами и общей суммой
+    items_list = []
+    total_sum = 0
+    
+    for item in items:
+        items_list.append(f"- {item['name']} ({item['quantity']} {item.get('unit', 'кг')})")
+    
+    items_text = '\n'.join(items_list)
     
     email_body = f"""
 Новый заказ с сайта!
 
 ДАННЫЕ ЗАКАЗЧИКА:
+Форма собственности: {company_type}
 Наименование юр. лица: {company_name}
 Точный адрес: {address}
 Контакт для связи: {contact}

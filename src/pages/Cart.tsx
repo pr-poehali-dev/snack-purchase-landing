@@ -13,12 +13,28 @@ export default function Cart() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } = useCart();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
+    companyType: 'ООО',
     companyName: '',
     address: '',
     contact: '',
     workingHours: '',
     comments: '',
   });
+
+  // Функция для вычисления общей суммы
+  const calculateTotal = () => {
+    return items.reduce((total, item) => {
+      const price = extractPrice(item.price);
+      return total + (price * item.quantity);
+    }, 0);
+  };
+
+  // Функция для извлечения числовой цены
+  const extractPrice = (priceStr?: string): number => {
+    if (!priceStr) return 0;
+    const match = priceStr.match(/\d+/);
+    return match ? parseInt(match[0]) : 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +55,7 @@ export default function Cart() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          companyType: formData.companyType,
           companyName: formData.companyName,
           address: formData.address,
           contact: formData.contact,
@@ -61,6 +78,7 @@ export default function Cart() {
         });
         
         setFormData({
+          companyType: 'ООО',
           companyName: '',
           address: '',
           contact: '',
@@ -197,10 +215,34 @@ export default function Cart() {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label className="text-sm font-semibold mb-2 block">
+                        ИП или ООО *
+                      </label>
+                      <div className="flex gap-2">
+                        <Button
+                          type="button"
+                          variant={formData.companyType === 'ИП' ? 'default' : 'outline'}
+                          className="flex-1"
+                          onClick={() => setFormData({ ...formData, companyType: 'ИП' })}
+                        >
+                          ИП
+                        </Button>
+                        <Button
+                          type="button"
+                          variant={formData.companyType === 'ООО' ? 'default' : 'outline'}
+                          className="flex-1"
+                          onClick={() => setFormData({ ...formData, companyType: 'ООО' })}
+                        >
+                          ООО
+                        </Button>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="text-sm font-semibold mb-2 block">
                         Наименование юр. лица *
                       </label>
                       <Input
-                        placeholder="ООО «Пивная точка»"
+                        placeholder={formData.companyType === 'ИП' ? 'ИП Иванов Иван Иванович' : 'ООО «Пивная точка»'}
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                         required
@@ -258,6 +300,13 @@ export default function Cart() {
                         onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
                         className="bg-background/50 border-border focus:border-primary resize-none min-h-24"
                       />
+                    </div>
+                    
+                    <div className="border-t border-border pt-4 mt-6">
+                      <div className="flex justify-between items-center mb-4">
+                        <span className="text-lg font-semibold">Итоговая сумма:</span>
+                        <span className="text-2xl font-bold text-primary">{calculateTotal()}₽</span>
+                      </div>
                     </div>
                     
                     <Button
