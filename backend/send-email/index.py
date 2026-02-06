@@ -68,7 +68,7 @@ def handler(event: dict, context) -> dict:
     smtp_host = os.environ.get('SMTP_HOST_CORRECT', 'smtp.mail.ru')
     smtp_port = int(os.environ.get('SMTP_PORT_CORRECT', '465'))
     smtp_user = os.environ.get('SMTP_USER')
-    smtp_password = os.environ.get('SMTP_PASSWORD')
+    smtp_password = os.environ.get('SMTP_PASSWORD_CORRECT')
     
     # Создаем письмо
     msg = MIMEMultipart()
