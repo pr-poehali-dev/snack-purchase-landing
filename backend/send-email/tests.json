@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Test email sending with order data",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "companyName": "ООО Тестовая компания",
+        "address": "г. Москва, ул. Тестовая, д. 1",
+        "contact": "+7 (999) 123-45-67",
+        "workingHours": "Пн-Пт: 9:00-18:00",
+        "comments": "Тестовый заказ",
+        "items": [
+          {
+            "name": "Тестовый товар 1",
+            "quantity": 2
+          },
+          {
+            "name": "Тестовый товар 2",
+            "quantity": 1
+          }
+        ]
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
