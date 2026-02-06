@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -14,6 +15,18 @@ import { categoriesData } from '@/data/categoriesData';
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = categoryId ? categoriesData[categoryId] : null;
+  const [currentTitle, setCurrentTitle] = useState('');
+
+  useEffect(() => {
+    const checkTitle = () => {
+      setCurrentTitle(document.title);
+    };
+    
+    checkTitle();
+    const interval = setInterval(checkTitle, 100);
+    
+    return () => clearInterval(interval);
+  }, [category]);
 
   if (!category) {
     return (
@@ -39,6 +52,13 @@ export default function CategoryPage() {
         <meta property="og:title" content={category.seo?.title || category.title} />
         <meta property="og:description" content={category.seo?.description || category.description} />
       </Helmet>
+      
+      {currentTitle && (
+        <div className="fixed top-20 left-4 z-50 bg-primary/90 backdrop-blur-sm text-primary-foreground px-4 py-2 rounded-lg shadow-lg text-sm max-w-md">
+          <div className="font-semibold mb-1">✅ SEO Title работает:</div>
+          <div className="text-xs opacity-90">{currentTitle}</div>
+        </div>
+      )}
       
       <Header />
       
