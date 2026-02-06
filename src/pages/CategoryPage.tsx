@@ -407,8 +407,30 @@ export default function CategoryPage() {
     phone: '',
     message: '',
   });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [priceRange, setPriceRange] = useState({ min: '', max: '' });
 
   const category = categoryId ? categoriesData[categoryId] : null;
+
+  // Функция для извлечения числовой цены
+  const extractPrice = (priceStr?: string): number => {
+    if (!priceStr) return 0;
+    const match = priceStr.match(/\d+/);
+    return match ? parseInt(match[0]) : 0;
+  };
+
+  // Фильтрация товаров
+  const filteredProducts = category?.products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const price = extractPrice(product.price);
+    const minPrice = priceRange.min ? parseInt(priceRange.min) : 0;
+    const maxPrice = priceRange.max ? parseInt(priceRange.max) : Infinity;
+    const matchesPrice = price >= minPrice && price <= maxPrice;
+
+    return matchesSearch && matchesPrice;
+  }) || [];
 
   const handleAddToCart = (product: Product) => {
     if (!category) return;
@@ -586,12 +608,74 @@ export default function CategoryPage() {
             ))}
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
             Ассортимент
           </h2>
 
+          <div className="mb-8 max-w-4xl mx-auto space-y-4">
+            <div className="glass rounded-2xl p-6 border border-primary/20">
+              <div className="flex items-center gap-3 mb-4">
+                <Icon name="Search" className="text-primary" size={24} />
+                <Input
+                  type="text"
+                  placeholder="Поиск по названию или описанию..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 bg-background/50 border-border focus:border-primary"
+                />
+              </div>
+              
+              <div className="flex items-center gap-4 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <Icon name="DollarSign" className="text-primary" size={20} />
+                  <span className="text-sm font-semibold">Цена:</span>
+                </div>
+                <Input
+                  type="number"
+                  placeholder="От"
+                  value={priceRange.min}
+                  onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+                  className="w-24 bg-background/50 border-border focus:border-primary"
+                />
+                <span className="text-muted-foreground">—</span>
+                <Input
+                  type="number"
+                  placeholder="До"
+                  value={priceRange.max}
+                  onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
+                  className="w-24 bg-background/50 border-border focus:border-primary"
+                />
+                {(searchQuery || priceRange.min || priceRange.max) && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setPriceRange({ min: '', max: '' });
+                    }}
+                    className="text-sm"
+                  >
+                    <Icon name="X" size={16} className="mr-1" />
+                    Сбросить
+                  </Button>
+                )}
+              </div>
+              
+              <div className="mt-4 text-sm text-muted-foreground">
+                Найдено товаров: {filteredProducts.length}
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-            {category.products.map((product, index) => (
+            {filteredProducts.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <div className="text-6xl mb-4">🔍</div>
+                <h3 className="text-2xl font-bold mb-2">Ничего не найдено</h3>
+                <p className="text-muted-foreground">Попробуйте изменить параметры поиска</p>
+              </div>
+            ) : (
+              filteredProducts.map((product, index) => (
               <div
                 key={index}
                 className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
@@ -615,7 +699,7 @@ export default function CategoryPage() {
                   В корзину
                 </Button>
               </div>
-            ))}
+            )))}
           </div>
 
           <div className="max-w-4xl mx-auto">
