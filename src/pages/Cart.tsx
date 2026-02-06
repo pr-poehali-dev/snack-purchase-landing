@@ -19,6 +19,7 @@ export default function Cart() {
     contact: '',
     workingHours: '',
     comments: '',
+    paymentMethod: 'Наличными',
   });
 
   // Функция для вычисления общей суммы
@@ -61,6 +62,7 @@ export default function Cart() {
           contact: formData.contact,
           workingHours: formData.workingHours,
           comments: formData.comments,
+          paymentMethod: formData.paymentMethod,
           items: items.map(item => ({
             name: item.name,
             quantity: item.quantity,
@@ -85,6 +87,7 @@ export default function Cart() {
           contact: '',
           workingHours: '',
           comments: '',
+          paymentMethod: 'Наличными',
         });
         clearCart();
       } else {
@@ -301,6 +304,30 @@ export default function Cart() {
                         onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
                         className="bg-background/50 border-border focus:border-primary resize-none min-h-24"
                       />
+                    </div>
+                    
+                    <div>
+                      <label className="text-sm font-semibold mb-2 block">
+                        Способ оплаты *
+                      </label>
+                      <div className="flex gap-2">
+                        <Button
+                          type="button"
+                          variant={formData.paymentMethod === 'Наличными' ? 'default' : 'outline'}
+                          className="flex-1"
+                          onClick={() => setFormData({ ...formData, paymentMethod: 'Наличными' })}
+                        >
+                          Наличными
+                        </Button>
+                        <Button
+                          type="button"
+                          variant={formData.paymentMethod === 'Расчетный счет' ? 'default' : 'outline'}
+                          className="flex-1"
+                          onClick={() => setFormData({ ...formData, paymentMethod: 'Расчетный счет' })}
+                        >
+                          Расчетный счет
+                        </Button>
+                      </div>
                     </div>
                     
                     <div className="border-t border-border pt-4 mt-6">

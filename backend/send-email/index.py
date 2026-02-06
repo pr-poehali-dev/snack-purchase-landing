@@ -40,6 +40,7 @@ def handler(event: dict, context) -> dict:
     contact = data.get('contact', '')
     working_hours = data.get('workingHours', '')
     comments = data.get('comments', '')
+    payment_method = data.get('paymentMethod', 'Не указан')
     items = data.get('items', [])
     
     # Формируем текст письма с товарами и общей суммой
@@ -76,6 +77,7 @@ def handler(event: dict, context) -> dict:
 Точный адрес: {address}
 Контакт для связи: {contact}
 Время работы: {working_hours}
+Способ оплаты: {payment_method}
 Комментарии: {comments}
 
 ЗАКАЗАННЫЕ ТОВАРЫ:
