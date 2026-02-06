@@ -10,6 +10,7 @@ import ProductsSection from '@/components/category/ProductsSection';
 import CategoryContent from '@/components/category/CategoryContent';
 import CategoryOrderForm from '@/components/category/CategoryOrderForm';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { categoriesData } from '@/data/categoriesData';
 
 export default function CategoryPage() {
@@ -44,6 +45,10 @@ export default function CategoryPage() {
       
       <SchemaOrg type="itemList" data={category} />
       <Header />
+      
+      <Breadcrumbs items={[
+        { label: category.title, href: `/category/${category.id}` }
+      ]} />
       
       <CategoryHero category={category} />
 
