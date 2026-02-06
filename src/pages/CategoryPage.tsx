@@ -257,12 +257,17 @@ const categoriesData: Record<string, CategoryData> = {
       'Быстрая оборачиваемость'
     ],
     products: [
-      { name: 'Чипсы классические', description: 'Солёные, рифлёные', image: '🥔', price: '160₽/кг', unit: 'кг' },
-      { name: 'Чипсы со вкусом бекона', description: 'Популярный вкус', image: '🥔', price: '170₽/кг', unit: 'кг' },
-      { name: 'Чипсы сырные', description: 'Насыщенный вкус', image: '🥔', price: '165₽/кг', unit: 'кг' },
-      { name: 'Чипсы со специями', description: 'Острые вкусы', image: '🥔', price: '180₽/кг', unit: 'кг' },
-      { name: 'Чипсы натуральные', description: 'Без добавок', image: '🥔', price: '190₽/кг', unit: 'кг' },
-      { name: 'Чипсы кукурузные', description: 'Лёгкие, хрустящие', image: '🌽', price: '155₽/кг', unit: 'кг' }
+      { name: 'Картофельные ЧИПСЫ с острым и пряным вкусом 40 грамм', description: '40г', image: '🥔', price: '90₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ со вкусом сметаны и лука 40 грамм', description: '40г', image: '🥔', price: '90₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ со вкусом барбекю 40 грамм', description: '40г', image: '🥔', price: '90₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ оригинальные 40 грамм', description: '40г', image: '🥔', price: '90₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ СЫР 40 грамм', description: '40г', image: '🥔', price: '90₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ СЫР 160 грамм', description: '160г', image: '🥔', price: '215₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ с острым и пряным вкусом 160 грамм', description: '160г', image: '🥔', price: '215₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ со вкусом сметаны и лука 160 грамм', description: '160г', image: '🥔', price: '215₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ со вкусом барбекю 160 грамм', description: '160г', image: '🥔', price: '215₽/шт', unit: 'шт' },
+      { name: 'Картофельные ЧИПСЫ оригинальные 160 грамм', description: '160г', image: '🥔', price: '215₽/шт', unit: 'шт' },
+      { name: 'Кукурузные ЧИПСЫ НАЧОС с СЫРНЫМ СОУСОМ 200 грамм', description: '200г', image: '🌽', price: '240₽/шт', unit: 'шт' }
     ]
   },
   'seeds': {
