@@ -10,6 +10,30 @@ export default function BlogPost() {
   const { postId } = useParams<{ postId: string }>();
   const post = postId ? blogPostsData[postId] : null;
 
+  const schemaData = post ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.ogImage || "https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/47f9ae72-7eab-48a3-8086-81802cdce7ed.jpg",
+    "datePublished": "2026-02-06T12:00:00+03:00",
+    "dateModified": "2026-02-06T12:00:00+03:00",
+    "author": {
+      "@type": "Organization",
+      "name": "МЕРКА"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "МЕРКА — Оптовые поставки закусок",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://merkaprofish.ru/logo.png"
+      }
+    },
+    "articleSection": post.category,
+    "url": `https://merkaprofish.ru/blog/${post.id}`
+  } : null;
+
   if (!post) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -32,6 +56,11 @@ export default function BlogPost() {
         <title>{post.title} — Блог МЕРКА</title>
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={`https://merkaprofish.ru/blog/${post.id}`} />
+        
+        {/* Schema.org разметка для Google */}
+        <script type="application/ld+json">
+          {JSON.stringify(schemaData)}
+        </script>
         
         {/* Open Graph теги для соцсетей */}
         <meta property="og:type" content="article" />

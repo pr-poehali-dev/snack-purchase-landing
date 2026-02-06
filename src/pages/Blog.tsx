@@ -10,12 +10,41 @@ import { blogPostsData } from '@/data/blogPostsData';
 const blogPosts = Object.values(blogPostsData);
 
 export default function Blog() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Блог о пивных закусках — МЕРКА",
+    "description": "Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива.",
+    "url": "https://merkaprofish.ru/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "МЕРКА — Оптовые поставки закусок"
+    },
+    "blogPost": blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": post.ogImage || "https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/47f9ae72-7eab-48a3-8086-81802cdce7ed.jpg",
+      "datePublished": "2026-02-06T12:00:00+03:00",
+      "author": {
+        "@type": "Organization",
+        "name": "МЕРКА"
+      },
+      "url": `https://merkaprofish.ru/blog/${post.id}`
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Блог о пивных закусках — советы для магазинов разливного пива</title>
         <meta name="description" content="Полезные статьи о выборе закусок, работе с поставщиками и увеличении продаж в магазинах разливного пива." />
         <link rel="canonical" href="https://merkaprofish.ru/blog" />
+        
+        {/* Schema.org разметка для Google */}
+        <script type="application/ld+json">
+          {JSON.stringify(schemaData)}
+        </script>
         
         {/* Open Graph теги для соцсетей */}
         <meta property="og:type" content="website" />

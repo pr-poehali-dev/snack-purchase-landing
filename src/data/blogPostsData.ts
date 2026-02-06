@@ -1,20 +1,4 @@
-interface BlogPostSection {
-  type: 'paragraph' | 'heading' | 'list' | 'quote';
-  text?: string;
-  items?: string[];
-}
-
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  image: string;
-  ogImage?: string;
-  category: string;
-  readTime: string;
-  content: BlogPostSection[];
-}
+import { BlogPost } from '@/types/blog';
 
 export const blogPostsData: Record<string, BlogPost> = {
   'kak-vybrat-vyalenuju-rybu': {
