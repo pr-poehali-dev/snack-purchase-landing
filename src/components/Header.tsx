@@ -160,6 +160,15 @@ export default function Header() {
                 <span>Контакты</span>
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover/nav:w-full transition-all duration-300" />
               </Button>
+
+              <Link to="/blog">
+                <Button
+                  className="relative bg-gradient-to-r from-primary to-amber-500 hover:from-primary/90 hover:to-amber-600 text-primary-foreground font-semibold shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105"
+                >
+                  <Icon name="BookOpen" size={18} className="mr-2" />
+                  <span>Блог</span>
+                </Button>
+              </Link>
             </nav>
 
             <div className="flex items-center gap-3">
@@ -265,6 +274,15 @@ export default function Header() {
                   <Icon name="Phone" size={20} className="mr-3" />
                   Контакты
                 </Button>
+
+                <Link to="/blog" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                  <Button
+                    className="w-full justify-start text-lg bg-gradient-to-r from-primary to-amber-500 hover:from-primary/90 hover:to-amber-600 text-primary-foreground font-semibold shadow-lg"
+                  >
+                    <Icon name="BookOpen" size={20} className="mr-3" />
+                    Блог
+                  </Button>
+                </Link>
                 
                 <Button
                   size="lg"
