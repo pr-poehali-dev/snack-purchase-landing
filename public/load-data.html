@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка данных в БД</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin: 0 0 30px;
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 12px;
+        }
+        .load-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .load-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .load-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .admin-btn {
+            background: #f3f4f6;
+            color: #333;
+        }
+        .admin-btn:hover {
+            background: #e5e7eb;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            display: none;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+        .loading {
+            text-align: center;
+            color: #667eea;
+            display: none;
+        }
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🚀 Загрузка данных</h1>
+        <p>Нажмите кнопку, чтобы загрузить все категории и товары в базу данных</p>
+        
+        <button class="load-btn" id="loadBtn" onclick="loadData()">
+            Загрузить данные в БД
+        </button>
+        
+        <button class="admin-btn" onclick="window.location.href='/admin'">
+            Перейти в админку
+        </button>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Загрузка данных...</p>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function loadData() {
+            const btn = document.getElementById('loadBtn');
+            const result = document.getElementById('result');
+            const loading = document.getElementById('loading');
+            
+            btn.disabled = true;
+            result.style.display = 'none';
+            loading.style.display = 'block';
+            
+            try {
+                const response = await fetch('https://functions.poehali.dev/5bf48276-5075-495e-9198-848ea9b07213', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                loading.style.display = 'none';
+                result.style.display = 'block';
+                
+                if (data.success) {
+                    result.className = 'success';
+                    result.innerHTML = `
+                        <h3>✅ Успешно загружено!</h3>
+                        <p><strong>Категорий:</strong> ${data.categories}</p>
+                        <p><strong>Товаров:</strong> ${data.products}</p>
+                        <p style="margin-top: 16px;">Теперь вы можете перейти в админку для управления товарами.</p>
+                    `;
+                } else {
+                    throw new Error(data.error || 'Ошибка загрузки');
+                }
+            } catch (error) {
+                loading.style.display = 'none';
+                result.style.display = 'block';
+                result.className = 'error';
+                result.innerHTML = `
+                    <h3>❌ Ошибка</h3>
+                    <p>${error.message}</p>
+                `;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
