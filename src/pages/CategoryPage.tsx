@@ -305,12 +305,30 @@ const categoriesData: Record<string, CategoryData> = {
       'Для тех, кто не ест рыбу'
     ],
     products: [
-      { name: 'Говядина вяленая', description: 'Нарезка соломкой', image: '🥩', price: '890₽/кг', unit: 'кг' },
-      { name: 'Свинина вяленая', description: 'Кусочки', image: '🥩', price: '720₽/кг', unit: 'кг' },
-      { name: 'Курица вяленая', description: 'Филе полосками', image: '🍗', price: '580₽/кг', unit: 'кг' },
-      { name: 'Мясные чипсы', description: 'Тонкая нарезка', image: '🥩', price: '980₽/кг', unit: 'кг' },
-      { name: 'Свиные ушки', description: 'Хрустящие, острые', image: '🐷', price: '420₽/кг', unit: 'кг' },
-      { name: 'Колбаски охотничьи', description: 'Сырокопчёные', image: '🌭', price: '650₽/кг', unit: 'кг' }
+      { name: 'Ломтики говядины 500 гр', description: '500г упаковка', image: '🥩', price: '1140₽/шт', unit: 'шт' },
+      { name: 'Ломтики индейки 500 гр', description: '500г упаковка', image: '🥩', price: '1090₽/шт', unit: 'шт' },
+      { name: 'Ломтики конины 500 гр', description: '500г упаковка', image: '🥩', price: '1170₽/шт', unit: 'шт' },
+      { name: 'Ломтики курицы 500 гр', description: '500г упаковка', image: '🍗', price: '965₽/шт', unit: 'шт' },
+      { name: 'Ломтики лося 500 гр', description: '500г упаковка', image: '🥩', price: '1215₽/шт', unit: 'шт' },
+      { name: 'Ломтики оленины 500 гр', description: '500г упаковка', image: '🥩', price: '1210₽/шт', unit: 'шт' },
+      { name: 'Ломтики свинины 500 гр', description: '500г упаковка', image: '🥩', price: '1080₽/шт', unit: 'шт' },
+      { name: 'Мясные колбаски Классические', description: 'Вяленые', image: '🌭', price: '1380₽/кг', unit: 'кг' },
+      { name: 'Мясные колбаски со вкусом Сыра', description: 'Вяленые', image: '🌭', price: '1450₽/кг', unit: 'кг' },
+      { name: 'Мясные колбаски со вкусом Чеснока', description: 'Вяленые', image: '🌭', price: '1420₽/кг', unit: 'кг' },
+      { name: 'Мясные колбаски со вкусом Чили', description: 'Вяленые', image: '🌭', price: '1420₽/кг', unit: 'кг' },
+      { name: 'Ушки свиные в/у 90 гр', description: '90г вакуум', image: '🐷', price: '60₽/шт', unit: 'шт' },
+      { name: 'Ушки свиные в/у паприка 90 гр', description: '90г вакуум', image: '🐷', price: '60₽/шт', unit: 'шт' },
+      { name: 'Ушки свиные в/у хрен 90 гр', description: '90г вакуум', image: '🐷', price: '60₽/шт', unit: 'шт' },
+      { name: 'Ушки свиные в/у чеснок 90 гр', description: '90г вакуум', image: '🐷', price: '60₽/шт', unit: 'шт' },
+      { name: 'Целое ухо 180 гр оригинальное', description: '180г', image: '🐷', price: '125₽/шт', unit: 'шт' },
+      { name: 'Целое ухо 180 гр чеснок', description: '180г', image: '🐷', price: '125₽/шт', unit: 'шт' },
+      { name: 'КУРИЦА ХАЛАПЕНЬО(очень острая)', description: 'Очень острая', image: '🍗', price: '1440₽/кг', unit: 'кг' },
+      { name: 'СВИНИНА ХАЛАПЕНЬО(очень острая)', description: 'Очень острая', image: '🥩', price: '1440₽/кг', unit: 'кг' },
+      { name: 'Чипсы мясные КУРИЦА со вкусом чеснока', description: 'С чесноком', image: '🍗', price: '1440₽/кг', unit: 'кг' },
+      { name: 'Чипсы мясные КУРИЦА', description: 'Оригинальные', image: '🍗', price: '1240₽/кг', unit: 'кг' },
+      { name: 'Чипсы мясные СВИНИНА', description: 'Оригинальные', image: '🥩', price: '1310₽/кг', unit: 'кг' },
+      { name: 'Чипсы мясные СВИНИНА ПО КАВКАЗКИ', description: 'По-кавказски', image: '🥩', price: '1340₽/кг', unit: 'кг' },
+      { name: 'Чипсы мясные "ИНДЕЙКА ГРИЛЬ"', description: 'Гриль', image: '🥩', price: '1490₽/кг', unit: 'кг' }
     ]
   },
   'cheese': {
