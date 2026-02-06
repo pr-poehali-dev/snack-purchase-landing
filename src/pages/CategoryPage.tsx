@@ -376,12 +376,24 @@ const categoriesData: Record<string, CategoryData> = {
       'Быстрые сроки выполнения'
     ],
     products: [
-      { name: 'Фасовка 50-100г', description: 'Для кассовой зоны', image: '📦', price: '15₽/шт', unit: 'шт' },
-      { name: 'Фасовка 200-500г', description: 'Стандарт', image: '📦', price: '25₽/шт', unit: 'шт' },
-      { name: 'Фасовка 1кг', description: 'Оптовая', image: '📦', price: '35₽/шт', unit: 'шт' },
-      { name: 'Вакуумная упаковка', description: 'Для рыбы и мяса', image: '📦', price: '40₽/шт', unit: 'шт' },
-      { name: 'Брендированная упаковка', description: 'С вашим логотипом', image: '📦', price: 'По запросу', unit: 'шт' },
-      { name: 'Картонные коробки', description: 'Для оптовых заказов', image: '📦', price: '50₽/шт', unit: 'шт' }
+      { name: 'Ассорти рыбное "Семь вкусов моря" 125 гр', description: '125г упаковка', image: '📦', price: '250₽/шт', unit: 'шт' },
+      { name: 'Икра воблы 125 гр', description: '125г упаковка', image: '📦', price: '330₽/шт', unit: 'шт' },
+      { name: 'Икра камбалы 125 гр', description: '125г упаковка', image: '📦', price: '400₽/шт', unit: 'шт' },
+      { name: 'Икра минтая 125 гр', description: '125г упаковка', image: '📦', price: '245₽/шт', unit: 'шт' },
+      { name: 'Корюшка чищеная с икрой 125 гр', description: '125г упаковка', image: '📦', price: '330₽/шт', unit: 'шт' },
+      { name: 'Ореховый микс 125 гр', description: '125г упаковка', image: '📦', price: '180₽/шт', unit: 'шт' },
+      { name: 'Соломка камбалы 125 гр', description: '125г упаковка', image: '📦', price: '250₽/шт', unit: 'шт' },
+      { name: 'Соломка семги 125 гр', description: '125г упаковка', image: '📦', price: '155₽/шт', unit: 'шт' },
+      { name: 'Фисташки Америка 125 гр', description: '125г упаковка', image: '📦', price: '210₽/шт', unit: 'шт' },
+      { name: 'Чипсы мясные КУРИЦА 125 гр', description: '125г упаковка', image: '📦', price: '155₽/шт', unit: 'шт' },
+      { name: 'Чипсы мясные СВИНИНА 125 гр', description: '125г упаковка', image: '📦', price: '170₽/шт', unit: 'шт' },
+      { name: 'Вобла чищеная (тушка)', description: 'Чищеная тушка', image: '📦', price: '1100₽/кг', unit: 'кг' },
+      { name: 'Корюшка чищеная (тушка)', description: 'Чищеная тушка', image: '📦', price: '1400₽/кг', unit: 'кг' },
+      { name: 'Сырок чищеный (тушка)', description: 'Чищеная тушка', image: '📦', price: '750₽/кг', unit: 'кг' },
+      { name: 'Стейк горбуши сушеные 150 гр', description: '150г упаковка', image: '📦', price: '265₽/шт', unit: 'шт' },
+      { name: 'Набор из воблы 150гр', description: '150г упаковка', image: '📦', price: '65₽/шт', unit: 'шт' },
+      { name: 'Креветка с/с 40 гр', description: '40г упаковка', image: '📦', price: '70₽/шт', unit: 'шт' },
+      { name: 'Креветка с/с 150 гр', description: '150г упаковка', image: '📦', price: '255₽/шт', unit: 'шт' }
     ]
   }
 };
