@@ -344,12 +344,23 @@ const categoriesData: Record<string, CategoryData> = {
       'Отлично выглядит на витрине'
     ],
     products: [
-      { name: 'Сыр копчёный колбасный', description: 'Косичка', image: '🧀', price: '380₽/кг', unit: 'кг' },
-      { name: 'Сыр копчёный "Косичка"', description: 'Классика', image: '🧀', price: '420₽/кг', unit: 'кг' },
-      { name: 'Сыр жареный', description: 'В панировке', image: '🧀', price: '680₽/кг', unit: 'кг' },
-      { name: 'Сыр сулугуни копчёный', description: 'Косичка', image: '🧀', price: '520₽/кг', unit: 'кг' },
-      { name: 'Сырные палочки', description: 'Хрустящие', image: '🧀', price: '340₽/кг', unit: 'кг' },
-      { name: 'Сыр чечил', description: 'Волокнистый', image: '🧀', price: '480₽/кг', unit: 'кг' }
+      { name: 'Сыр "Чикорн" Мексиканская смесь', description: 'Мексиканская смесь', image: '🧀', price: '1305₽/кг', unit: 'кг' },
+      { name: 'Сыр "Чикорн" Оригинальный', description: 'Оригинальный', image: '🧀', price: '1305₽/кг', unit: 'кг' },
+      { name: 'Сыр джил паутина с чесноком', description: 'С чесноком', image: '🧀', price: '1150₽/кг', unit: 'кг' },
+      { name: 'Сыр жареный "Оригинал" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр жареный "Тайский перец" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр жареный "Красная икра" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр жареный "Сметана зелень" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр жареный "Васаби" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр жареный "Чеснок" 0,5 кг', description: '500г упаковка', image: '🧀', price: '575₽/шт', unit: 'шт' },
+      { name: 'Сыр копченый "Бочонок" 500 гр', description: '500г', image: '🧀', price: '700₽/шт', unit: 'шт' },
+      { name: 'Сыр копченый "Бочонок молочный со вкусом паприки"', description: 'С паприкой', image: '🧀', price: '1150₽/кг', unit: 'кг' },
+      { name: 'Сыр копченый "Бочонок молочный со вкусом чеснок - укроп"', description: 'Чеснок-укроп', image: '🧀', price: '1150₽/кг', unit: 'кг' },
+      { name: 'Сыр копченый "Балык" 50 гр', description: '50г', image: '🧀', price: '95₽/шт', unit: 'шт' },
+      { name: 'Сыр копченый "Кавказская коса" 100 гр', description: '100г', image: '🧀', price: '160₽/шт', unit: 'шт' },
+      { name: 'Сыр копченый весовой', description: 'Классический', image: '🧀', price: '1150₽/кг', unit: 'кг' },
+      { name: 'Сыр копченый весовой "Коса"', description: 'Косичка', image: '🧀', price: '1200₽/кг', unit: 'кг' },
+      { name: 'Сыр копченый весовой "Спагетти"', description: 'Тонкие нити', image: '🧀', price: '1150₽/кг', unit: 'кг' }
     ]
   },
   'packaging': {
