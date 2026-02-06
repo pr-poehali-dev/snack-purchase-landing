@@ -41,52 +41,62 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/10 to-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post, index) => (
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
                 className="group"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <Card className="h-full glass border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden">
-                  <div className="relative bg-gradient-to-br from-primary/20 to-amber-500/20 p-12 flex items-center justify-center">
-                    <div className="text-8xl transform group-hover:scale-110 transition-transform duration-300">
+                <Card className="h-full glass border-2 border-primary/20 hover:border-amber-500/50 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-amber-500/20 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative bg-gradient-to-br from-primary/10 via-amber-500/10 to-primary/5 p-16 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
+                    <div className="text-9xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 relative z-10 drop-shadow-2xl">
                       {post.image}
                     </div>
-                    <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-primary to-amber-500 text-primary-foreground text-xs font-bold px-4 py-2 rounded-full shadow-lg">
                       {post.category}
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                      <div className="flex items-center gap-1">
-                        <Icon name="Calendar" size={14} />
-                        {post.date}
+                  <div className="p-6 relative">
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4 bg-secondary/30 rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-1.5">
+                        <Icon name="Calendar" size={14} className="text-primary" />
+                        <span>{post.date}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Icon name="Clock" size={14} />
-                        {post.readTime}
+                      <div className="w-px h-4 bg-border" />
+                      <div className="flex items-center gap-1.5">
+                        <Icon name="Clock" size={14} className="text-amber-500" />
+                        <span>{post.readTime}</span>
                       </div>
                     </div>
                     
-                    <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    <h2 className="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-amber-500 transition-all duration-300 leading-tight">
                       {post.title}
                     </h2>
                     
-                    <p className="text-muted-foreground mb-4 line-clamp-3">
+                    <p className="text-muted-foreground mb-6 line-clamp-3 text-sm leading-relaxed">
                       {post.excerpt}
                     </p>
                     
-                    <Button
-                      variant="ghost"
-                      className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all"
-                    >
-                      Читать далее
-                      <Icon name="ArrowRight" size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <div className="relative overflow-hidden rounded-lg">
+                      <Button
+                        variant="ghost"
+                        className="w-full group-hover:bg-gradient-to-r group-hover:from-primary/10 group-hover:to-amber-500/10 transition-all font-semibold relative overflow-hidden"
+                      >
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          Читать далее
+                          <Icon name="ArrowRight" size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary to-amber-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               </Link>

@@ -66,67 +66,87 @@ export default function BlogPost() {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/5 to-background">
         <div className="max-w-4xl mx-auto">
-          <Link to="/blog" className="inline-flex items-center text-primary hover:text-amber-500 transition-colors mb-8">
-            <Icon name="ArrowLeft" size={18} className="mr-2" />
-            Вернуться к блогу
+          <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:text-amber-500 transition-all mb-8 group bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-lg">
+            <Icon name="ArrowLeft" size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="font-medium">Вернуться к блогу</span>
           </Link>
 
-          <div className="glass rounded-3xl p-8 sm:p-12 border-2 border-primary/30 shadow-2xl">
-            <div className="text-8xl mb-8 text-center">{post.image}</div>
+          <div className="glass rounded-3xl p-8 sm:p-12 lg:p-16 border-2 border-primary/30 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-amber-500/10 rounded-full blur-3xl -z-0" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-amber-500/10 to-primary/10 rounded-full blur-3xl -z-0" />
             
-            <div className="prose prose-lg max-w-none">
-              {post.content.map((section, index) => (
-                <div key={index} className="mb-8">
-                  {section.type === 'paragraph' && (
-                    <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-                      {section.text}
-                    </p>
-                  )}
-                  
-                  {section.type === 'heading' && (
-                    <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 mt-12">
-                      {section.text}
-                    </h2>
-                  )}
-                  
-                  {section.type === 'list' && (
-                    <ul className="space-y-4 mb-6">
-                      {section.items?.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span className="text-primary text-xl mt-1">•</span>
-                          <span className="text-lg text-foreground/90 leading-relaxed flex-1">
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {section.type === 'quote' && (
-                    <div className="border-l-4 border-primary bg-primary/5 p-6 rounded-r-xl my-8">
-                      <p className="text-xl font-semibold text-primary italic">
+            <div className="relative z-10">
+              <div className="text-9xl mb-10 text-center drop-shadow-2xl animate-fade-in">{post.image}</div>
+              
+              <div className="prose prose-lg max-w-none">
+                {post.content.map((section, index) => (
+                  <div key={index} className="mb-8">
+                    {section.type === 'paragraph' && (
+                      <p className="text-lg text-foreground leading-relaxed mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-1 first-letter:float-left">
                         {section.text}
                       </p>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                    
+                    {section.type === 'heading' && (
+                      <div className="relative mt-16 mb-8">
+                        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-amber-500 rounded-full" />
+                        <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-amber-500 bg-clip-text text-transparent">
+                          {section.text}
+                        </h2>
+                      </div>
+                    )}
+                    
+                    {section.type === 'list' && (
+                      <ul className="space-y-4 mb-8">
+                        {section.items?.map((item, i) => (
+                          <li key={i} className="flex items-start gap-4 group">
+                            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-primary to-amber-500 flex items-center justify-center mt-1 group-hover:scale-110 transition-transform">
+                              <Icon name="Check" size={14} className="text-primary-foreground" />
+                            </div>
+                            <span className="text-lg text-foreground leading-relaxed flex-1">
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {section.type === 'quote' && (
+                      <div className="relative my-12 group">
+                        <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-amber-500 to-primary rounded-full" />
+                        <div className="bg-gradient-to-br from-primary/10 via-amber-500/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 group-hover:border-amber-500/30 transition-colors">
+                          <Icon name="Quote" size={32} className="text-primary/30 mb-4" />
+                          <p className="text-xl font-semibold bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent leading-relaxed">
+                            {section.text}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="mt-12 glass rounded-2xl p-8 border-2 border-primary/20">
-            <h3 className="text-2xl font-bold mb-4">Понравилась статья?</h3>
-            <p className="text-muted-foreground mb-6">
-              Свяжитесь с нами, чтобы узнать больше о поставках качественных закусок для вашего магазина
-            </p>
-            <Link to="/">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-amber-500 hover:from-primary/90 hover:to-amber-600">
-                <Icon name="Send" className="mr-2" />
-                Связаться с нами
-              </Button>
-            </Link>
+          <div className="mt-12 glass rounded-2xl p-8 border-2 border-primary/20 shadow-xl hover:shadow-2xl hover:border-amber-500/30 transition-all relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4">
+                <Icon name="Sparkles" size={24} className="text-amber-500" />
+                <h3 className="text-2xl font-bold">Понравилась статья?</h3>
+              </div>
+              <p className="text-muted-foreground mb-6 text-lg">
+                Свяжитесь с нами, чтобы узнать больше о поставках качественных закусок для вашего магазина
+              </p>
+              <Link to="/">
+                <Button size="lg" className="bg-gradient-to-r from-primary to-amber-500 hover:from-primary/90 hover:to-amber-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <Icon name="Send" className="mr-2" />
+                  Связаться с нами
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
