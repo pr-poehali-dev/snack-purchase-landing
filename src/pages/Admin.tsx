@@ -31,7 +31,14 @@ export default function Admin() {
   const loadProducts = async () => {
     try {
       const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
+      console.log('Loaded categories:', data);
+      
       setCategories(data);
       if (!selectedCategory && Object.keys(data).length > 0) {
         setSelectedCategory(Object.keys(data)[0]);
@@ -39,6 +46,7 @@ export default function Admin() {
       setLoading(false);
     } catch (error) {
       console.error('Ошибка загрузки:', error);
+      alert(`Ошибка загрузки данных: ${error}`);
       setLoading(false);
     }
   };
@@ -70,6 +78,25 @@ export default function Admin() {
         <div className="text-center">
           <Icon name="Loader2" className="animate-spin text-primary mx-auto mb-4" size={48} />
           <p className="text-xl font-medium">Загрузка данных...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Проверка наличия данных
+  if (Object.keys(categories).length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-primary/5">
+        <div className="text-center">
+          <Icon name="AlertCircle" className="text-destructive mx-auto mb-4" size={48} />
+          <p className="text-xl font-medium mb-2">Нет данных для отображения</p>
+          <p className="text-muted-foreground mb-4">Категории и товары не найдены</p>
+          <button
+            onClick={loadProducts}
+            className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Попробовать снова
+          </button>
         </div>
       </div>
     );
