@@ -9,6 +9,7 @@ interface Product {
   description: string;
   price: string;
   in_stock: boolean;
+  image?: string;
 }
 
 interface Category {
@@ -30,6 +31,7 @@ export default function Admin() {
   const [creatingProduct, setCreatingProduct] = useState(false);
   const [saving, setSaving] = useState(false);
   const [cleaningDuplicates, setCleaningDuplicates] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
     // Проверяем сохраненную сессию
@@ -173,6 +175,49 @@ export default function Admin() {
     };
     setEditingProduct(newProduct);
     setCreatingProduct(true);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Проверка размера (макс 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Файл слишком большой. Максимальный размер 5MB');
+      return;
+    }
+
+    setUploadingImage(true);
+    try {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const base64 = event.target?.result as string;
+
+        const response = await fetch('https://functions.poehali.dev/4311a1b7-08ab-44e2-96a8-a96e8037e753', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            image: base64,
+            filename: file.name
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && editingProduct) {
+          setEditingProduct({ ...editingProduct, image: result.url });
+          alert('Изображение загружено успешно!');
+        } else {
+          alert(`Ошибка загрузки: ${result.error}`);
+        }
+        setUploadingImage(false);
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      console.error('Ошибка загрузки изображения:', error);
+      alert(`Ошибка загрузки: ${error}`);
+      setUploadingImage(false);
+    }
   };
 
   const handleCreateSave = async () => {
@@ -427,7 +472,7 @@ export default function Admin() {
               <table className="w-full">
                 <thead className="bg-primary/10 border-b border-primary/20">
                   <tr>
-                    <th className="px-6 py-4 text-left font-semibold">ID</th>
+                    <th className="px-6 py-4 text-left font-semibold">Фото</th>
                     <th className="px-6 py-4 text-left font-semibold">Название</th>
                     <th className="px-6 py-4 text-left font-semibold">Описание</th>
                     <th className="px-6 py-4 text-left font-semibold">Цена</th>
@@ -438,7 +483,19 @@ export default function Admin() {
                 <tbody>
                   {currentCategory.products.map((product) => (
                     <tr key={product.id} className="border-b border-primary/10 hover:bg-primary/5 transition-colors">
-                      <td className="px-6 py-4 text-sm text-muted-foreground">{product.id}</td>
+                      <td className="px-6 py-4">
+                        {product.image ? (
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            className="w-12 h-12 object-cover rounded-lg border border-primary/20"
+                          />
+                        ) : (
+                          <div className="w-12 h-12 flex items-center justify-center bg-muted rounded-lg border border-primary/20">
+                            <Icon name="ImageOff" size={20} className="text-muted-foreground" />
+                          </div>
+                        )}
+                      </td>
                       <td className="px-6 py-4 font-medium">{product.name}</td>
                       <td className="px-6 py-4 text-sm text-muted-foreground max-w-xs truncate">
                         {product.description}
@@ -529,6 +586,57 @@ export default function Admin() {
                     onChange={(e) => setEditingProduct({ ...editingProduct, price: e.target.value })}
                     className="w-full px-4 py-3 glass rounded-lg border border-primary/20 focus:border-primary/50 outline-none transition-colors"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Изображение товара</label>
+                  <div className="space-y-3">
+                    {editingProduct.image && (
+                      <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-primary/20">
+                        <img 
+                          src={editingProduct.image} 
+                          alt="Превью" 
+                          className="w-full h-full object-cover"
+                        />
+                        <button
+                          onClick={() => setEditingProduct({ ...editingProduct, image: '' })}
+                          className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                        >
+                          <Icon name="X" size={16} />
+                        </button>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        disabled={uploadingImage}
+                        className="hidden"
+                        id="image-upload"
+                      />
+                      <label
+                        htmlFor="image-upload"
+                        className={`flex items-center gap-2 px-4 py-2 glass border border-primary/20 rounded-lg cursor-pointer hover:border-primary/50 transition-colors ${uploadingImage ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      >
+                        {uploadingImage ? (
+                          <>
+                            <Icon name="Loader2" size={16} className="animate-spin" />
+                            <span>Загрузка...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Icon name="Upload" size={16} />
+                            <span>Загрузить изображение</span>
+                          </>
+                        )}
+                      </label>
+                      {editingProduct.image && (
+                        <span className="text-sm text-green-600">✓ Загружено</span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground">Макс. размер: 5MB. Форматы: JPG, PNG, WEBP</p>
+                  </div>
                 </div>
 
                 <div>

@@ -110,6 +110,10 @@ def handler(event: dict, context) -> dict:
                 update_fields.append('in_stock = %s')
                 params.append(body['in_stock'])
             
+            if 'image' in body:
+                update_fields.append('image = %s')
+                params.append(body['image'])
+            
             if not update_fields:
                 return {
                     'statusCode': 400,
