@@ -27,6 +27,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [creatingProduct, setCreatingProduct] = useState(false);
   const [saving, setSaving] = useState(false);
   const [cleaningDuplicates, setCleaningDuplicates] = useState(false);
   const [updatingPackaging, setUpdatingPackaging] = useState(false);
@@ -142,6 +143,28 @@ export default function Admin() {
     setUpdatingPackaging(false);
   };
 
+  const handleDelete = async (productId: number) => {
+    if (!confirm('Вы точно хотите удалить эту позицию? Это действие нельзя отменить.')) return;
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: productId })
+      });
+
+      if (response.ok) {
+        alert('Товар успешно удалён');
+        await loadProducts();
+      } else {
+        alert('Ошибка при удалении товара');
+      }
+    } catch (error) {
+      console.error('Ошибка удаления:', error);
+      alert(`Ошибка удаления: ${error}`);
+    }
+  };
+
   const handleSave = async () => {
     if (!editingProduct) return;
 
@@ -159,6 +182,50 @@ export default function Admin() {
       }
     } catch (error) {
       console.error('Ошибка сохранения:', error);
+    }
+    setSaving(false);
+  };
+
+  const handleCreate = () => {
+    const newProduct: Product = {
+      id: 0,
+      name: '',
+      description: '',
+      price: '',
+      in_stock: true
+    };
+    setEditingProduct(newProduct);
+    setCreatingProduct(true);
+  };
+
+  const handleCreateSave = async () => {
+    if (!editingProduct || !editingProduct.name || !editingProduct.price) {
+      alert('Заполните название и цену товара');
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...editingProduct,
+          category_id: selectedCategory
+        })
+      });
+
+      if (response.ok) {
+        alert('Товар успешно добавлен');
+        await loadProducts();
+        setEditingProduct(null);
+        setCreatingProduct(false);
+      } else {
+        alert('Ошибка при создании товара');
+      }
+    } catch (error) {
+      console.error('Ошибка создания:', error);
+      alert(`Ошибка создания: ${error}`);
     }
     setSaving(false);
   };
@@ -386,6 +453,16 @@ export default function Admin() {
             animate={{ opacity: 1, scale: 1 }}
             className="glass rounded-xl border border-primary/20 overflow-hidden"
           >
+            <div className="p-4 border-b border-primary/20 flex justify-between items-center">
+              <h3 className="text-xl font-bold">{currentCategory.emoji} {currentCategory.title}</h3>
+              <button
+                onClick={handleCreate}
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all"
+              >
+                <Icon name="Plus" size={20} />
+                <span>Добавить позицию</span>
+              </button>
+            </div>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-primary/10 border-b border-primary/20">
@@ -420,13 +497,22 @@ export default function Admin() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <button
-                          onClick={() => setEditingProduct(product)}
-                          className="flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg transition-all"
-                        >
-                          <Icon name="Edit" size={16} />
-                          <span>Редактировать</span>
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => { setEditingProduct(product); setCreatingProduct(false); }}
+                            className="flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg transition-all"
+                          >
+                            <Icon name="Edit" size={16} />
+                            <span>Редактировать</span>
+                          </button>
+                          <button
+                            onClick={() => handleDelete(product.id)}
+                            className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-600 rounded-lg transition-all"
+                          >
+                            <Icon name="Trash2" size={16} />
+                            <span>Удалить</span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -445,7 +531,7 @@ export default function Admin() {
               className="glass rounded-2xl border border-primary/20 p-8 max-w-2xl w-full"
             >
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">Редактирование товара</h2>
+                <h2 className="text-2xl font-bold">{creatingProduct ? 'Добавление товара' : 'Редактирование товара'}</h2>
                 <button
                   onClick={() => setEditingProduct(null)}
                   className="p-2 hover:bg-primary/10 rounded-lg transition-colors"
@@ -500,7 +586,7 @@ export default function Admin() {
 
               <div className="flex gap-3 mt-8">
                 <button
-                  onClick={handleSave}
+                  onClick={creatingProduct ? handleCreateSave : handleSave}
                   disabled={saving}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50"
                 >
@@ -512,12 +598,12 @@ export default function Admin() {
                   ) : (
                     <>
                       <Icon name="Save" size={20} />
-                      <span>Сохранить</span>
+                      <span>{creatingProduct ? 'Создать' : 'Сохранить'}</span>
                     </>
                   )}
                 </button>
                 <button
-                  onClick={() => setEditingProduct(null)}
+                  onClick={() => { setEditingProduct(null); setCreatingProduct(false); }}
                   className="px-6 py-3 glass border border-primary/20 rounded-lg font-semibold hover:border-primary/50 transition-colors"
                 >
                   Отмена

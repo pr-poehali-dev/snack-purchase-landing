@@ -12,7 +12,7 @@ def handler(event: dict, context) -> dict:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, PUT, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type'
             },
             'body': ''
@@ -147,6 +147,80 @@ def handler(event: dict, context) -> dict:
                     'success': True,
                     'product': dict(updated_product)
                 })
+            }
+        
+        elif method == 'POST':
+            # Создание нового товара
+            body = json.loads(event.get('body', '{}'))
+            category_id = body.get('category_id')
+            name = body.get('name')
+            price = body.get('price')
+            
+            if not category_id or not name or not price:
+                return {
+                    'statusCode': 400,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'category_id, name and price are required'})
+                }
+            
+            cur.execute('''
+                INSERT INTO products (category_id, name, description, price, in_stock, image, unit)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                RETURNING id, name, description, price, in_stock
+            ''', (
+                category_id,
+                name,
+                body.get('description', ''),
+                price,
+                body.get('in_stock', True),
+                body.get('image', ''),
+                body.get('unit', 'кг')
+            ))
+            
+            new_product = cur.fetchone()
+            conn.commit()
+            cur.close()
+            conn.close()
+            
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({
+                    'success': True,
+                    'product': dict(new_product)
+                })
+            }
+        
+        elif method == 'DELETE':
+            # Удаление товара
+            body = json.loads(event.get('body', '{}'))
+            product_id = body.get('id')
+            
+            if not product_id:
+                return {
+                    'statusCode': 400,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Product ID is required'})
+                }
+            
+            cur.execute('DELETE FROM products WHERE id = %s RETURNING id', (product_id,))
+            deleted = cur.fetchone()
+            
+            conn.commit()
+            cur.close()
+            conn.close()
+            
+            if not deleted:
+                return {
+                    'statusCode': 404,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Product not found'})
+                }
+            
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'success': True, 'deleted_id': deleted['id']})
             }
         
         else:
