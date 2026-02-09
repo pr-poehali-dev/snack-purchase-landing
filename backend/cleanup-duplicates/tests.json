@@ -1,7 +1,7 @@
 {
   "tests": [
     {
-      "name": "Test update packaging",
+      "name": "Test cleanup endpoint",
       "method": "POST",
       "path": "/",
       "expectedStatus": 200,

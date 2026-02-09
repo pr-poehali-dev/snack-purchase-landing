@@ -30,7 +30,6 @@ export default function Admin() {
   const [creatingProduct, setCreatingProduct] = useState(false);
   const [saving, setSaving] = useState(false);
   const [cleaningDuplicates, setCleaningDuplicates] = useState(false);
-  const [updatingPackaging, setUpdatingPackaging] = useState(false);
 
   useEffect(() => {
     // Проверяем сохраненную сессию
@@ -100,7 +99,7 @@ export default function Admin() {
 
     setCleaningDuplicates(true);
     try {
-      const response = await fetch('https://functions.poehali.dev/e568a66a-7641-4ce4-ad05-90f9d7380491', {
+      const response = await fetch('https://functions.poehali.dev/a1f82e48-2b7c-48f3-880b-b7056143b913', {
         method: 'POST'
       });
 
@@ -119,29 +118,7 @@ export default function Admin() {
     setCleaningDuplicates(false);
   };
 
-  const handleUpdatePackaging = async () => {
-    if (!confirm('Обновить категорию Фасовка с правильными товарами?')) return;
 
-    setUpdatingPackaging(true);
-    try {
-      const response = await fetch('https://functions.poehali.dev/b14476e4-1249-4e3c-8b55-4ac0a31c0542', {
-        method: 'POST'
-      });
-
-      const result = await response.json();
-      
-      if (response.ok) {
-        alert(`Успешно! Удалено ${result.deleted} старых, добавлено ${result.inserted} новых товаров`);
-        await loadProducts();
-      } else {
-        alert(`Ошибка: ${result.error}`);
-      }
-    } catch (error) {
-      console.error('Ошибка обновления:', error);
-      alert(`Ошибка обновления категории: ${error}`);
-    }
-    setUpdatingPackaging(false);
-  };
 
   const handleDelete = async (productId: number) => {
     if (!confirm('Вы точно хотите удалить эту позицию? Это действие нельзя отменить.')) return;
@@ -364,23 +341,6 @@ export default function Admin() {
               <p className="text-muted-foreground">Управление товарами и ценами</p>
             </div>
             <div className="flex gap-3">
-              <button
-                onClick={handleUpdatePackaging}
-                disabled={updatingPackaging}
-                className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-green-500/20 hover:border-green-500/50 text-green-600 transition-all disabled:opacity-50"
-              >
-                {updatingPackaging ? (
-                  <>
-                    <Icon name="Loader2" size={20} className="animate-spin" />
-                    <span>Обновление...</span>
-                  </>
-                ) : (
-                  <>
-                    <Icon name="RefreshCw" size={20} />
-                    <span>Обновить Фасовку</span>
-                  </>
-                )}
-              </button>
               <button
                 onClick={handleCleanupDuplicates}
                 disabled={cleaningDuplicates}
