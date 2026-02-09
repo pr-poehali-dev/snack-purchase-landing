@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import Icon from '@/components/ui/icon';
 
 interface Product {
@@ -115,7 +116,12 @@ export default function Admin() {
   // Форма входа
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-primary/5 to-background p-6">
+      <>
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+          <title>Вход в админку</title>
+        </Helmet>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-primary/5 to-background p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -185,6 +191,7 @@ export default function Admin() {
           </div>
         </motion.div>
       </div>
+      </>
     );
   }
 
@@ -221,7 +228,12 @@ export default function Admin() {
   const currentCategory = categories[selectedCategory];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background p-6">
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Админ-панель</title>
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background p-6">
       <div className="max-w-7xl mx-auto">
         {/* Шапка */}
         <motion.div
@@ -432,5 +444,6 @@ export default function Admin() {
         )}
       </div>
     </div>
+    </>
   );
 }
