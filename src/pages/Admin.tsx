@@ -73,8 +73,15 @@ export default function Admin() {
       console.log('Loaded categories:', data);
       
       setCategories(data);
+      
+      // Выбираем первую категорию с товарами
       if (!selectedCategory && Object.keys(data).length > 0) {
-        setSelectedCategory(Object.keys(data)[0]);
+        const firstCategoryWithProducts = Object.keys(data).find(
+          (catId) => data[catId].products && data[catId].products.length > 0
+        );
+        if (firstCategoryWithProducts) {
+          setSelectedCategory(firstCategoryWithProducts);
+        }
       }
       setLoading(false);
     } catch (error) {
@@ -254,21 +261,23 @@ export default function Admin() {
         >
           <div className="glass rounded-xl p-4 border border-primary/20">
             <div className="flex flex-wrap gap-3">
-              {Object.values(categories).map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-lg transition-all ${
-                    selectedCategory === cat.id
-                      ? 'bg-primary text-primary-foreground shadow-lg'
-                      : 'glass border border-primary/20 hover:border-primary/50'
-                  }`}
-                >
-                  <span className="mr-2">{cat.emoji}</span>
-                  <span className="font-medium">{cat.title}</span>
-                  <span className="ml-2 text-sm opacity-75">({cat.products.length})</span>
-                </button>
-              ))}
+              {Object.values(categories)
+                .filter((cat) => cat.products && cat.products.length > 0)
+                .map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-4 py-2 rounded-lg transition-all ${
+                      selectedCategory === cat.id
+                        ? 'bg-primary text-primary-foreground shadow-lg'
+                        : 'glass border border-primary/20 hover:border-primary/50'
+                    }`}
+                  >
+                    <span className="mr-2">{cat.emoji}</span>
+                    <span className="font-medium">{cat.title}</span>
+                    <span className="ml-2 text-sm opacity-75">({cat.products.length})</span>
+                  </button>
+                ))}
             </div>
           </div>
         </motion.div>
