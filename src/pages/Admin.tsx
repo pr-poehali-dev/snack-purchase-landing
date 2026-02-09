@@ -28,6 +28,7 @@ export default function Admin() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [saving, setSaving] = useState(false);
+  const [cleaningDuplicates, setCleaningDuplicates] = useState(false);
 
   useEffect(() => {
     // Проверяем сохраненную сессию
@@ -90,6 +91,30 @@ export default function Admin() {
       alert(`Ошибка загрузки данных: ${error}`);
       setLoading(false);
     }
+  };
+
+  const handleCleanupDuplicates = async () => {
+    if (!confirm('Удалить все дубликаты товаров? Это действие нельзя отменить.')) return;
+
+    setCleaningDuplicates(true);
+    try {
+      const response = await fetch('https://functions.poehali.dev/e568a66a-7641-4ce4-ad05-90f9d7380491', {
+        method: 'POST'
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        alert(`Успешно удалено ${result.deleted_count} дубликатов!`);
+        await loadProducts();
+      } else {
+        alert(`Ошибка: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Ошибка очистки:', error);
+      alert(`Ошибка очистки дубликатов: ${error}`);
+    }
+    setCleaningDuplicates(false);
   };
 
   const handleSave = async () => {
@@ -247,6 +272,23 @@ export default function Admin() {
               <p className="text-muted-foreground">Управление товарами и ценами</p>
             </div>
             <div className="flex gap-3">
+              <button
+                onClick={handleCleanupDuplicates}
+                disabled={cleaningDuplicates}
+                className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-yellow-500/20 hover:border-yellow-500/50 text-yellow-600 transition-all disabled:opacity-50"
+              >
+                {cleaningDuplicates ? (
+                  <>
+                    <Icon name="Loader2" size={20} className="animate-spin" />
+                    <span>Очистка...</span>
+                  </>
+                ) : (
+                  <>
+                    <Icon name="Trash2" size={20} />
+                    <span>Удалить дубликаты</span>
+                  </>
+                )}
+              </button>
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-destructive/20 hover:border-destructive/50 text-destructive transition-all"
