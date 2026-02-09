@@ -18,6 +18,10 @@ interface Category {
 }
 
 export default function Admin() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginInput, setLoginInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [authError, setAuthError] = useState('');
   const [categories, setCategories] = useState<Record<string, Category>>({});
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -25,8 +29,37 @@ export default function Admin() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    loadProducts();
+    // Проверяем сохраненную сессию
+    const auth = sessionStorage.getItem('admin_auth');
+    if (auth === 'true') {
+      setIsAuthenticated(true);
+      loadProducts();
+    } else {
+      setLoading(false);
+    }
   }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (loginInput === 'Merka' && passwordInput === 'Www373826483') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('admin_auth', 'true');
+      setAuthError('');
+      setLoading(true);
+      loadProducts();
+    } else {
+      setAuthError('Неверный логин или пароль');
+      setPasswordInput('');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('admin_auth');
+    setLoginInput('');
+    setPasswordInput('');
+  };
 
   const loadProducts = async () => {
     try {
@@ -71,6 +104,82 @@ export default function Admin() {
     }
     setSaving(false);
   };
+
+  // Форма входа
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-primary/5 to-background p-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="glass rounded-2xl border border-primary/20 p-8 w-full max-w-md"
+        >
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
+              <Icon name="Lock" size={32} className="text-primary" />
+            </div>
+            <h1 className="text-3xl font-bold mb-2">🔐 Вход в админку</h1>
+            <p className="text-muted-foreground">Введите логин и пароль</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Логин</label>
+              <input
+                type="text"
+                value={loginInput}
+                onChange={(e) => setLoginInput(e.target.value)}
+                className="w-full px-4 py-3 glass rounded-lg border border-primary/20 focus:border-primary/50 focus:outline-none transition-colors"
+                placeholder="Введите логин"
+                autoComplete="username"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Пароль</label>
+              <input
+                type="password"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                className="w-full px-4 py-3 glass rounded-lg border border-primary/20 focus:border-primary/50 focus:outline-none transition-colors"
+                placeholder="Введите пароль"
+                autoComplete="current-password"
+              />
+            </div>
+
+            {authError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 p-3 bg-destructive/20 border border-destructive/50 rounded-lg"
+              >
+                <Icon name="AlertCircle" size={20} className="text-destructive" />
+                <p className="text-sm text-destructive">{authError}</p>
+              </motion.div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+            >
+              <Icon name="LogIn" size={20} />
+              Войти
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <a
+              href="/"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+            >
+              <Icon name="ArrowLeft" size={16} />
+              Вернуться на сайт
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -118,13 +227,22 @@ export default function Admin() {
               <h1 className="text-4xl font-bold mb-2">🔧 Админ-панель</h1>
               <p className="text-muted-foreground">Управление товарами и ценами</p>
             </div>
-            <a
-              href="/"
-              className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-primary/20 hover:border-primary/50 transition-all"
-            >
-              <Icon name="Home" size={20} />
-              <span>На сайт</span>
-            </a>
+            <div className="flex gap-3">
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-destructive/20 hover:border-destructive/50 text-destructive transition-all"
+              >
+                <Icon name="LogOut" size={20} />
+                <span>Выйти</span>
+              </button>
+              <a
+                href="/"
+                className="flex items-center gap-2 px-6 py-3 glass rounded-lg border border-primary/20 hover:border-primary/50 transition-all"
+              >
+                <Icon name="Home" size={20} />
+                <span>На сайт</span>
+              </a>
+            </div>
           </div>
         </motion.div>
 
