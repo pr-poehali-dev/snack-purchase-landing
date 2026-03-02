@@ -15,21 +15,31 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const [category, setCategory] = useState<any>(null);
+  const [category, setCategory] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const loadCategory = async () => {
+    const loadCategory = async (attempt = 1) => {
       try {
+        setError(false);
         const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
         if (categoryId && data[categoryId]) {
           setCategory(data[categoryId]);
+        } else {
+          setError(true);
         }
         setLoading(false);
-      } catch (error) {
-        console.error('Ошибка загрузки:', error);
-        setLoading(false);
+      } catch (err) {
+        console.error('Ошибка загрузки:', err);
+        if (attempt < 3) {
+          setTimeout(() => loadCategory(attempt + 1), 1000 * attempt);
+        } else {
+          setError(true);
+          setLoading(false);
+        }
       }
     };
     loadCategory();
@@ -43,11 +53,12 @@ export default function CategoryPage() {
     );
   }
 
-  if (!category) {
+  if (error || !category) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Категория не найдена</h1>
+          <h1 className="text-4xl font-bold mb-4">{error && !category ? 'Ошибка загрузки' : 'Категория не найдена'}</h1>
+          <p className="text-muted-foreground mb-6">{error && !category ? 'Не удалось загрузить данные. Попробуйте обновить страницу.' : 'Запрошенная категория не существует.'}</p>
           <Link to="/">
             <Button size="lg">
               <Icon name="Home" className="mr-2" />

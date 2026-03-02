@@ -13,7 +13,7 @@ import SchemaOrg from '@/components/seo/SchemaOrg';
 export default function Index() {
   const { toast } = useToast();
   const [requestsToday, setRequestsToday] = useState(0);
-  const [categoriesData, setCategoriesData] = useState<any>({});
+  const [categoriesData, setCategoriesData] = useState<Record<string, unknown>>({});
   
   useEffect(() => {
     const randomRequests = Math.floor(Math.random() * 401) + 100;
@@ -317,9 +317,12 @@ export default function Index() {
               { id: 'fish-dried', emoji: '🐟', title: 'Рыба вяленая', desc: 'Вобла, пелядь, камбала с икрой' },
               { id: 'fish-smoked', emoji: '🐠', title: 'Рыба копченая и соленая', desc: 'Красная рыба, сельдь, скумбрия' },
               { id: 'snacks', emoji: '🦑', title: 'Снеки', desc: 'Кальмары, креветки, морские деликатесы' },
+              { id: 'crackers', emoji: '🥐', title: 'Сухарики и чипсы', desc: 'Сухарики, чипсы, снеки' },
               { id: 'crackers-nuts', emoji: '🥨', title: 'Гренки чипсы орехи сушки', desc: 'Гренки с чесноком, сухарики, орешки' },
               { id: 'potato-chips', emoji: '🥔', title: 'Картофельные чипсы', desc: 'Все вкусы и форматы' },
               { id: 'seeds', emoji: '🌻', title: 'Семечки', desc: 'Жареные, соленые, разные виды' },
+              { id: 'nuts', emoji: '🥜', title: 'Орехи', desc: 'Все виды орехов, соленые и жареные' },
+              { id: 'meat', emoji: '🥓', title: 'Мясные закуски', desc: 'Колбасные изделия, снеки из мяса' },
               { id: 'meat-dried', emoji: '🥩', title: 'Мясо вяленое', desc: 'Говядина, свинина, курица' },
               { id: 'cheese', emoji: '🧀', title: 'Сыры', desc: 'Колбасный, косички, жареный' },
               { id: 'packaging', emoji: '📦', title: 'Фасовка', desc: 'Удобная упаковка любых размеров' },
