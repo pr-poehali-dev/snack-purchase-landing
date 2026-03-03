@@ -388,6 +388,24 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
                   </>
                 )}
+                {cat.id === 'nuts' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/6eeb5ca2-d5be-46bd-8ef2-13719e24b42d.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
+                {cat.id === 'meat' && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/ed6c486c-0d17-4260-aad1-6e5bd56dc217.jpg)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
+                  </>
+                )}
                 {cat.id === 'meat-dried' && (
                   <>
                     <div 
@@ -415,7 +433,7 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
                   </>
                 )}
-                {cat.id !== 'fish-dried' && cat.id !== 'fish-smoked' && cat.id !== 'snacks' && cat.id !== 'crackers-nuts' && cat.id !== 'potato-chips' && cat.id !== 'seeds' && cat.id !== 'meat-dried' && cat.id !== 'cheese' && cat.id !== 'packaging' && (
+                {cat.id !== 'fish-dried' && cat.id !== 'fish-smoked' && cat.id !== 'snacks' && cat.id !== 'crackers-nuts' && cat.id !== 'potato-chips' && cat.id !== 'seeds' && cat.id !== 'nuts' && cat.id !== 'meat' && cat.id !== 'meat-dried' && cat.id !== 'cheese' && cat.id !== 'packaging' && (
                   <div className="absolute inset-0 glass" />
                 )}
                 
