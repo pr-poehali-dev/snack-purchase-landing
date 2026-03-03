@@ -28,10 +28,13 @@ export default function CategoryPage() {
         const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        if (data[categoryId]) {
-          setCategory(data[categoryId]);
+        const apiCategory = data[categoryId];
+        const staticCategory = categoriesData[categoryId] ?? null;
+        if (apiCategory) {
+          const hasProducts = apiCategory.products && apiCategory.products.length > 0;
+          setCategory(hasProducts ? apiCategory : { ...apiCategory, products: staticCategory?.products ?? [] });
         } else {
-          setCategory(categoriesData[categoryId] ?? null);
+          setCategory(staticCategory);
         }
       } catch {
         setCategory(categoriesData[categoryId] ?? null);
