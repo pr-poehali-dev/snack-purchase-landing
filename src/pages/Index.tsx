@@ -13,22 +13,10 @@ import SchemaOrg from '@/components/seo/SchemaOrg';
 export default function Index() {
   const { toast } = useToast();
   const [requestsToday, setRequestsToday] = useState(0);
-  const [categoriesData, setCategoriesData] = useState<Record<string, unknown>>({});
   
   useEffect(() => {
     const randomRequests = Math.floor(Math.random() * 401) + 100;
     setRequestsToday(randomRequests);
-    
-    const loadCategories = async () => {
-      try {
-        const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
-        const data = await response.json();
-        setCategoriesData(data);
-      } catch (error) {
-        console.error('Ошибка загрузки категорий:', error);
-      }
-    };
-    loadCategories();
   }, []);
   
   const [formData, setFormData] = useState({

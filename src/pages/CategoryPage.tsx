@@ -1,5 +1,4 @@
 import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -12,68 +11,24 @@ import CategoryContent from '@/components/category/CategoryContent';
 import CategoryOrderForm from '@/components/category/CategoryOrderForm';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { categoriesData } from '@/data/categoriesData';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const [category, setCategory] = useState<Record<string, unknown> | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const category = categoryId ? categoriesData[categoryId] ?? null : null;
 
-  useEffect(() => {
-    if (!loading) return;
-    const loadCategory = async (attempt = 1) => {
-      try {
-        setError(false);
-        const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        if (categoryId && data[categoryId]) {
-          setCategory(data[categoryId]);
-        } else {
-          setError(true);
-        }
-        setLoading(false);
-      } catch (err) {
-        console.error('Ошибка загрузки:', err);
-        if (attempt < 5) {
-          setTimeout(() => loadCategory(attempt + 1), 1500 * attempt);
-        } else {
-          setError(true);
-          setLoading(false);
-        }
-      }
-    };
-    loadCategory();
-  }, [categoryId, loading]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Icon name="Loader2" className="animate-spin text-primary" size={48} />
-      </div>
-    );
-  }
-
-  if (error || !category) {
+  if (!category) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">{error && !category ? 'Ошибка загрузки' : 'Категория не найдена'}</h1>
-          <p className="text-muted-foreground mb-6">{error && !category ? 'Не удалось загрузить данные. Попробуйте ещё раз.' : 'Запрошенная категория не существует.'}</p>
-          <div className="flex gap-3 justify-center">
-            {error && !category && (
-              <Button size="lg" variant="default" onClick={() => { setError(false); setLoading(true); }}>
-                <Icon name="RefreshCw" className="mr-2" />
-                Повторить
-              </Button>
-            )}
-            <Link to="/">
-              <Button size="lg" variant="outline">
-                <Icon name="Home" className="mr-2" />
-                На главную
-              </Button>
-            </Link>
-          </div>
+          <h1 className="text-4xl font-bold mb-4">Категория не найдена</h1>
+          <p className="text-muted-foreground mb-6">Запрошенная категория не существует.</p>
+          <Link to="/">
+            <Button size="lg">
+              <Icon name="Home" className="mr-2" />
+              На главную
+            </Button>
+          </Link>
         </div>
       </div>
     );
