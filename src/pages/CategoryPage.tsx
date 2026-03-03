@@ -20,6 +20,7 @@ export default function CategoryPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (!loading) return;
     const loadCategory = async (attempt = 1) => {
       try {
         setError(false);
@@ -34,8 +35,8 @@ export default function CategoryPage() {
         setLoading(false);
       } catch (err) {
         console.error('Ошибка загрузки:', err);
-        if (attempt < 3) {
-          setTimeout(() => loadCategory(attempt + 1), 1000 * attempt);
+        if (attempt < 5) {
+          setTimeout(() => loadCategory(attempt + 1), 1500 * attempt);
         } else {
           setError(true);
           setLoading(false);
@@ -43,7 +44,7 @@ export default function CategoryPage() {
       }
     };
     loadCategory();
-  }, [categoryId]);
+  }, [categoryId, loading]);
 
   if (loading) {
     return (
@@ -58,13 +59,21 @@ export default function CategoryPage() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">{error && !category ? 'Ошибка загрузки' : 'Категория не найдена'}</h1>
-          <p className="text-muted-foreground mb-6">{error && !category ? 'Не удалось загрузить данные. Попробуйте обновить страницу.' : 'Запрошенная категория не существует.'}</p>
-          <Link to="/">
-            <Button size="lg">
-              <Icon name="Home" className="mr-2" />
-              На главную
-            </Button>
-          </Link>
+          <p className="text-muted-foreground mb-6">{error && !category ? 'Не удалось загрузить данные. Попробуйте ещё раз.' : 'Запрошенная категория не существует.'}</p>
+          <div className="flex gap-3 justify-center">
+            {error && !category && (
+              <Button size="lg" variant="default" onClick={() => { setError(false); setLoading(true); }}>
+                <Icon name="RefreshCw" className="mr-2" />
+                Повторить
+              </Button>
+            )}
+            <Link to="/">
+              <Button size="lg" variant="outline">
+                <Icon name="Home" className="mr-2" />
+                На главную
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     );
