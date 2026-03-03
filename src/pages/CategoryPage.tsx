@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -12,10 +13,43 @@ import CategoryOrderForm from '@/components/category/CategoryOrderForm';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { categoriesData } from '@/data/categoriesData';
+import { CategoryData } from '@/types/category';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const category = categoryId ? categoriesData[categoryId] ?? null : null;
+  const [category, setCategory] = useState<CategoryData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!categoryId) { setLoading(false); return; }
+
+    const loadCategory = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (data[categoryId]) {
+          setCategory(data[categoryId]);
+        } else {
+          setCategory(categoriesData[categoryId] ?? null);
+        }
+      } catch {
+        setCategory(categoriesData[categoryId] ?? null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCategory();
+  }, [categoryId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Icon name="Loader2" className="animate-spin text-primary" size={48} />
+      </div>
+    );
+  }
 
   if (!category) {
     return (
