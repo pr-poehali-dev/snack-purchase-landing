@@ -52,7 +52,6 @@ export default function Header() {
     { label: 'Гренки чипсы орехи сушки', emoji: '🥨', id: 'crackers-nuts' },
     { label: 'Картофельные чипсы', emoji: '🥔', id: 'potato-chips' },
     { label: 'Семечки', emoji: '🌻', id: 'seeds' },
-    { label: 'Орехи', emoji: '🥜', id: 'nuts' },
     { label: 'Мясные закуски', emoji: '🥓', id: 'meat' },
     { label: 'Мясо вяленое', emoji: '🥩', id: 'meat-dried' },
     { label: 'Сыры', emoji: '🧀', id: 'cheese' },
