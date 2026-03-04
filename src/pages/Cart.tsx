@@ -19,7 +19,7 @@ export default function Cart() {
     contact: '',
     workingHours: '',
     comments: '',
-    paymentMethod: 'Наличными',
+    paymentMethod: '',
   });
 
   // Функция для вычисления общей суммы
@@ -44,6 +44,15 @@ export default function Cart() {
       toast({
         title: "Корзина пуста",
         description: "Добавьте товары в корзину перед оформлением заказа",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.paymentMethod) {
+      toast({
+        title: "Выберите способ оплаты",
+        description: "Пожалуйста, выберите «Наличными» или «Расчетный счет»",
         variant: "destructive",
       });
       return;
@@ -87,7 +96,7 @@ export default function Cart() {
           contact: '',
           workingHours: '',
           comments: '',
-          paymentMethod: 'Наличными',
+          paymentMethod: '',
         });
         clearCart();
       } else {
@@ -311,23 +320,32 @@ export default function Cart() {
                         Способ оплаты *
                       </label>
                       <div className="flex gap-2">
-                        <Button
+                        <button
                           type="button"
-                          variant={formData.paymentMethod === 'Наличными' ? 'default' : 'outline'}
-                          className="flex-1"
+                          className={`flex-1 py-2 px-4 rounded-lg font-semibold border-2 transition-all duration-200 ${
+                            formData.paymentMethod === 'Наличными'
+                              ? 'bg-primary text-primary-foreground border-primary'
+                              : 'bg-muted/40 text-muted-foreground border-muted hover:border-primary/50 hover:text-foreground'
+                          }`}
                           onClick={() => setFormData({ ...formData, paymentMethod: 'Наличными' })}
                         >
                           Наличными
-                        </Button>
-                        <Button
+                        </button>
+                        <button
                           type="button"
-                          variant={formData.paymentMethod === 'Расчетный счет' ? 'default' : 'outline'}
-                          className="flex-1"
+                          className={`flex-1 py-2 px-4 rounded-lg font-semibold border-2 transition-all duration-200 ${
+                            formData.paymentMethod === 'Расчетный счет'
+                              ? 'bg-primary text-primary-foreground border-primary'
+                              : 'bg-muted/40 text-muted-foreground border-muted hover:border-primary/50 hover:text-foreground'
+                          }`}
                           onClick={() => setFormData({ ...formData, paymentMethod: 'Расчетный счет' })}
                         >
                           Расчетный счет
-                        </Button>
+                        </button>
                       </div>
+                      {!formData.paymentMethod && (
+                        <p className="text-xs text-red-400 mt-1">Выберите способ оплаты</p>
+                      )}
                     </div>
                     
                     <div className="border-t border-border pt-4 mt-6">
