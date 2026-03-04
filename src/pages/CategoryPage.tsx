@@ -78,6 +78,12 @@ export default function CategoryPage() {
         <meta name="description" content={category.seo?.description || category.description} />
         <meta property="og:title" content={category.seo?.title || category.title} />
         <meta property="og:description" content={category.seo?.description || category.description} />
+        {category.seo?.ogImage && <meta property="og:image" content={category.seo.ogImage} />}
+        {category.seo?.ogImage && <meta property="og:image:width" content="1200" />}
+        {category.seo?.ogImage && <meta property="og:image:height" content="1200" />}
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {category.seo?.ogImage && <meta name="twitter:image" content={category.seo.ogImage} />}
         <link rel="canonical" href={`https://merkaprofish.ru/category/${category.id}`} />
       </Helmet>
       

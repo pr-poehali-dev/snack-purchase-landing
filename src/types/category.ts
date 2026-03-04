@@ -17,5 +17,6 @@ export interface CategoryData {
   seo?: {
     title: string;
     description: string;
+    ogImage?: string;
   };
 }
