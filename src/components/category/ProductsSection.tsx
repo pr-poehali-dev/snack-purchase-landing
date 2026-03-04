@@ -125,8 +125,18 @@ export default function ProductsSection({ category }: ProductsSectionProps) {
             className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
             style={{ animationDelay: `${index * 0.05}s` }}
           >
-            <div className="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-              {product.image}
+            <div className="mb-4 group-hover:scale-110 transition-all duration-500">
+              {product.image && product.image.startsWith('http') ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-40 object-cover rounded-xl"
+                />
+              ) : (
+                <div className="text-5xl group-hover:rotate-12 transition-all duration-500">
+                  {product.image}
+                </div>
+              )}
             </div>
             <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-amber-300 transition-colors">
               {product.name}
