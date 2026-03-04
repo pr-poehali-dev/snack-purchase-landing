@@ -12,6 +12,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 export default function Cart() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } = useCart();
   const { toast } = useToast();
+  const [paymentError, setPaymentError] = useState(false);
   const [formData, setFormData] = useState({
     companyType: 'ООО',
     companyName: '',
@@ -50,11 +51,13 @@ export default function Cart() {
     }
 
     if (!formData.paymentMethod) {
+      setPaymentError(true);
       toast({
         title: "Выберите способ оплаты",
         description: "Пожалуйста, выберите «Наличными» или «Расчетный счет»",
         variant: "destructive",
       });
+      document.getElementById('payment-block')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -315,11 +318,15 @@ export default function Cart() {
                       />
                     </div>
                     
-                    <div>
+                    <div id="payment-block">
                       <label className="text-sm font-semibold mb-2 block">
                         Способ оплаты *
                       </label>
-                      <div className="flex gap-2">
+                      <div className={`flex gap-2 p-2 rounded-xl border-2 transition-all duration-300 ${
+                        paymentError && !formData.paymentMethod
+                          ? 'border-red-500 bg-red-500/5 animate-pulse'
+                          : 'border-transparent'
+                      }`}>
                         <button
                           type="button"
                           className={`flex-1 py-2 px-4 rounded-lg font-semibold border-2 transition-all duration-200 ${
@@ -327,7 +334,7 @@ export default function Cart() {
                               ? 'bg-primary text-primary-foreground border-primary'
                               : 'bg-muted/40 text-muted-foreground border-muted hover:border-primary/50 hover:text-foreground'
                           }`}
-                          onClick={() => setFormData({ ...formData, paymentMethod: 'Наличными' })}
+                          onClick={() => { setFormData({ ...formData, paymentMethod: 'Наличными' }); setPaymentError(false); }}
                         >
                           Наличными
                         </button>
@@ -338,13 +345,13 @@ export default function Cart() {
                               ? 'bg-primary text-primary-foreground border-primary'
                               : 'bg-muted/40 text-muted-foreground border-muted hover:border-primary/50 hover:text-foreground'
                           }`}
-                          onClick={() => setFormData({ ...formData, paymentMethod: 'Расчетный счет' })}
+                          onClick={() => { setFormData({ ...formData, paymentMethod: 'Расчетный счет' }); setPaymentError(false); }}
                         >
                           Расчетный счет
                         </button>
                       </div>
-                      {!formData.paymentMethod && (
-                        <p className="text-xs text-red-400 mt-1">Выберите способ оплаты</p>
+                      {paymentError && !formData.paymentMethod && (
+                        <p className="text-xs text-red-400 mt-1 font-medium">⚠ Обязательно выберите способ оплаты</p>
                       )}
                     </div>
                     
