@@ -45,8 +45,8 @@ def handler(event: dict, context) -> dict:
                             'in_stock', p.in_stock
                         ) ORDER BY p.sort_order
                     ) as products
-                FROM categories c
-                LEFT JOIN products p ON c.id = p.category_id
+                FROM t_p14304766_snack_purchase_landi.categories c
+                LEFT JOIN t_p14304766_snack_purchase_landi.products p ON c.id = p.category_id
                 GROUP BY c.id, c.emoji, c.title, c.subtitle, c.description, 
                          c.seo_title, c.seo_description, c.benefits
                 ORDER BY c.id
@@ -124,10 +124,10 @@ def handler(event: dict, context) -> dict:
             params.append(product_id)
             
             query = f'''
-                UPDATE products 
+                UPDATE t_p14304766_snack_purchase_landi.products 
                 SET {', '.join(update_fields)}
                 WHERE id = %s
-                RETURNING id, name, description, price, in_stock
+                RETURNING id, name, description, price, image, in_stock
             '''
             
             cur.execute(query, params)
@@ -168,7 +168,7 @@ def handler(event: dict, context) -> dict:
                 }
             
             cur.execute('''
-                INSERT INTO products (category_id, name, description, price, in_stock, image, unit)
+                INSERT INTO t_p14304766_snack_purchase_landi.products (category_id, name, description, price, in_stock, image, unit)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
                 RETURNING id, name, description, price, in_stock
             ''', (
@@ -207,7 +207,7 @@ def handler(event: dict, context) -> dict:
                     'body': json.dumps({'error': 'Product ID is required'})
                 }
             
-            cur.execute('DELETE FROM products WHERE id = %s RETURNING id', (product_id,))
+            cur.execute('DELETE FROM t_p14304766_snack_purchase_landi.products WHERE id = %s RETURNING id', (product_id,))
             deleted = cur.fetchone()
             
             conn.commit()

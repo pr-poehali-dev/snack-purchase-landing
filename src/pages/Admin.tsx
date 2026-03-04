@@ -155,12 +155,18 @@ export default function Admin() {
         body: JSON.stringify(editingProduct)
       });
 
+      const result = await response.json();
+
       if (response.ok) {
         await loadProducts();
         setEditingProduct(null);
+        setCreatingProduct(false);
+      } else {
+        alert(`Ошибка сохранения: ${result.error || response.status}`);
       }
     } catch (error) {
       console.error('Ошибка сохранения:', error);
+      alert(`Ошибка сохранения: ${error}`);
     }
     setSaving(false);
   };
