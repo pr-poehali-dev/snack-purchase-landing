@@ -1,0 +1,1 @@
+ALTER TABLE t_p14304766_snack_purchase_landi.products ALTER COLUMN image TYPE text;
