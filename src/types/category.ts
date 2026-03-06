@@ -4,6 +4,7 @@ export interface Product {
   price?: string;
   image: string;
   unit?: string;
+  in_stock?: boolean;
 }
 
 export interface CategoryData {

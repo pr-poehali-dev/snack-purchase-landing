@@ -119,41 +119,53 @@ export default function ProductsSection({ category }: ProductsSectionProps) {
             <p className="text-muted-foreground">Попробуйте изменить параметры поиска</p>
           </div>
         ) : (
-          filteredProducts.map((product, index) => (
-          <div
-            key={index}
-            className="glass rounded-2xl p-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 group animate-fade-in flex flex-col"
-            style={{ animationDelay: `${index * 0.05}s` }}
-          >
-            <div className="mb-4 group-hover:scale-110 transition-all duration-500">
-              {product.image && product.image.startsWith('http') ? (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-40 object-cover rounded-xl"
-                />
-              ) : (
-                <div className="text-5xl group-hover:rotate-12 transition-all duration-500">
-                  {product.image}
+          filteredProducts.map((product, index) => {
+            const outOfStock = product.in_stock === false;
+            return (
+            <div
+              key={index}
+              className={`glass rounded-2xl p-6 border-2 transition-all duration-300 group animate-fade-in flex flex-col relative ${
+                outOfStock
+                  ? 'border-border opacity-60 grayscale'
+                  : 'border-primary/20 hover:border-primary/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/30'
+              }`}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {outOfStock && (
+                <div className="absolute top-3 right-3 bg-red-500/90 text-white text-xs font-bold px-2 py-1 rounded-lg z-10">
+                  Нет в наличии
                 </div>
               )}
+              <div className="mb-4 group-hover:scale-110 transition-all duration-500">
+                {product.image && product.image.startsWith('http') ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-40 object-cover rounded-xl"
+                  />
+                ) : (
+                  <div className="text-5xl group-hover:rotate-12 transition-all duration-500">
+                    {product.image}
+                  </div>
+                )}
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-amber-300 transition-colors">
+                {product.name}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-3">{product.description}</p>
+              {product.price && (
+                <p className="text-lg font-bold text-amber-400 mb-4">{product.price}</p>
+              )}
+              <Button
+                className="mt-auto bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => !outOfStock && handleAddToCart(product)}
+                disabled={outOfStock}
+              >
+                <Icon name={outOfStock ? 'Ban' : 'ShoppingCart'} className="mr-2" size={18} />
+                {outOfStock ? 'Нет в наличии' : 'В корзину'}
+              </Button>
             </div>
-            <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-amber-300 transition-colors">
-              {product.name}
-            </h3>
-            <p className="text-muted-foreground text-sm mb-3">{product.description}</p>
-            {product.price && (
-              <p className="text-lg font-bold text-amber-400 mb-4">{product.price}</p>
-            )}
-            <Button
-              className="mt-auto bg-primary hover:bg-primary/90 text-primary-foreground"
-              onClick={() => handleAddToCart(product)}
-            >
-              <Icon name="ShoppingCart" className="mr-2" size={18} />
-              В корзину
-            </Button>
-          </div>
-        )))}
+          )}))}
       </div>
     </div>
   );
