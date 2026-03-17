@@ -107,17 +107,7 @@ export default function CategoryHero({ category }: CategoryHeroProps) {
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
         </>
       )}
-      {category.id === 'meat' && (
-        <>
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/73e064e8-2abd-468e-8c49-cb98e322ae40.jpg)' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/60 via-[#1e293b]/50 to-[#0f172a]/60" />
-        </>
-      )}
-
-      {!['fish-dried', 'fish-smoked', 'snacks', 'crackers-nuts', 'potato-chips', 'seeds', 'meat-dried', 'cheese', 'packaging', 'crackers', 'nuts', 'meat'].includes(category.id) && (
+      {!['fish-dried', 'fish-smoked', 'snacks', 'crackers-nuts', 'potato-chips', 'seeds', 'meat-dried', 'cheese', 'packaging', 'crackers', 'nuts'].includes(category.id) && (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c] via-[#1e293b] to-[#0f172a]" />
           <div className="absolute inset-0 opacity-20">
