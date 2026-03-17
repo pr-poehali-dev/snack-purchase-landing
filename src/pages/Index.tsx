@@ -308,7 +308,7 @@ export default function Index() {
               { id: 'crackers-nuts', emoji: '🥨', title: 'Гренки чипсы орехи сушки', desc: 'Гренки с чесноком, сухарики, орешки' },
               { id: 'potato-chips', emoji: '🥔', title: 'Картофельные чипсы', desc: 'Все вкусы и форматы' },
               { id: 'seeds', emoji: '🌻', title: 'Семечки', desc: 'Жареные, соленые, разные виды' },
-              { id: 'meat', emoji: '🥓', title: 'Мясные закуски', desc: 'Колбасные изделия, снеки из мяса' },
+
               { id: 'meat-dried', emoji: '🥩', title: 'Мясо вяленое', desc: 'Говядина, свинина, курица' },
               { id: 'cheese', emoji: '🧀', title: 'Сыры', desc: 'Колбасный, косички, жареный' },
               { id: 'packaging', emoji: '📦', title: 'Фасовка', desc: 'Удобная упаковка любых размеров' },
@@ -383,15 +383,7 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
                   </>
                 )}
-                {cat.id === 'meat' && (
-                  <>
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                      style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/d17808fe-e6db-4a3b-97d6-d1ff859cd614/files/ed6c486c-0d17-4260-aad1-6e5bd56dc217.jpg)' }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2c]/85 via-[#1e293b]/80 to-[#0f172a]/85 group-hover:from-[#1a1f2c]/75 group-hover:via-[#1e293b]/70 group-hover:to-[#0f172a]/75 transition-all duration-300" />
-                  </>
-                )}
+
                 {cat.id === 'meat-dried' && (
                   <>
                     <div 
