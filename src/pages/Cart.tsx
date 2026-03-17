@@ -362,16 +362,25 @@ export default function Cart() {
                     </div>
                     
                     <div className="border-t border-border pt-4 mt-6">
-                      <div className="flex justify-between items-center mb-4">
+                      <div className="flex justify-between items-center mb-2">
                         <span className="text-lg font-semibold">Итоговая сумма:</span>
                         <span className="text-2xl font-bold text-primary">{calculateTotal()}₽</span>
                       </div>
+                      {calculateTotal() < 5000 && (
+                        <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-3 mb-2">
+                          <Icon name="AlertTriangle" size={18} className="text-amber-400 shrink-0" />
+                          <p className="text-sm text-amber-300">
+                            Минимальная сумма заказа — <b>5 000₽</b>. Добавьте ещё на <b>{(5000 - calculateTotal()).toLocaleString('ru-RU')}₽</b>.
+                          </p>
+                        </div>
+                      )}
                     </div>
                     
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                      disabled={calculateTotal() < 5000}
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Icon name="Send" className="mr-2" size={20} />
                       Отправить заказ
