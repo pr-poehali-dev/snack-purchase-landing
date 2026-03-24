@@ -13,6 +13,8 @@ export default function Cart() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } = useCart();
   const { toast } = useToast();
   const [paymentError, setPaymentError] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
   const [formData, setFormData] = useState({
     companyType: 'ООО',
     companyName: '',
@@ -45,6 +47,16 @@ export default function Cart() {
       toast({
         title: "Корзина пуста",
         description: "Добавьте товары в корзину перед оформлением заказа",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!privacyAccepted) {
+      setPrivacyError(true);
+      toast({
+        title: "Необходимо согласие",
+        description: "Пожалуйста, подтвердите согласие с политикой конфиденциальности",
         variant: "destructive",
       });
       return;
@@ -376,6 +388,26 @@ export default function Cart() {
                       )}
                     </div>
                     
+                    <div className={`flex items-start gap-3 p-3 rounded-xl border-2 transition-all duration-300 ${privacyError && !privacyAccepted ? 'border-red-500 bg-red-500/5' : 'border-transparent'}`}>
+                      <input
+                        type="checkbox"
+                        id="privacy-checkbox"
+                        checked={privacyAccepted}
+                        onChange={(e) => { setPrivacyAccepted(e.target.checked); setPrivacyError(false); }}
+                        className="mt-0.5 w-4 h-4 shrink-0 accent-primary cursor-pointer"
+                      />
+                      <label htmlFor="privacy-checkbox" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                        Я согласен(а) с{' '}
+                        <Link to="/privacy" target="_blank" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
+                          политикой конфиденциальности
+                        </Link>
+                        {' '}и даю согласие на обработку персональных данных
+                      </label>
+                    </div>
+                    {privacyError && !privacyAccepted && (
+                      <p className="text-xs text-red-400 -mt-2 font-medium">⚠ Необходимо согласие с политикой конфиденциальности</p>
+                    )}
+
                     <Button
                       type="submit"
                       size="lg"
