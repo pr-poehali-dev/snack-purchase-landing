@@ -797,8 +797,13 @@ export default function Index() {
       </section>
 
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border">
-        <div className="max-w-7xl mx-auto text-center text-muted-foreground">
+        <div className="max-w-7xl mx-auto text-center text-muted-foreground space-y-2">
           <p>© 2026 Закупка снеков. Все права защищены.</p>
+          <p>
+            <Link to="/privacy" className="hover:text-primary transition-colors text-sm underline underline-offset-4">
+              Политика конфиденциальности
+            </Link>
+          </p>
         </div>
       </footer>
 
