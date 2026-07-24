@@ -32,6 +32,9 @@ export default function Admin() {
   const [saving, setSaving] = useState(false);
   const [cleaningDuplicates, setCleaningDuplicates] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [deletingProductId, setDeletingProductId] = useState<number | null>(null);
+  const [deleteError, setDeleteError] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     // Проверяем сохраненную сессию
@@ -122,25 +125,36 @@ export default function Admin() {
 
 
 
-  const handleDelete = async (productId: number) => {
-    if (!confirm('Вы точно хотите удалить эту позицию? Это действие нельзя отменить.')) return;
+  const handleDelete = (productId: number) => {
+    setDeleteError('');
+    setDeletingProductId(productId);
+  };
 
+  const confirmDelete = async () => {
+    if (deletingProductId === null) return;
+
+    setIsDeleting(true);
+    setDeleteError('');
     try {
       const response = await fetch('https://functions.poehali.dev/3b7c8f03-6bb3-4cd5-bc59-7bf5fdb13fe3', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: productId })
+        body: JSON.stringify({ id: deletingProductId })
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        alert('Товар успешно удалён');
         await loadProducts();
+        setDeletingProductId(null);
       } else {
-        alert('Ошибка при удалении товара');
+        setDeleteError(result.error || 'Ошибка при удалении товара');
       }
     } catch (error) {
       console.error('Ошибка удаления:', error);
-      alert(`Ошибка удаления: ${error}`);
+      setDeleteError(`Ошибка удаления: ${error}`);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -733,6 +747,59 @@ export default function Admin() {
                 <button
                   onClick={() => { setEditingProduct(null); setCreatingProduct(false); }}
                   className="px-6 py-3 glass border border-primary/20 rounded-lg font-semibold hover:border-primary/50 transition-colors"
+                >
+                  Отмена
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {/* Модальное окно подтверждения удаления */}
+        {deletingProductId !== null && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="glass rounded-2xl p-6 max-w-sm w-full border border-red-500/20"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
+                  <Icon name="AlertTriangle" size={20} className="text-red-500" />
+                </div>
+                <h3 className="text-lg font-bold">Удалить товар?</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Это действие нельзя отменить. Товар будет удалён навсегда.
+              </p>
+              {deleteError && (
+                <div className="flex items-center gap-2 p-3 mb-4 bg-destructive/20 border border-destructive/50 rounded-lg">
+                  <Icon name="AlertCircle" size={18} className="text-destructive shrink-0" />
+                  <p className="text-sm text-destructive">{deleteError}</p>
+                </div>
+              )}
+              <div className="flex gap-3">
+                <button
+                  onClick={confirmDelete}
+                  disabled={isDeleting}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                >
+                  {isDeleting ? (
+                    <>
+                      <Icon name="Loader2" className="animate-spin" size={18} />
+                      <span>Удаление...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Trash2" size={18} />
+                      <span>Удалить</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={() => { setDeletingProductId(null); setDeleteError(''); }}
+                  disabled={isDeleting}
+                  className="px-4 py-3 glass border border-primary/20 rounded-lg font-semibold hover:border-primary/50 transition-colors disabled:opacity-50"
                 >
                   Отмена
                 </button>
