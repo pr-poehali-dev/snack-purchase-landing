@@ -194,9 +194,17 @@ export default function Admin() {
     }
 
     setUploadingImage(true);
-    try {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
+
+    const reader = new FileReader();
+
+    reader.onerror = () => {
+      console.error('Ошибка чтения файла:', reader.error);
+      alert('Не удалось прочитать файл. Попробуйте выбрать другое изображение.');
+      setUploadingImage(false);
+    };
+
+    reader.onload = async (event) => {
+      try {
         const base64 = event.target?.result as string;
 
         const response = await fetch('https://functions.poehali.dev/4311a1b7-08ab-44e2-96a8-a96e8037e753', {
@@ -214,16 +222,17 @@ export default function Admin() {
           setEditingProduct({ ...editingProduct, image: result.url });
           alert('Изображение загружено успешно!');
         } else {
-          alert(`Ошибка загрузки: ${result.error}`);
+          alert(`Ошибка загрузки: ${result.error || 'неизвестная ошибка сервера'}`);
         }
+      } catch (error) {
+        console.error('Ошибка загрузки изображения:', error);
+        alert(`Ошибка загрузки: ${error}`);
+      } finally {
         setUploadingImage(false);
-      };
-      reader.readAsDataURL(file);
-    } catch (error) {
-      console.error('Ошибка загрузки изображения:', error);
-      alert(`Ошибка загрузки: ${error}`);
-      setUploadingImage(false);
-    }
+      }
+    };
+
+    reader.readAsDataURL(file);
   };
 
   const handleCreateSave = async () => {
