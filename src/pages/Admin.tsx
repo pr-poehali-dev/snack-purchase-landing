@@ -183,56 +183,101 @@ export default function Admin() {
     setCreatingProduct(true);
   };
 
+  // Сжимает изображение в браузере до безопасного размера перед отправкой на сервер
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(reader.error);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Не удалось обработать изображение'));
+        img.onload = () => {
+          const maxDimension = 1600;
+          let { width, height } = img;
+
+          if (width > maxDimension || height > maxDimension) {
+            if (width > height) {
+              height = Math.round((height * maxDimension) / width);
+              width = maxDimension;
+            } else {
+              width = Math.round((width * maxDimension) / height);
+              height = maxDimension;
+            }
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+
+          if (!ctx) {
+            reject(new Error('Canvas недоступен в этом браузере'));
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          let quality = 0.85;
+          let dataUrl = canvas.toDataURL('image/jpeg', quality);
+
+          // Уменьшаем качество, пока размер не станет безопасным для отправки (лимит сервера ~3.5MB)
+          while (dataUrl.length > 2.5 * 1024 * 1024 && quality > 0.3) {
+            quality -= 0.1;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+          }
+
+          resolve(dataUrl);
+        };
+        img.src = event.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Проверка размера (макс 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Файл слишком большой. Максимальный размер 5MB');
+    // Проверка размера исходного файла (макс 20MB, дальше он будет сжат)
+    if (file.size > 20 * 1024 * 1024) {
+      alert('Файл слишком большой. Максимальный размер 20MB');
       return;
     }
 
     setUploadingImage(true);
 
-    const reader = new FileReader();
+    try {
+      const base64 = await compressImage(file);
 
-    reader.onerror = () => {
-      console.error('Ошибка чтения файла:', reader.error);
-      alert('Не удалось прочитать файл. Попробуйте выбрать другое изображение.');
-      setUploadingImage(false);
-    };
-
-    reader.onload = async (event) => {
-      try {
-        const base64 = event.target?.result as string;
-
-        const response = await fetch('https://functions.poehali.dev/4311a1b7-08ab-44e2-96a8-a96e8037e753', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            image: base64,
-            filename: file.name
-          })
-        });
-
-        const result = await response.json();
-
-        if (response.ok && editingProduct) {
-          setEditingProduct({ ...editingProduct, image: result.url });
-          alert('Изображение загружено успешно!');
-        } else {
-          alert(`Ошибка загрузки: ${result.error || 'неизвестная ошибка сервера'}`);
-        }
-      } catch (error) {
-        console.error('Ошибка загрузки изображения:', error);
-        alert(`Ошибка загрузки: ${error}`);
-      } finally {
+      if (base64.length > 3.5 * 1024 * 1024) {
+        alert('Не удалось сжать изображение до нужного размера. Попробуйте другое фото.');
         setUploadingImage(false);
+        return;
       }
-    };
 
-    reader.readAsDataURL(file);
+      const response = await fetch('https://functions.poehali.dev/4311a1b7-08ab-44e2-96a8-a96e8037e753', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: base64,
+          filename: file.name.replace(/\.[^.]+$/, '.jpg')
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && editingProduct) {
+        setEditingProduct({ ...editingProduct, image: result.url });
+        alert('Изображение загружено успешно!');
+      } else {
+        alert(`Ошибка загрузки: ${result.error || result.errorMessage || 'неизвестная ошибка сервера'}`);
+      }
+    } catch (error) {
+      console.error('Ошибка загрузки изображения:', error);
+      alert(`Ошибка загрузки: ${error}`);
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleCreateSave = async () => {
@@ -650,7 +695,7 @@ export default function Admin() {
                         <span className="text-sm text-green-600">✓ Загружено</span>
                       )}
                     </div>
-                    <p className="text-xs text-muted-foreground">Макс. размер: 5MB. Форматы: JPG, PNG, WEBP</p>
+                    <p className="text-xs text-muted-foreground">Фото автоматически сжимается перед загрузкой. Любой размер и формат (JPG, PNG, WEBP)</p>
                   </div>
                 </div>
 
